@@ -28,13 +28,14 @@ import React from 'react';
 import './App.css';
 
 function App() {
-  const a = "hello"
+  const a = 'hello';
 
-              return (
+  return (
     <div>
-                      <p>와우</p>
+      <p>와우</p>
     </div>
-          );
+  );
 }
 
 export default App;
+s;
