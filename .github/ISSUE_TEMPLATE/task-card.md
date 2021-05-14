@@ -2,7 +2,7 @@
 name: Task Card
 about: Task Card 생성시 사용되는 Template 입니다.
 title: "[Task] 작업 내용을 입력해주세요."
-labels: ''
+labels: Issue
 assignees: ''
 
 ---
