@@ -1,41 +1,19 @@
-// import logo from './logo.svg';
-// import './App.css';
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
-
-// export default App;
-
 import React from 'react';
+import { useSelector } from 'react-redux';
 import './App.css';
 
 function App() {
-  const a = 'hello';
+  const loginInfo = useSelector((state) => state.userReducer);
+  const { isLogin, userinfo } = loginInfo;
+
+  const postInfo = useSelector((state) => state.postReducer);
+  const { posts } = postInfo;
 
   return (
     <div>
-      <p>와우</p>
+      <p>hello world</p>
     </div>
   );
 }
 
 export default App;
-s;
