@@ -1,0 +1,20 @@
+.foother {
+  margin: {
+    left: auto;
+    right: auto;
+  }
+  max-width: 800px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+
+  div {
+    display: flex;
+    flex-flow: column nowrap;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
