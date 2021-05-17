@@ -1,8 +1,10 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { Switch, Route, withRouter } from 'react-router-dom';
 import './App.css';
+import Main from './pages/Main';
 
-function App() {
+const App = () => {
   const loginInfo = useSelector((state) => state.userReducer);
   const { isLogin, userinfo } = loginInfo;
 
@@ -10,10 +12,12 @@ function App() {
   const { posts } = postInfo;
 
   return (
-    <div>
-      <p>hello world</p>
+    <div className="App">
+      <Switch>
+        <Route exact path="/main" render={() => <Main />} />
+      </Switch>
     </div>
   );
-}
+};
 
-export default App;
+export default withRouter(App);
