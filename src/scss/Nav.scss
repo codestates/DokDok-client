@@ -1,0 +1,23 @@
+nav {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+
+  .nav-logo-and-search {
+    display: flex;
+    flex-flow: row nowrap;
+  }
+
+  ul {
+    display: flex;
+    flex-flow: row nowrap;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    margin-left: 1rem;
+    display: inline-block;
+  }
+}
