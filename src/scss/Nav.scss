@@ -1,7 +1,9 @@
 nav {
+  height: 4rem;
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
+  align-items: center;
 
   .nav-logo-and-search {
     display: flex;
@@ -19,5 +21,13 @@ nav {
   li {
     margin-left: 1rem;
     display: inline-block;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  nav {
+    ul {
+      display: none;
+    }
   }
 }

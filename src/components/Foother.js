@@ -11,12 +11,17 @@ const Foother = () => {
       </div>
       <div className="about-us">
         ABOUT US
-        <a href="https://github.com/codestates/DokDok-client" target="_blank">
+        <a
+          href="https://github.com/codestates/DokDok-client"
+          target="_blank"
+          rel="noreferrer"
+        >
           Repository
         </a>
         <a
           href="https://github.com/codestates/DokDok-client/wiki"
           target="_blank"
+          rel="noreferrer"
         >
           Wiki
         </a>
@@ -24,17 +29,17 @@ const Foother = () => {
       <div className="team-members">
         TEAM MEMBERS
         <div>Front</div>
-        <a href="" target="_blank">
+        <a href="https://github.com/" target="_blank" rel="noreferrer">
           이소임
         </a>
-        <a href="" target="_blank">
+        <a href="https://github.com/" target="_blank" rel="noreferrer">
           최시용
         </a>
         <div>Back</div>
-        <a href="" target="_blank">
+        <a href="https://github.com/" target="_blank" rel="noreferrer">
           강주현
         </a>
-        <a href="" target="_blank">
+        <a href="https://github.com/" target="_blank" rel="noreferrer">
           조태규
         </a>
       </div>

@@ -1,0 +1,64 @@
+@mixin animation($delay, $duration, $name) {
+  animation-delay: $delay;
+  animation-duration: $duration;
+  animation-name: $name;
+  animation-iteration-count: 2;
+}
+
+@mixin keyframe($animation_name) {
+  @keyframes #{$animation_name} {
+    @content;
+  }
+}
+
+@include keyframe(move) {
+  100% {
+    opacity: 0;
+  }
+  80% {
+    transform: translateX(-200px);
+  }
+  0% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
+
+.category {
+  position: relative;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  li {
+    flex: 0 0 auto;
+    margin: 0.2rem;
+    padding: 0.8rem;
+    display: inline-block;
+    // 영역확인용
+    background-color: rgb(240, 240, 240);
+  }
+  .swipe-finger {
+    position: absolute;
+    opacity: 0;
+    left: 80vw;
+    img {
+      max-height: 50px;
+      object-fit: cover;
+    }
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .category {
+    overflow-x: auto;
+    justify-content: flex-start;
+    scroll-snap-type: x mandatory;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+  .swipe-finger {
+    @include animation(1s, 4s, move);
+  }
+}
