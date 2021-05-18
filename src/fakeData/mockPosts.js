@@ -32,7 +32,7 @@ export const mockPosts = [
     image5: '',
     type: 8,
     state: '거래전',
-    address: '서울특별시 동작구 사당동',
+    address: '서울특별시 성동구 도선동',
     roadAddress: '동작대로',
   },
   {
@@ -86,7 +86,7 @@ export const mockPosts = [
     image5: '',
     type: 8,
     state: '거래전',
-    address: '서울특별시 동작구 사당동',
+    address: '서울특별시 강남구 역삼동',
     roadAddress: '동작대로',
   },
   {
@@ -122,7 +122,7 @@ export const mockPosts = [
     image5: '',
     type: 3,
     state: '거래전',
-    address: '서울특별시 동작구 사당동',
+    address: '서울특별시 강남구 역삼동',
     roadAddress: '동작대로',
   },
   {
