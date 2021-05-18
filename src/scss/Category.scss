@@ -30,6 +30,7 @@
   flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
+
   li {
     flex: 0 0 auto;
     margin: 0.2rem;
@@ -46,6 +47,10 @@
       max-height: 50px;
       object-fit: cover;
     }
+  }
+  .active {
+    color: white;
+    background-color: black;
   }
 }
 
