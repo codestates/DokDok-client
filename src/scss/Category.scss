@@ -16,7 +16,7 @@
     opacity: 0;
   }
   80% {
-    transform: translateX(-200px);
+    transform: translateX(200px);
   }
   0% {
     transform: translateX(0px);
@@ -41,7 +41,7 @@
   .swipe-finger {
     position: absolute;
     opacity: 0;
-    left: 80vw;
+    left: 30vw;
     img {
       max-height: 50px;
       object-fit: cover;
