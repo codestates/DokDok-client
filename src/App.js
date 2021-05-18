@@ -7,7 +7,7 @@ import Nav from './components/Nav';
 import Main from './pages/Main';
 import SearchResult from './pages/SearchResult';
 
-import { setCategoryPosts, setPosts } from './actions/index';
+import { setCategoryPosts, setPosts, setSearchPosts } from './actions/index';
 
 import { mockPosts } from './fakeData/mockPosts';
 
@@ -16,18 +16,33 @@ const App = () => {
   const { isLogin, userinfo } = loginInfo;
 
   const postInfo = useSelector((state) => state.postReducer);
-  const { posts, categoryPosts } = postInfo;
+  const { posts, categoryPosts, searchPosts } = postInfo;
 
   const dispatch = useDispatch();
 
   useEffect(() => getPosts(), []);
 
-  const getPosts = () => {
+  async function getPosts() {
+    // await axios
+    //   .get(`${process.env.REACT_APP_API_URL}/posts`)
+    //   .then((res) => {
+    //     dispatch(setPosts(res.data.posts));
+    //   })
+    //   .catch((err) => {
+    //     if (err) throw err;
+    //   });
+
     dispatch(setPosts(mockPosts));
-  };
+  }
 
   const getDefaultPosts = () => {
-    dispatch(setCategoryPosts(null));
+    if (categoryPosts) {
+      dispatch(setCategoryPosts(null));
+    }
+
+    if (searchPosts) {
+      dispatch(setSearchPosts(null));
+    }
   };
 
   return (
@@ -47,7 +62,15 @@ const App = () => {
             />
           )}
         />
-        <Route exact path="/search" render={() => <SearchResult />} />
+        <Route
+          exact
+          path="/search"
+          render={() => (
+            <SearchResult
+              searchPosts={categoryPosts ? categoryPosts : searchPosts}
+            />
+          )}
+        />
       </Switch>
       <Foother />
     </div>

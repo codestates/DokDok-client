@@ -4,14 +4,30 @@ import { useDispatch, useSelector } from 'react-redux';
 import { withRouter } from 'react-router';
 import { setCategoryPosts } from '../actions/index';
 
-const Category = () => {
+const Category = ({ match }) => {
   const dispatch = useDispatch();
 
   const postInfo = useSelector((state) => state.postReducer);
-  const { posts } = postInfo;
+  const { posts, searchPosts } = postInfo;
 
   const setCategory = (e) => {
-    const filterPosts = posts.filter((post) => e.target.value === post.type);
+    let filterPosts = [];
+    if (match.path === '/main') {
+      if (e.target.value === 10) {
+        filterPosts = posts;
+      } else {
+        filterPosts = posts.filter((post) => e.target.value === post.type);
+      }
+    } else {
+      if (e.target.value === 10) {
+        filterPosts = searchPosts;
+      } else {
+        filterPosts = searchPosts.filter(
+          (post) => e.target.value === post.type,
+        );
+      }
+    }
+
     dispatch(setCategoryPosts(filterPosts));
   };
 
@@ -24,6 +40,9 @@ const Category = () => {
             alt=""
           />
         </div>
+        <li value="10" onClick={setCategory}>
+          전체
+        </li>
         <li value="0" onClick={setCategory}>
           총류
         </li>
