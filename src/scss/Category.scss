@@ -1,15 +1,4 @@
-@mixin animation($delay, $duration, $name) {
-  animation-delay: $delay;
-  animation-duration: $duration;
-  animation-name: $name;
-  animation-iteration-count: 2;
-}
-
-@mixin keyframe($animation_name) {
-  @keyframes #{$animation_name} {
-    @content;
-  }
-}
+@import 'animation';
 
 @include keyframe(move) {
   100% {

@@ -8,4 +8,5 @@ export const initialState = {
   posts: [],
   categoryPosts: null,
   searchPosts: null,
+  post: null,
 };

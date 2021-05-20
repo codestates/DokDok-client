@@ -10,13 +10,14 @@ import SearchResult from './pages/SearchResult';
 import { setCategoryPosts, setPosts, setSearchPosts } from './actions/index';
 
 import { mockPosts } from './fakeData/mockPosts';
+import PostDetail from './pages/PostDetail';
 
 const App = () => {
   const loginInfo = useSelector((state) => state.userReducer);
   const { isLogin, userinfo } = loginInfo;
 
   const postInfo = useSelector((state) => state.postReducer);
-  const { posts, categoryPosts, searchPosts } = postInfo;
+  const { posts, categoryPosts, searchPosts, post } = postInfo;
 
   const dispatch = useDispatch();
 
@@ -71,6 +72,7 @@ const App = () => {
             />
           )}
         />
+        <Route exact path="/post" render={() => <PostDetail post={post} />} />
       </Switch>
       <Foother />
     </div>
