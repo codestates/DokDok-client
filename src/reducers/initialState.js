@@ -6,4 +6,7 @@ export const initialState = {
     profileImage: '',
   },
   posts: [],
+  categoryPosts: null,
+  searchPosts: null,
+  post: null,
 };
