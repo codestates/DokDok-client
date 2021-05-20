@@ -1,0 +1,22 @@
+.post-list {
+  margin-bottom: 2rem;
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  grid-auto-rows: 350px;
+  word-break: break-all;
+  .img-box {
+    max-width: 100%;
+    height: 300px;
+    background: {
+      size: cover;
+      position: center;
+    }
+  }
+  .author {
+    font: {
+      size: 1.2rem;
+      weight: 800;
+    }
+  }
+}
