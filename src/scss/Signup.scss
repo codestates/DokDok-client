@@ -1,0 +1,30 @@
+// Signup.scss
+
+.signupBox {
+  margin: 10rem;
+}
+
+.signup-input-box {
+  display: flex;
+  flex-flow: column nowrap;
+  width: 60%;
+  input {
+    margin: {
+      top: 0.5rem;
+      bottom: 2rem;
+    }
+  }
+}
+
+.input-box {
+  position: relative;
+  p {
+    z-index: 20;
+    position: absolute;
+    top: 1rem;
+    padding: 0.2rem;
+    background-color: white;
+    border: 1px solid;
+    border-radius: 0.5rem;
+  }
+}
