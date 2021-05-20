@@ -1,4 +1,4 @@
-export const mockPosts = [
+export const mockComments = [
   {
     id: 1,
     userId: 1,

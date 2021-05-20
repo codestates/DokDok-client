@@ -1,22 +1,21 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Switch, Route, withRouter } from 'react-router-dom';
+import axios from 'axios';
 
 import Foother from './components/Foother';
 import Nav from './components/Nav';
 import Main from './pages/Main';
 import Login from './components/Login';
 import Signup from './components/Signup';
-import Goole_login from './components/Goole_login';
-import UpdateUserInfo from './components/UpdateUserInfo';
-import UserInfo from './components/UserInfo';
-// import App1 from './components/App1';
+import UpdateUserInfo from './pages/UpdateUserInfo';
+import UserInfo from './pages/UserInfo';
 import SearchResult from './pages/SearchResult';
+import PostDetail from './pages/PostDetail';
 
 import { setCategoryPosts, setPosts, setSearchPosts } from './actions/index';
 
 import { mockPosts } from './fakeData/mockPosts';
-import PostDetail from './pages/PostDetail';
 
 const App = () => {
   const loginInfo = useSelector((state) => state.userReducer);
@@ -64,8 +63,6 @@ const App = () => {
         <Route exact path="/signup" render={() => <Signup />} />
         <Route exact path="/updateUserInfo" render={() => <UpdateUserInfo />} />
         <Route exact path="/userInfo" render={() => <UserInfo />} />
-        <Route exact path="/goole_login" render={() => <Goole_login />} />
-        {/* <Route exact path="/App1" render={() => <App1 />} /> */}
         <Route
           path="/main"
           render={() => (
