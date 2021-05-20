@@ -96,7 +96,7 @@ const CommentListEntry = ({ comment, getCommentList }) => {
         type="text"
         value={commentValue}
         onChange={(e) => setCommentValue(e.target.value)}
-        maxlength="300"
+        maxLength="300"
       ></textarea>
       <div className={isEdit ? 'hide' : 'content'}>{comment.comment}</div>
     </div>

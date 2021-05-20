@@ -20,8 +20,13 @@ const ImageSlider = (props) => {
       setSliderWidth(1000);
       setMaxWidth(1000 * images.length);
     } else {
-      setSliderWidth(imageSlider.current.clientWidth);
-      setMaxWidth(imageSlider.current.clientWidth * images.length);
+      if (sliderWidth === null) {
+        setSliderWidth(imageSlider.current.clientWidth - 10);
+        setMaxWidth((imageSlider.current.clientWidth - 10) * images.length);
+      } else {
+        setSliderWidth(imageSlider.current.clientWidth);
+        setMaxWidth(imageSlider.current.clientWidth * images.length);
+      }
     }
   };
 
@@ -51,7 +56,7 @@ const ImageSlider = (props) => {
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, []);
+  });
 
   useEffect(() => {
     if (slideX !== 0) {
@@ -95,7 +100,6 @@ const ImageSlider = (props) => {
           ></li>
         )}
       </ul>
-      <p>{sliderWidth}</p>
     </div>
   );
 };
