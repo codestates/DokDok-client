@@ -1,13 +1,12 @@
-// Signup.scss
-
-.signupBox {
-  margin: 10rem;
+.signup-box {
+  padding: 3rem;
+  margin-bottom: 1.5rem;
 }
 
 .signup-input-box {
   display: flex;
   flex-flow: column nowrap;
-  width: 60%;
+  width: 100%;
   input {
     margin: {
       top: 0.5rem;
@@ -26,5 +25,15 @@
     background-color: white;
     border: 1px solid;
     border-radius: 0.5rem;
+  }
+}
+
+.login-select-area {
+  margin-top: 1rem;
+  span {
+    cursor: pointer;
+    margin-left: 3px;
+    text-decoration: underline;
+    text-underline-position: under;
   }
 }

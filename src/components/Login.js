@@ -6,10 +6,9 @@ import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { setIsLogin, setUserinfo } from '../actions/index';
 
-const Login = ({ loginBtn, signupBtn, history }) => {
+const Login = ({ changeSelect, history }) => {
   const {
     register,
-    watch,
     reset,
     formState: { errors },
     handleSubmit,
@@ -18,12 +17,10 @@ const Login = ({ loginBtn, signupBtn, history }) => {
   const dispatch = useDispatch();
 
   const onSubmit = (data) => {
-    console.log(data);
-
     //악시오스 로그인 요청
     axios
       .post(
-        process.env.REACT_APP_API_URL + '/users/login',
+        `${process.env.REACT_APP_API_URL}/users/login`,
         {
           password: data.password,
           email: data.email,
@@ -44,7 +41,7 @@ const Login = ({ loginBtn, signupBtn, history }) => {
     reset();
   };
   return (
-    <div className="loginBox">
+    <div className="login-box">
       <h2>로고</h2>
       <h1>Login</h1>
 
@@ -86,12 +83,10 @@ const Login = ({ loginBtn, signupBtn, history }) => {
         </button>
       </form>
 
-      <div className="signup-btn-area">
+      <div className="signup-select-area">
         <label>Don't have an account?</label>
 
-        <button className="signup-btn" onClick={() => history.push('/signup')}>
-          Signup
-        </button>
+        <span onClick={changeSelect}>Signup</span>
       </div>
     </div>
   );

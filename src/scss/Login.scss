@@ -1,1 +1,26 @@
-// Login.scss
+.login-box {
+  padding: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+.login-input-box {
+  display: flex;
+  flex-flow: column nowrap;
+  width: 100%;
+  input {
+    margin: {
+      top: 0.5rem;
+      bottom: 2rem;
+    }
+  }
+}
+
+.signup-select-area {
+  margin-top: 1rem;
+  span {
+    cursor: pointer;
+    margin-left: 3px;
+    text-decoration: underline;
+    text-underline-position: under;
+  }
+}

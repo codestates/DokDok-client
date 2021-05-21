@@ -9,4 +9,5 @@ export const initialState = {
   categoryPosts: null,
   searchPosts: null,
   post: null,
+  isLoginModalOpen: false,
 };
