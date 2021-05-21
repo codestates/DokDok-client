@@ -4,9 +4,14 @@ import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
-import { setIsLogin, setUserinfo } from '../actions/index';
+import {
+  setIsLogin,
+  setLoginModal,
+  setMessageModal,
+  setUserinfo,
+} from '../actions/index';
 
-const Login = ({ changeSelect, history }) => {
+const Login = ({ changeSelect }) => {
   const {
     register,
     reset,
@@ -17,7 +22,6 @@ const Login = ({ changeSelect, history }) => {
   const dispatch = useDispatch();
 
   const onSubmit = (data) => {
-    //악시오스 로그인 요청
     axios
       .post(
         `${process.env.REACT_APP_API_URL}/users/login`,
@@ -32,11 +36,26 @@ const Login = ({ changeSelect, history }) => {
       .then(function (response) {
         localStorage.setItem('accessToken', response.data.accessToken);
         dispatch(setIsLogin(true));
-        dispatch(setUserinfo(response.data.user));
-        console.log(response);
+        if (response.data.user.profileImage === null) {
+          dispatch(
+            setUserinfo({
+              ...response.data.user,
+              profileImage: 'default-profile-picture_150.jpg',
+            }),
+          );
+        } else {
+          dispatch(setUserinfo(response.data.user));
+        }
+        dispatch(setLoginModal(false));
       })
-      .catch(function (error) {
-        console.log(error);
+      .catch(function (err) {
+        if (err.response.data.message === 'Invalid password') {
+          dispatch(setMessageModal(true, '비밀번호가 일치하지 않습니다.'));
+        }
+        if (err.response.data.message === 'not exisit user') {
+          dispatch(setMessageModal(true, '가입되어 있는 이메일이 아닙니다.'));
+        }
+        if (err) throw err;
       });
     reset();
   };

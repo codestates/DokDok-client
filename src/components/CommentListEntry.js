@@ -54,7 +54,7 @@ const CommentListEntry = ({ comment, getCommentList }) => {
   };
 
   const deleteComment = () => {
-    //정말 삭제하시겠습니까? 메세지 모달
+    // 정말 삭제하시겠습니까? 메세지 모달
     // axios
     //   .delete(`${process.env.REACT_APP_API_URL}/comments/${comment.id}`, {
     //     headers: {

@@ -18,6 +18,7 @@
       cursor: pointer;
     }
     li {
+      cursor: unset;
       transition: all 0.8s;
       position: relative;
       max-width: 100%;

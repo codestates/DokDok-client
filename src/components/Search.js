@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { setSearchPosts } from '../actions/index';
+import { setSearchPosts, setMessageModal } from '../actions/index';
 
 const Search = ({ history }) => {
   const dispatch = useDispatch();
@@ -40,7 +40,7 @@ const Search = ({ history }) => {
 
   const getSearchResult = () => {
     if (queryString === '') {
-      //   dispatch(setMessageModal(true, '검색어를 입력해주세요.'));
+      dispatch(setMessageModal(true, '검색어를 입력해주세요.'));
       return;
     }
     getSearchPosts(searchType, queryString);

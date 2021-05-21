@@ -3,6 +3,10 @@ import React from 'react';
 import CommentListEntry from './CommentListEntry';
 
 const CommentList = ({ comments, getCommentList }) => {
+  if (comments === null) {
+    return <></>;
+  }
+
   return (
     <div className="comment-list">
       {comments.map((comment) => (
