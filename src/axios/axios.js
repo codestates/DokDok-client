@@ -12,7 +12,7 @@ export default function axiosSetUp() {
   //         response: { status },
   //       } = error;
   //       if (status === 401) {
-  //         if (error.response.data === 'Access token expired') {
+  //         if (error.response.data === 'expired token') {
   //           // 기존 요청 정보 저장
   //           const originalRequest = config;
 
