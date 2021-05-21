@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
 
-const Signup = ({ history }) => {
+const Signup = ({ changeSelect, history }) => {
   const {
     register,
     watch,
@@ -14,11 +14,9 @@ const Signup = ({ history }) => {
   } = useForm({ mode: 'onChange' });
 
   const onSubmit = (data) => {
-    console.log(data);
-    //악시오스 로그인 요청
     axios
       .post(
-        process.env.REACT_APP_API_URL + '/users/signup',
+        `${process.env.REACT_APP_API_URL}/users/signup`,
         {
           email: data.email,
           password: data.password,
@@ -37,7 +35,7 @@ const Signup = ({ history }) => {
     reset();
   };
   return (
-    <div className="signupBox">
+    <div className="signup-box">
       <h2>로고</h2>
       <h1>Signup</h1>
 
@@ -108,11 +106,9 @@ const Signup = ({ history }) => {
         </button>
       </form>
 
-      <div className="login-btn-area">
+      <div className="login-select-area">
         <label>You have an account?</label>
-        <button className="login-btn" onClick={() => history.push('/login')}>
-          Login
-        </button>
+        <span onClick={changeSelect}>Login</span>
       </div>
     </div>
   );

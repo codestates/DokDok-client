@@ -53,6 +53,6 @@
     }
   }
   .swipe-finger {
-    @include animation(1s, 4s, move);
+    @include animation(1s, 4s, move, 2);
   }
 }

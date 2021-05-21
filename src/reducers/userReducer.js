@@ -1,4 +1,4 @@
-import { SET_IS_LOGIN, SET_USERINFO } from '../actions/index';
+import { SET_IS_LOGIN, SET_LOGIN_MODAL, SET_USERINFO } from '../actions/index';
 import { initialState } from './initialState';
 
 const itemReducer = (state = initialState, action) => {
@@ -11,6 +11,11 @@ const itemReducer = (state = initialState, action) => {
     case SET_USERINFO:
       return Object.assign({}, state, {
         userinfo: action.payload,
+      });
+
+    case SET_LOGIN_MODAL:
+      return Object.assign({}, state, {
+        isLoginModalOpen: action.payload,
       });
 
     default:

@@ -1,8 +1,8 @@
-@mixin animation($delay, $duration, $name) {
+@mixin animation($delay, $duration, $name, $count) {
   animation-delay: $delay;
   animation-duration: $duration;
   animation-name: $name;
-  animation-iteration-count: 2;
+  animation-iteration-count: $count;
 }
 
 @mixin keyframe($animation_name) {

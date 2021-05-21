@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { setIsLogin } from '../actions/index';
+import { setIsLogin, setLoginModal } from '../actions/index';
 import axios from 'axios';
 
 const UserControl = ({ isLogin, profileImage, getDefaultPosts, history }) => {
@@ -48,17 +48,22 @@ const UserControl = ({ isLogin, profileImage, getDefaultPosts, history }) => {
       </li>
       {isLogin ? (
         <React.Fragment>
-          <li className="nav-logout" onClick={logout}>
-            로그아웃
-          </li>
           <div
             className="nav-mypage"
             style={{ backgroundImage: `url(${profileImage})` }}
             onClick={() => {}}
           ></div>
+          <li className="nav-logout" onClick={logout}>
+            로그아웃
+          </li>
         </React.Fragment>
       ) : (
-        <li className="nav-login" onClick={() => {}}>
+        <li
+          className="nav-login"
+          onClick={() => {
+            dispatch(setLoginModal(true));
+          }}
+        >
           로그인
         </li>
       )}
