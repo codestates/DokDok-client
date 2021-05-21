@@ -15,10 +15,11 @@ import { setCategoryPosts, setPosts, setSearchPosts } from './actions/index';
 
 import { mockPosts } from './fakeData/mockPosts';
 import LoginModal from './components/LoginModal';
+import MessageModal from './components/MessageModal';
 
 const App = () => {
   const loginInfo = useSelector((state) => state.userReducer);
-  const { isLogin, userinfo, isLoginModalOpen } = loginInfo;
+  const { isLogin, userinfo, isLoginModalOpen, messageModal } = loginInfo;
 
   const postInfo = useSelector((state) => state.postReducer);
   const { posts, categoryPosts, searchPosts, post } = postInfo;
@@ -52,6 +53,10 @@ const App = () => {
 
   return (
     <div className="App">
+      <MessageModal
+        isOpen={messageModal.isModalOpen}
+        content={messageModal.content}
+      />
       <LoginModal isOpen={isLoginModalOpen} />
       <Nav
         isLogin={isLogin}

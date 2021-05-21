@@ -10,4 +10,8 @@ export const initialState = {
   searchPosts: null,
   post: null,
   isLoginModalOpen: false,
+  messageModal: {
+    isModalOpen: false,
+    content: '',
+  },
 };

@@ -14,7 +14,11 @@
 }
 
 .modal {
-  z-index: 40;
+  z-index: 50;
+  .modal-box {
+    max-width: 300px;
+    min-width: 300px;
+  }
 }
 
 .modal-overlay {
@@ -53,7 +57,7 @@
 }
 
 .modal-content {
-  margin: 1rem 0 0.5rem 0;
+  margin: 1rem 0 1rem 0;
   word-break: break-all;
   font-size: 0.95rem;
   text-align: center;

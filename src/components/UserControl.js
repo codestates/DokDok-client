@@ -8,25 +8,25 @@ const UserControl = ({ isLogin, profileImage, getDefaultPosts, history }) => {
   const dispatch = useDispatch();
 
   async function logout() {
-    // await axios
-    //   .post(`${process.env.REACT_APP_API_URL}/users/logout`, null, {
-    //     headers: {
-    //       Authorization: `Bearer ${localStorage.accessToken}`,
-    //     },
-    //   })
-    //   .then(() => {
-    //     dispatch(setIsLogin(false));
-    //     localStorage.removeItem('accessToken');
-    //     history.push('/main');
-    //   })
-    //   .catch((err) => {
-    //     if (err.response.data === 'Refresh token expired') {
-    //       dispatch(setIsLogin(false));
-    //       localStorage.removeItem('accessToken');
-    //       history.push('/login');
-    //     }
-    //     if (err) throw err;
-    //   });
+    await axios
+      .post(`${process.env.REACT_APP_API_URL}/users/logout`, null, {
+        headers: {
+          Authorization: `Bearer ${localStorage.accessToken}`,
+        },
+      })
+      .then(() => {
+        dispatch(setIsLogin(false));
+        localStorage.removeItem('accessToken');
+        history.push('/main');
+      })
+      .catch((err) => {
+        if (err.response.data === 'Refresh token expired') {
+          dispatch(setIsLogin(false));
+          localStorage.removeItem('accessToken');
+          history.push('/login');
+        }
+        if (err) throw err;
+      });
   }
 
   return (
@@ -48,14 +48,16 @@ const UserControl = ({ isLogin, profileImage, getDefaultPosts, history }) => {
       </li>
       {isLogin ? (
         <React.Fragment>
-          <div
-            className="nav-mypage"
-            style={{ backgroundImage: `url(${profileImage})` }}
-            onClick={() => {}}
-          ></div>
           <li className="nav-logout" onClick={logout}>
             로그아웃
           </li>
+          <div
+            className="nav-mypage"
+            style={{ backgroundImage: `url(${profileImage})` }}
+            onClick={() => {
+              history.push('/mypage');
+            }}
+          ></div>
         </React.Fragment>
       ) : (
         <li

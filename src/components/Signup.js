@@ -3,8 +3,11 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
+import { setMessageModal } from '../actions';
 
-const Signup = ({ changeSelect, history }) => {
+const Signup = ({ changeSelect }) => {
+  const dispatch = useDispatch();
   const {
     register,
     watch,
@@ -20,17 +23,21 @@ const Signup = ({ changeSelect, history }) => {
         {
           email: data.email,
           password: data.password,
-          ncikname: data.ncikname,
+          nickname: data.nickname,
         },
         {
           'Content-Type': 'application/json',
         },
       )
       .then(function () {
-        console.log('회원가입 성공');
+        dispatch(setMessageModal(true, '회원가입이 완료되었습니다.'));
+        changeSelect();
       })
       .catch(function (err) {
-        console.log(err);
+        if (err.response.status === 409) {
+          dispatch(setMessageModal(true, '이미 가입되어 있는 이메일입니다.'));
+        }
+        if (err) throw err;
       });
     reset();
   };

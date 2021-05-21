@@ -6,6 +6,7 @@ export const SET_CATEGORY_POSTS = 'SET_CATEGORY_POSTS';
 export const SET_SEARCH_POSTS = 'SET_SEARCH_POSTS';
 export const SET_POST = 'SET_POST';
 export const SET_LOGIN_MODAL = 'SET_LOGIN_MODAL';
+export const SET_MESSAGE_MODAL = 'SET_MESSAGE_MODAL';
 
 // actions creator functions
 export const setIsLogin = (isLogin) => {
@@ -30,6 +31,16 @@ export const setLoginModal = (boolean) => {
   return {
     type: SET_LOGIN_MODAL,
     payload: boolean,
+  };
+};
+
+export const setMessageModal = (boolean, content) => {
+  return {
+    type: SET_MESSAGE_MODAL,
+    payload: {
+      isModalOpen: boolean,
+      content: content,
+    },
   };
 };
 

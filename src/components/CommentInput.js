@@ -1,30 +1,31 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 
-const CommentInput = ({ getCommentList }) => {
+const CommentInput = ({ getCommentList, post }) => {
   const [comment, setComment] = useState('');
 
   const sendCommentToServer = () => {
-    // axios
-    //   .post(
-    //     `${process.env.REACT_APP_API_URL}/comments/${comment.id}`,
-    //     {
-    //       comment: comment,
-    //     },
-    //     {
-    //       headers: {
-    //         Authorization: `Bearer ${localStorage.accessToken}`,
-    //         'Content-Type': 'application/json',
-    //       },
-    //     },
-    //   )
-    //   .then(() => {
-    //     // 댓글을 등록하였습니다 모달
-    //     getCommentList();
-    //   })
-    //   .catch((err) => {
-    //     if (err) throw err;
-    //   });
+    axios
+      .post(
+        `${process.env.REACT_APP_API_URL}/comments/${post.id}`,
+        {
+          comment: comment,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.accessToken}`,
+            'Content-Type': 'application/json',
+          },
+        },
+      )
+      .then(() => {
+        // 댓글을 등록하였습니다 모달
+        getCommentList();
+      })
+      .catch((err) => {
+        if (err) throw err;
+        console.log(err);
+      });
   };
 
   return (

@@ -38,7 +38,7 @@ const PostDetail = ({ post }) => {
         image4={post.image4}
         image5={post.image5}
       />
-      <CommentInput getCommentList={getCommentList} />
+      <CommentInput getCommentList={getCommentList} post={post} />
       <CommentList comments={comments} getCommentList={getCommentList} />
     </div>
   );
