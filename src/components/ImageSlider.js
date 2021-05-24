@@ -18,14 +18,11 @@ const ImageSlider = (props) => {
   const handleResize = () => {
     if (imageSlider.current.clientWidth >= 1000) {
       setSliderWidth(1000);
-      setMaxWidth(1000 * images.length);
     } else {
       if (sliderWidth === null) {
         setSliderWidth(imageSlider.current.clientWidth - 10);
-        setMaxWidth((imageSlider.current.clientWidth - 10) * images.length);
       } else {
         setSliderWidth(imageSlider.current.clientWidth);
-        setMaxWidth(imageSlider.current.clientWidth * images.length);
       }
     }
   };
@@ -62,7 +59,11 @@ const ImageSlider = (props) => {
     if (slideX !== 0) {
       setSlideX(0);
     }
+    setMaxWidth(sliderWidth * images.length);
   }, [sliderWidth]);
+
+  console.log(sliderWidth);
+  console.log(maxWidth);
 
   return (
     <div className="image-slider" ref={imageSlider}>
