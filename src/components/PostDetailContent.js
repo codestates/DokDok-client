@@ -1,7 +1,46 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { setMessageModal } from '../actions';
 
-const PostDetailContent = ({ post }) => {
+const PostDetailContent = ({ post, history }) => {
+  const dispatch = useDispatch();
+
+  const interestPost = () => {
+    axios
+      .post(
+        `${process.env.REACT_APP_API_URL}/interests`,
+        {
+          id: post.id,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.accessToken}`,
+          },
+        },
+      )
+      .then()
+      .catch((err) => {
+        if (err) throw err;
+      });
+  };
+
+  const deletePost = () => {
+    axios
+      .delete(`${process.env.REACT_APP_API_URL}/posts/${post.id}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.accessToken}`,
+        },
+      })
+      .then(() => {
+        dispatch(setMessageModal(true, '게시글을 삭제했습니다.'));
+      })
+      .catch((err) => {
+        if (err) throw err;
+      });
+  };
+
   return (
     <React.Fragment>
       <div className="content-header">
@@ -16,10 +55,16 @@ const PostDetailContent = ({ post }) => {
           </div>
         </div>
         <div className="icons">
-          <i className="fas fa-comment-dots fa-lg" />
-          <i className="fas fa-heart fa-lg" />
-          <i className="fas fa-edit fa-lg" />
-          <i className="fas fa-trash-alt fa-lg" />
+          <i
+            className="fas fa-comment-dots fa-lg"
+            onClick={() => history.push('/chat')}
+          />
+          <i className="fas fa-heart fa-lg" onClick={interestPost} />
+          <i
+            className="fas fa-edit fa-lg"
+            onClick={() => history.push('/post-edit')}
+          />
+          <i className="fas fa-trash-alt fa-lg" onClick={deletePost} />
         </div>
       </div>
       <hr />
