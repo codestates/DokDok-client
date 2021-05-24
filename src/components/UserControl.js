@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { setIsLogin, setLoginModal } from '../actions/index';
+import { setIsLogin, setLoginModal, setUserinfo } from '../actions/index';
 import axios from 'axios';
 
 const UserControl = ({ isLogin, profileImage, getDefaultPosts, history }) => {
@@ -22,6 +22,7 @@ const UserControl = ({ isLogin, profileImage, getDefaultPosts, history }) => {
       .catch((err) => {
         if (err.response.data === 'Refresh token expired') {
           dispatch(setIsLogin(false));
+          dispatch(setUserinfo({}));
           localStorage.removeItem('accessToken');
           history.push('/login');
         }
