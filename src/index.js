@@ -6,7 +6,6 @@ import reportWebVitals from './reportWebVitals';
 import store from './store/store';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
-import './bootstrap.min.css';
 
 ReactDOM.render(
   <Provider store={store}>

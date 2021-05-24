@@ -1,9 +1,10 @@
 export const initialState = {
-  isLogin: false,
+  isLogin: true,
   userinfo: {
-    email: '',
-    nickname: '',
-    profileImage: '',
+    email: 'asw@gmail.com',
+    nickname: '최시용',
+    profileImage:
+      'https://www.urbanbrush.net/web/wp-content/uploads/edd/2020/07/urbanbrush-20200726133629122062.jpg',
   },
   posts: [],
   categoryPosts: null,
