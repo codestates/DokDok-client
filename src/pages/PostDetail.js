@@ -9,35 +9,40 @@ import CommentList from '../components/CommentList';
 import CommentInput from '../components/CommentInput';
 import PostDetailContent from '../components/PostDetailContent';
 import MarkerMap from '../components/MarkerMap';
+import { useDispatch } from 'react-redux';
+import { setPost } from '../actions';
 
 const PostDetail = ({ post }) => {
-  const [singlePost, setSinglePost] = useState({});
+  const dispatch = useDispatch();
   const [comments, setComments] = useState([]);
+  const [roadAddress, setRoadAddress] = useState('');
+
   useEffect(() => {
     getPostDetail();
     getCommentList();
   }, []);
 
+  useEffect(() => {
+    dispatch(setPost({ ...post, roadAddress: roadAddress }));
+  }, [roadAddress]);
+
   if (post === null) {
     return <Redirect to="/main" />;
   }
 
-  if (post.authorProfileImage === null) {
-    // 임시 이름
-    post.authorProfileImage = 'default-profile-picture_150.jpg';
+  if (post.user.profile_image === null) {
+    post.user.profile_image = 'default-profile-picture_150.jpg';
   }
 
   const getPostDetail = () => {
     // axios
     //   .get(`${process.env.REACT_APP_API_URL}/posts/${post.id}`)
     //   .then((res) => {
-    //     setSinglePost(res.data.post);
+    //     dispatch(setPost(res.data.post));
     //   })
     //   .catch((err) => {
     //     if (err) throw err;
     //   });
-
-    setSinglePost(post);
   };
 
   const getCommentList = () => {
@@ -53,23 +58,31 @@ const PostDetail = ({ post }) => {
     setComments(mockComments);
   };
 
+  const changeRoadAddress = (query) => {
+    setRoadAddress(query);
+  };
+
   return (
     <div className="post-detail">
       <ImageSlider
-        image1={singlePost.image1}
-        image2={singlePost.image2}
-        image3={singlePost.image3}
-        image4={singlePost.image4}
-        image5={singlePost.image5}
+        image1={post.image1}
+        image2={post.image2}
+        image3={post.image3}
+        image4={post.image4}
+        image5={post.image5}
       />
-      <PostDetailContent post={singlePost} />
-      <MarkerMap />
+      <PostDetailContent post={post} />
+      <MarkerMap
+        latitude={post.latitude}
+        longitude={post.longitude}
+        changeRoadAddress={changeRoadAddress}
+      />
       <div className="extra-info">
         <span>댓글 {comments.length}</span>
-        <span>관심 {singlePost.interest_cnt}</span>
+        <span>관심 {post.interest_cnt}</span>
       </div>
       <hr />
-      <CommentInput getCommentList={getCommentList} post={singlePost} />
+      <CommentInput getCommentList={getCommentList} post={post} />
       <CommentList comments={comments} getCommentList={getCommentList} />
     </div>
   );

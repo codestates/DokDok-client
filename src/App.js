@@ -7,9 +7,10 @@ import Foother from './components/Foother';
 import Nav from './components/Nav';
 import Main from './pages/Main';
 import UpdateUserInfo from './pages/UpdateUserInfo';
-import UserInfo from './pages/UserInfo';
+import Mypage from './pages/Mypage';
 import SearchResult from './pages/SearchResult';
 import PostDetail from './pages/PostDetail';
+import PostForm from './pages/PostForm';
 
 import { setCategoryPosts, setPosts, setSearchPosts } from './actions/index';
 
@@ -65,7 +66,11 @@ const App = () => {
       />
       <Switch>
         <Route exact path="/updateUserInfo" render={() => <UpdateUserInfo />} />
-        <Route exact path="/userInfo" render={() => <UserInfo />} />
+        <Route
+          exact
+          path="/mypage"
+          render={() => <Mypage isLogin={isLogin} userinfo={userinfo} />}
+        />
         <Route
           path="/main"
           render={() => (
@@ -85,6 +90,16 @@ const App = () => {
           )}
         />
         <Route exact path="/post" render={() => <PostDetail post={post} />} />
+        <Route
+          exact
+          path="/post-edit"
+          render={() => <PostForm post={post} />}
+        />
+        <Route
+          exact
+          path="/post-create"
+          render={() => <PostForm post={post} />}
+        />
       </Switch>
       <Foother />
     </div>

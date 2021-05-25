@@ -1,9 +1,10 @@
+import '../scss/MarkerMap.scss';
 import React, { useEffect, useRef } from 'react';
 
 const { kakao } = window;
 
-const MarkerMap = () => {
-  const coord = [37.506502, 127.053617];
+const MarkerMap = ({ latitude, longitude, changeRoadAddress }) => {
+  const coord = [latitude, longitude];
   const container = useRef(null);
   useEffect(() => {
     const options = {
@@ -39,13 +40,21 @@ const MarkerMap = () => {
       // 마커 위에 인포윈도우를 표시합니다
       getAddress(map, marker, coord);
     });
-  }, []);
+  }, [coord]);
 
   const getAddress = (map, marker, coord) => {
     const geocoder = new kakao.maps.services.Geocoder();
     const setCoord = new kakao.maps.LatLng(coord[0], coord[1]);
     const callback = function (result, status) {
       if (status === kakao.maps.services.Status.OK) {
+        const addressDetail = result[0].road_address
+          ? result[0].road_address.address_name
+          : result[0].address.address_name;
+
+        if (changeRoadAddress) {
+          changeRoadAddress(addressDetail);
+        }
+
         const content = function () {
           const wrap = document.createElement('div');
           wrap.className = 'wrap';
@@ -64,10 +73,7 @@ const MarkerMap = () => {
           const address = document.createElement('div');
           address.className = 'address';
 
-          address.textContent =
-            result[0].road_address.address_name ||
-            result[0].address.address_name;
-
+          address.textContent = addressDetail;
           overlayHeader.appendChild(header);
           overlayHeader.appendChild(closeIcon);
           wrap.appendChild(overlayHeader);
