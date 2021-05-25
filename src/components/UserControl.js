@@ -37,7 +37,12 @@ const UserControl = ({ isLogin, profileImage, getDefaultPosts, history }) => {
 
   return (
     <ul className="nav-user-control">
-      <li className="nav-chatroom" onClick={() => {}}>
+      <li
+        className="nav-chatroom"
+        onClick={() => {
+          history.push('/rooms');
+        }}
+      >
         채팅방
       </li>
       <li
