@@ -59,6 +59,25 @@ const Login = ({ changeSelect }) => {
       });
     reset();
   };
+
+  const kakaoLogin = () => {
+    window.location.assign(
+      `${process.env.REACT_APP_API_URL}/users/kakao/login`,
+    );
+  };
+
+  const naverLogin = () => {
+    window.location.assign(
+      `${process.env.REACT_APP_API_URL}/users/naver/login`,
+    );
+  };
+
+  const googleLogin = () => {
+    window.location.assign(
+      `${process.env.REACT_APP_API_URL}/users/google/login`,
+    );
+  };
+
   return (
     <div className="login-box">
       <h2>로고</h2>
@@ -101,7 +120,9 @@ const Login = ({ changeSelect }) => {
           Login
         </button>
       </form>
-
+      <button onClick={kakaoLogin}>카카오</button>
+      <button onClick={googleLogin}>구글</button>
+      <button onClick={naverLogin}>네이버</button>
       <div className="signup-select-area">
         <label>Don't have an account?</label>
 
