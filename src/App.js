@@ -10,6 +10,7 @@ import UpdateUserInfo from './pages/UpdateUserInfo';
 import UserInfo from './pages/UserInfo';
 import SearchResult from './pages/SearchResult';
 import PostDetail from './pages/PostDetail';
+import Rooms from './components/room/Rooms';
 
 import { setCategoryPosts, setPosts, setSearchPosts } from './actions/index';
 
@@ -85,6 +86,7 @@ const App = () => {
           )}
         />
         <Route exact path="/post" render={() => <PostDetail post={post} />} />
+        <Route path="/rooms" component={Rooms} />
       </Switch>
       <Foother />
     </div>
