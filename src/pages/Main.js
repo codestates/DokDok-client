@@ -10,7 +10,7 @@ const Main = ({ posts, getDefaultPosts, location, history }) => {
     const parsed = queryString.parse(location.search);
     const accessToken = parsed.access_token;
     if (accessToken) {
-      const result = await axios.get('http://localhost:4000/users', {
+      const result = await axios.get(`${process.env.REACT_APP_API_URL}/users`, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },
