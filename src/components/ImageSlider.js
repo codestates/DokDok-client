@@ -62,9 +62,6 @@ const ImageSlider = (props) => {
     setMaxWidth(sliderWidth * images.length);
   }, [sliderWidth]);
 
-  console.log(sliderWidth);
-  console.log(maxWidth);
-
   return (
     <div className="image-slider" ref={imageSlider}>
       <ul className="image-list">

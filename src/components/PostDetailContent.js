@@ -2,7 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
-import { setMessageModal } from '../actions';
+import { setMessageModal, setPost } from '../actions';
 
 const PostDetailContent = ({ post, history }) => {
   const dispatch = useDispatch();
@@ -47,10 +47,10 @@ const PostDetailContent = ({ post, history }) => {
         <div className="userinfo">
           <div
             className="profile-image"
-            style={{ backgroundImage: `url(${post.authorProfileImage})` }}
+            style={{ backgroundImage: `url(${post.user.profile_image})` }}
           />
           <div>
-            <div className="nickname">{post.nickname}</div>
+            <div className="nickname">{post.user.nickname}</div>
             <div className="address">{post.address}</div>
           </div>
         </div>
@@ -62,7 +62,10 @@ const PostDetailContent = ({ post, history }) => {
           <i className="fas fa-heart fa-lg" onClick={interestPost} />
           <i
             className="fas fa-edit fa-lg"
-            onClick={() => history.push('/post-edit')}
+            onClick={() => {
+              dispatch(setPost(post));
+              history.push('/post-edit');
+            }}
           />
           <i className="fas fa-trash-alt fa-lg" onClick={deletePost} />
         </div>

@@ -1,7 +1,12 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { Redirect, withRouter } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { setIsLogin, setLoginModal, setUserinfo } from '../actions/index';
+import {
+  setIsLogin,
+  setLoginModal,
+  setPost,
+  setUserinfo,
+} from '../actions/index';
 import axios from 'axios';
 
 const UserControl = ({ isLogin, profileImage, getDefaultPosts, history }) => {
@@ -49,7 +54,12 @@ const UserControl = ({ isLogin, profileImage, getDefaultPosts, history }) => {
       >
         게시글 목록
       </li>
-      <li className="nav-post-publish" onClick={() => {}}>
+      <li
+        className="nav-post-publish"
+        onClick={() => {
+          history.push('/post-create');
+        }}
+      >
         게시글 등록
       </li>
       {isLogin ? (
