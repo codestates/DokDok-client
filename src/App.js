@@ -92,7 +92,9 @@ const App = () => {
         <Route
           exact
           path="/post"
-          render={() => <PostDetail post={post} isLogin={isLogin} />}
+          render={() => (
+            <PostDetail post={post} isLogin={isLogin} userId={userinfo.id} />
+          )}
         />
         <Route
           exact

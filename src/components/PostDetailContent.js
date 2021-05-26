@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { setLoginModal, setMessageModal, setPost } from '../actions';
 
-const PostDetailContent = ({ post, isLogin, history }) => {
+const PostDetailContent = ({ post, isLogin, interestIconColor, history }) => {
   const dispatch = useDispatch();
 
   const checkLoginStatus = (callback) => {
@@ -72,6 +72,7 @@ const PostDetailContent = ({ post, isLogin, history }) => {
           />
           <i
             className="fas fa-heart fa-lg"
+            style={{ color: `${interestIconColor}` }}
             onClick={() => checkLoginStatus(interestPost)}
           />
           <i

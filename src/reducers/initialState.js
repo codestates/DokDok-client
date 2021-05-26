@@ -1,6 +1,7 @@
 export const initialState = {
   isLogin: false,
   userinfo: {
+    id: '',
     email: '',
     nickname: '',
     profileImage: '',
