@@ -17,7 +17,7 @@ const Postcode = ({ setSearchAddress, closeSearchAddress }) => {
     // }
 
     setSearchAddress(data.address);
-    closeSearchAddress();
+    closeSearchAddress(`${data.sido} ${data.sigungu} ${data.bname}`);
   };
 
   return (

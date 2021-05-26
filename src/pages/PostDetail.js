@@ -12,7 +12,7 @@ import MarkerMap from '../components/MarkerMap';
 import { useDispatch } from 'react-redux';
 import { setPost } from '../actions';
 
-const PostDetail = ({ post }) => {
+const PostDetail = ({ post, isLogin }) => {
   const dispatch = useDispatch();
   const [comments, setComments] = useState([]);
   const [roadAddress, setRoadAddress] = useState('');
@@ -71,7 +71,7 @@ const PostDetail = ({ post }) => {
         image4={post.image4}
         image5={post.image5}
       />
-      <PostDetailContent post={post} />
+      <PostDetailContent post={post} isLogin={isLogin} />
       <MarkerMap
         latitude={post.latitude}
         longitude={post.longitude}
@@ -82,7 +82,11 @@ const PostDetail = ({ post }) => {
         <span>관심 {post.interest_cnt}</span>
       </div>
       <hr />
-      <CommentInput getCommentList={getCommentList} post={post} />
+      <CommentInput
+        getCommentList={getCommentList}
+        post={post}
+        isLogin={isLogin}
+      />
       <CommentList comments={comments} getCommentList={getCommentList} />
     </div>
   );

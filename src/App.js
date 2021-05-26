@@ -89,7 +89,11 @@ const App = () => {
             />
           )}
         />
-        <Route exact path="/post" render={() => <PostDetail post={post} />} />
+        <Route
+          exact
+          path="/post"
+          render={() => <PostDetail post={post} isLogin={isLogin} />}
+        />
         <Route
           exact
           path="/post-edit"
