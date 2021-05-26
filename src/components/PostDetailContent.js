@@ -2,10 +2,19 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
-import { setMessageModal, setPost } from '../actions';
+import { setLoginModal, setMessageModal, setPost } from '../actions';
 
-const PostDetailContent = ({ post, history }) => {
+const PostDetailContent = ({ post, isLogin, interestIconColor, history }) => {
   const dispatch = useDispatch();
+
+  const checkLoginStatus = (callback) => {
+    if (isLogin) {
+      callback();
+    } else {
+      dispatch(setLoginModal(true));
+    }
+    return;
+  };
 
   const interestPost = () => {
     axios
@@ -57,17 +66,28 @@ const PostDetailContent = ({ post, history }) => {
         <div className="icons">
           <i
             className="fas fa-comment-dots fa-lg"
-            onClick={() => history.push('/chat')}
+            onClick={() => {
+              checkLoginStatus(() => history.push('/chat'));
+            }}
           />
-          <i className="fas fa-heart fa-lg" onClick={interestPost} />
+          <i
+            className="fas fa-heart fa-lg"
+            style={{ color: `${interestIconColor}` }}
+            onClick={() => checkLoginStatus(interestPost)}
+          />
           <i
             className="fas fa-edit fa-lg"
             onClick={() => {
-              dispatch(setPost(post));
-              history.push('/post-edit');
+              checkLoginStatus(() => {
+                dispatch(setPost(post));
+                history.push('/post-edit');
+              });
             }}
           />
-          <i className="fas fa-trash-alt fa-lg" onClick={deletePost} />
+          <i
+            className="fas fa-trash-alt fa-lg"
+            onClick={() => checkLoginStatus(deletePost)}
+          />
         </div>
       </div>
       <hr />

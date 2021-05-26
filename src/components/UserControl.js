@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import {
   setIsLogin,
   setLoginModal,
+  setMessageModal,
   setPost,
   setUserinfo,
 } from '../actions/index';
@@ -57,6 +58,10 @@ const UserControl = ({ isLogin, profileImage, getDefaultPosts, history }) => {
       <li
         className="nav-post-publish"
         onClick={() => {
+          if (!isLogin) {
+            dispatch(setLoginModal(true));
+            return;
+          }
           history.push('/post-create');
         }}
       >

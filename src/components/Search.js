@@ -15,7 +15,7 @@ const Search = ({ history }) => {
     // await axios
     //   .get(`${process.env.REACT_APP_API_URL}/posts/search?${type}=${query}`)
     //   .then((res) => {
-    //     dispatch(setSearchPosts(res.data.posts));
+    //     dispatch(setSearchPosts(res.data.data));
     //   })
     //   .catch((err) => {
     //     if (err) throw err;
