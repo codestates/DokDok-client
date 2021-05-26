@@ -93,7 +93,6 @@ const PostForm = ({ post, history, match }) => {
 
         let reader = new FileReader();
         reader.onload = () => {
-          console.log(reader.result);
           convertFile[i] = reader.result;
           setFileURLs([...convertFile]);
         };
@@ -102,7 +101,7 @@ const PostForm = ({ post, history, match }) => {
     }
   }, [files]);
 
-  const submitForm = (e) => {
+  async function submitForm(e) {
     e.preventDefault();
 
     if (
@@ -128,16 +127,15 @@ const PostForm = ({ post, history, match }) => {
     formData.append('longitude', longitude);
 
     if (match.path === '/post-edit') {
-      axios
+      await axios
         .patch(`${process.env.REACT_APP_API_URL}/posts/${post.id}`, formData, {
           headers: {
             Authorization: `Bearer ${localStorage.accessToken}`,
-            'Content-Type': 'application/x-www-form-urlencoded',
+            'Content-Type': 'multipart/form-data',
           },
         })
         .then(() => {
           dispatch(setMessageModal(true, '게시글 수정이 완료되었습니다.'));
-          history.goBack();
         })
         .catch((err) => {
           if (err) throw err;
@@ -145,22 +143,21 @@ const PostForm = ({ post, history, match }) => {
     }
 
     if (match.path === '/post-create') {
-      axios
+      await axios
         .post(`${process.env.REACT_APP_API_URL}/posts`, formData, {
           headers: {
             Authorization: `Bearer ${localStorage.accessToken}`,
-            'Content-Type': 'application/x-www-form-urlencoded',
+            'Content-Type': 'multipart/form-data',
           },
         })
         .then(() => {
           dispatch(setMessageModal(true, '게시글 작성이 완료되었습니다.'));
-          history.goBack();
         })
         .catch((err) => {
           if (err) throw err;
         });
     }
-  };
+  }
 
   const fileHandle = (e) => {
     setFiles(e.target.files);

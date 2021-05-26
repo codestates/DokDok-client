@@ -12,20 +12,14 @@ import MarkerMap from '../components/MarkerMap';
 import { useDispatch } from 'react-redux';
 import { setPost } from '../actions';
 
-
 const PostDetail = ({ post, isLogin, userId }) => {
-
   const dispatch = useDispatch();
   const [comments, setComments] = useState([]);
   const [roadAddress, setRoadAddress] = useState('');
-  const [interestIconColor, setInterestIconColor] = useState('#cccccc');
 
   useEffect(() => {
     getPostDetail();
     getCommentList();
-    if (isLogin) {
-      getInterestInfo();
-    }
   }, []);
 
   useEffect(() => {
@@ -36,47 +30,36 @@ const PostDetail = ({ post, isLogin, userId }) => {
     return <Redirect to="/main" />;
   }
 
-  if (post.user.profile_image === null) {
-    post.user.profile_image = 'default-profile-picture_150.jpg';
+  async function getPostDetail() {
+    await axios
+      .get(`${process.env.REACT_APP_API_URL}/posts/${post.id}`)
+      .then((res) => {
+        if (!res.data.data.User.profile_image) {
+          const profileImage = 'default-profile-picture_150.jpg';
+          dispatch(
+            setPost({
+              ...res.data.data,
+              User: { ...res.data.data.User, profile_image: profileImage },
+            }),
+          );
+        } else {
+          dispatch(setPost(res.data.data));
+        }
+      })
+      .catch((err) => {
+        if (err) throw err;
+      });
   }
 
-  const getInterestInfo = () => {
-    // axios
-    //   .get(`${process.env.REACT_APP_API_URL}/interests/${post.id}`, {
-    //     headers: {
-    //       Authorization: `Bearer ${localStorage.accessToken}`,
-    //     },
-    //   })
-    //   .then(() => {
-    //     setInterestIconColor('#d62d20');
-    //   })
-    //   .catch((err) => {
-    //     if (err) throw err;
-    //   });
-  };
-
-  const getPostDetail = () => {
-    // axios
-    //   .get(`${process.env.REACT_APP_API_URL}/posts/${post.id}`)
-    //   .then((res) => {
-    //     dispatch(setPost(res.data.post));
-    //   })
-    //   .catch((err) => {
-    //     if (err) throw err;
-    //   });
-  };
-
   const getCommentList = () => {
-    // axios
-    //   .get(`${process.env.REACT_APP_API_URL}/comments/${post.id}`)
-    //   .then((res) => {
-    //     setComments(res.data.comments);
-    //   })
-    //   .catch((err) => {
-    //     if (err) throw err;
-    //   });
-
-    setComments(mockComments);
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/comments/${post.id}`)
+      .then((res) => {
+        setComments(res.data.data);
+      })
+      .catch((err) => {
+        if (err) throw err;
+      });
   };
 
   const changeRoadAddress = (query) => {
@@ -92,11 +75,7 @@ const PostDetail = ({ post, isLogin, userId }) => {
         image4={post.image4}
         image5={post.image5}
       />
-      <PostDetailContent
-        post={post}
-        isLogin={isLogin}
-        interestIconColor={interestIconColor}
-      />
+      <PostDetailContent post={post} isLogin={isLogin} userId={userId} />
       <MarkerMap
         latitude={post.latitude}
         longitude={post.longitude}

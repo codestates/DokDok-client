@@ -1,12 +1,35 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { setLoginModal, setMessageModal, setPost } from '../actions';
 
-const PostDetailContent = ({ post, isLogin, interestIconColor, history }) => {
-
+const PostDetailContent = ({ post, isLogin, history }) => {
   const dispatch = useDispatch();
+  const [interestIconColor, setInterestIconColor] = useState('#cccccc');
+
+  useEffect(() => {
+    if (isLogin) {
+      getInterestInfo();
+    }
+  }, []);
+
+  const getInterestInfo = () => {
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/interests/${post.id}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.accessToken}`,
+        },
+      })
+      .then((res) => {
+        if (res.data.interest) {
+          setInterestIconColor('#d62d20');
+        }
+      })
+      .catch((err) => {
+        if (err) throw err;
+      });
+  };
 
   const checkLoginStatus = (callback) => {
     if (isLogin) {
@@ -18,22 +41,38 @@ const PostDetailContent = ({ post, isLogin, interestIconColor, history }) => {
   };
 
   const interestPost = () => {
-    axios
-      .post(
-        `${process.env.REACT_APP_API_URL}/interests`,
-        {
-          id: post.id,
-        },
-        {
+    if (interestIconColor === '#cccccc') {
+      axios
+        .post(
+          `${process.env.REACT_APP_API_URL}/interests`,
+          {
+            id: post.id,
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.accessToken}`,
+            },
+          },
+        )
+        .then(() => {
+          setInterestIconColor('#d62d20');
+        })
+        .catch((err) => {
+          if (err) throw err;
+        });
+    } else {
+      axios
+        .delete(`${process.env.REACT_APP_API_URL}/interests`, {
+          data: { id: post.id },
           headers: {
+            'Content-Type': 'application/json',
             Authorization: `Bearer ${localStorage.accessToken}`,
           },
-        },
-      )
-      .then()
-      .catch((err) => {
-        if (err) throw err;
-      });
+        })
+        .then(() => {
+          setInterestIconColor('#cccccc');
+        });
+    }
   };
 
   const deletePost = () => {
@@ -57,10 +96,10 @@ const PostDetailContent = ({ post, isLogin, interestIconColor, history }) => {
         <div className="userinfo">
           <div
             className="profile-image"
-            style={{ backgroundImage: `url(${post.user.profile_image})` }}
+            style={{ backgroundImage: `url(${post.User.profile_image})` }}
           />
           <div>
-            <div className="nickname">{post.user.nickname}</div>
+            <div className="nickname">{post.User.nickname}</div>
             <div className="address">{post.address}</div>
           </div>
         </div>

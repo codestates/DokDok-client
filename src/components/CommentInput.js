@@ -32,6 +32,7 @@ const CommentInput = ({ getCommentList, post, isLogin }) => {
       .then(() => {
         dispatch(setMessageModal(true, '댓글을 등록했습니다.'));
         getCommentList();
+        setComment('');
       })
       .catch((err) => {
         if (err) throw err;

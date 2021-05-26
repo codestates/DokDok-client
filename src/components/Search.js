@@ -12,16 +12,17 @@ const Search = ({ history }) => {
   const { posts } = postInfo;
 
   async function getSearchPosts(type, query) {
-    // await axios
-    //   .get(`${process.env.REACT_APP_API_URL}/posts/search?${type}=${query}`)
-    //   .then((res) => {
-    //     dispatch(setSearchPosts(res.data.data));
-    //   })
-    //   .catch((err) => {
-    //     if (err) throw err;
-    //   });
-    const searchResults = posts.filter((post) => post[type].includes(query));
-    dispatch(setSearchPosts(searchResults));
+    await axios
+      .get(`${process.env.REACT_APP_API_URL}/posts/search?${type}=${query}`)
+      .then((res) => {
+        console.log(res);
+        dispatch(setSearchPosts(res.data.data));
+      })
+      .catch((err) => {
+        if (err) throw err;
+      });
+    // const searchResults = posts.filter((post) => post[type].includes(query));
+    // dispatch(setSearchPosts(searchResults));
   }
 
   const changeQueryString = (e) => {
@@ -53,7 +54,7 @@ const Search = ({ history }) => {
       <select name="types" onChange={changeSearchType}>
         <option value="title">제목</option>
         <option value="address">지역</option>
-        <option value="author">작성자</option>
+        <option value="nickname">작성자</option>
       </select>
       <input
         className="search-input"
