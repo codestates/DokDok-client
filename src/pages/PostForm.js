@@ -120,7 +120,9 @@ const PostForm = ({ post, history, match }) => {
     formData.append('type', Number(type));
     formData.append('state', state);
     formData.append('content', content);
-    formData.append('image', new Array(...images, ...files));
+    for (let i = 0; i < files.length; i++) {
+      formData.append('image', files[i]);
+    }
     formData.append('address', address);
     formData.append('latitude', latitude);
     formData.append('longitude', longitude);
