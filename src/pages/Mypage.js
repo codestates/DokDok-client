@@ -23,7 +23,7 @@ const Myapage = ({ isLogin, userinfo, history }) => {
       })
       .then((res) => {
         console.log(res);
-        // setPosts(res.data.data);
+        // setPosts(res.data.posts);
       })
       .catch((err) => {
         if (err) throw err;
@@ -39,7 +39,7 @@ const Myapage = ({ isLogin, userinfo, history }) => {
       })
       .then((res) => {
         console.log(res);
-        // setPosts(res.data.data);
+        // setPosts(res.data.interests);
       })
       .catch((err) => {
         if (err) throw err;

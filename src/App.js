@@ -34,7 +34,7 @@ const App = () => {
     // await axios
     //   .get(`${process.env.REACT_APP_API_URL}/posts`)
     //   .then((res) => {
-    //     dispatch(setPosts(res.data.posts));
+    //     dispatch(setPosts(res.data.result));
     //   })
     //   .catch((err) => {
     //     if (err) throw err;
@@ -93,7 +93,9 @@ const App = () => {
         <Route
           exact
           path="/post"
-          render={() => <PostDetail post={post} isLogin={isLogin} />}
+          render={() => (
+            <PostDetail post={post} isLogin={isLogin} userId={userinfo.id} />
+          )}
         />
         <Route path="/rooms" component={Rooms} />
         <Route

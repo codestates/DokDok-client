@@ -12,14 +12,20 @@ import MarkerMap from '../components/MarkerMap';
 import { useDispatch } from 'react-redux';
 import { setPost } from '../actions';
 
-const PostDetail = ({ post, isLogin }) => {
+
+const PostDetail = ({ post, isLogin, userId }) => {
+
   const dispatch = useDispatch();
   const [comments, setComments] = useState([]);
   const [roadAddress, setRoadAddress] = useState('');
+  const [interestIconColor, setInterestIconColor] = useState('#cccccc');
 
   useEffect(() => {
     getPostDetail();
     getCommentList();
+    if (isLogin) {
+      getInterestInfo();
+    }
   }, []);
 
   useEffect(() => {
@@ -33,6 +39,21 @@ const PostDetail = ({ post, isLogin }) => {
   if (post.user.profile_image === null) {
     post.user.profile_image = 'default-profile-picture_150.jpg';
   }
+
+  const getInterestInfo = () => {
+    // axios
+    //   .get(`${process.env.REACT_APP_API_URL}/interests/${post.id}`, {
+    //     headers: {
+    //       Authorization: `Bearer ${localStorage.accessToken}`,
+    //     },
+    //   })
+    //   .then(() => {
+    //     setInterestIconColor('#d62d20');
+    //   })
+    //   .catch((err) => {
+    //     if (err) throw err;
+    //   });
+  };
 
   const getPostDetail = () => {
     // axios
@@ -71,7 +92,11 @@ const PostDetail = ({ post, isLogin }) => {
         image4={post.image4}
         image5={post.image5}
       />
-      <PostDetailContent post={post} isLogin={isLogin} />
+      <PostDetailContent
+        post={post}
+        isLogin={isLogin}
+        interestIconColor={interestIconColor}
+      />
       <MarkerMap
         latitude={post.latitude}
         longitude={post.longitude}
