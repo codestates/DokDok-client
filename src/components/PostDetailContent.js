@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import { setLoginModal, setMessageModal, setPost } from '../actions';
 
 const PostDetailContent = ({ post, isLogin, interestIconColor, history }) => {
+
   const dispatch = useDispatch();
 
   const checkLoginStatus = (callback) => {

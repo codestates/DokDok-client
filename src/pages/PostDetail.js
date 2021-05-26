@@ -12,7 +12,9 @@ import MarkerMap from '../components/MarkerMap';
 import { useDispatch } from 'react-redux';
 import { setPost } from '../actions';
 
+
 const PostDetail = ({ post, isLogin, userId }) => {
+
   const dispatch = useDispatch();
   const [comments, setComments] = useState([]);
   const [roadAddress, setRoadAddress] = useState('');

@@ -90,7 +90,6 @@ const App = () => {
             />
           )}
         />
-
         <Route
           exact
           path="/post"
