@@ -10,6 +10,7 @@ import UpdateUserInfo from './pages/UpdateUserInfo';
 import Mypage from './pages/Mypage';
 import SearchResult from './pages/SearchResult';
 import PostDetail from './pages/PostDetail';
+import Rooms from './components/room/Rooms';
 import PostForm from './pages/PostForm';
 
 import { setCategoryPosts, setPosts, setSearchPosts } from './actions/index';
@@ -94,6 +95,7 @@ const App = () => {
           path="/post"
           render={() => <PostDetail post={post} isLogin={isLogin} />}
         />
+        <Route path="/rooms" component={Rooms} />
         <Route
           exact
           path="/post-edit"
