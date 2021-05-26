@@ -22,8 +22,7 @@ const Myapage = ({ isLogin, userinfo, history }) => {
         },
       })
       .then((res) => {
-        console.log(res);
-        // setPosts(res.data.posts);
+        setPosts(res.data.result);
       })
       .catch((err) => {
         if (err) throw err;
@@ -38,8 +37,7 @@ const Myapage = ({ isLogin, userinfo, history }) => {
         },
       })
       .then((res) => {
-        console.log(res);
-        // setPosts(res.data.interests);
+        setPosts(res.data);
       })
       .catch((err) => {
         if (err) throw err;
@@ -64,8 +62,8 @@ const Myapage = ({ isLogin, userinfo, history }) => {
         </div>
         <div className="image-list-type">
           <ul>
-            <li onClick={() => getUserPosts}>게시물</li>
-            <li onClick={() => getInterestPost}>관심글</li>
+            <li onClick={getUserPosts}>게시물</li>
+            <li onClick={getInterestPost}>관심글</li>
           </ul>
         </div>
         <PostList posts={posts} />
