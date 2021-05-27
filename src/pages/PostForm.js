@@ -13,7 +13,6 @@ const { kakao } = window;
 
 const PostForm = ({ post, history, match }) => {
   const dispatch = useDispatch();
-  const geocoder = new kakao.maps.services.Geocoder();
   const fileInput = useRef(null);
 
   const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -68,6 +67,8 @@ const PostForm = ({ post, history, match }) => {
   }, [match.path]);
 
   useEffect(() => {
+    const geocoder = new kakao.maps.services.Geocoder();
+
     if (detailAddress === '') {
       return;
     }
@@ -99,7 +100,7 @@ const PostForm = ({ post, history, match }) => {
         reader.readAsDataURL(file);
       }
     }
-  }, [files]);
+  }, [files, dispatch, images.length]);
 
   async function submitForm(e) {
     e.preventDefault();
@@ -125,6 +126,9 @@ const PostForm = ({ post, history, match }) => {
     formData.append('address', address);
     formData.append('latitude', latitude);
     formData.append('longitude', longitude);
+    for (let i = 0; i < images.length; i++) {
+      formData.append('prevImage', images[i]);
+    }
 
     if (match.path === '/post-edit') {
       await axios
@@ -134,7 +138,10 @@ const PostForm = ({ post, history, match }) => {
             'Content-Type': 'multipart/form-data',
           },
         })
-        .then(() => {
+        .then((res) => {
+          console.log(res);
+          dispatch(setPost({ ...res.data.post, User: { ...post.User } }));
+          history.goBack();
           dispatch(setMessageModal(true, '게시글 수정이 완료되었습니다.'));
         })
         .catch((err) => {
@@ -151,6 +158,7 @@ const PostForm = ({ post, history, match }) => {
           },
         })
         .then(() => {
+          history.push('/main');
           dispatch(setMessageModal(true, '게시글 작성이 완료되었습니다.'));
         })
         .catch((err) => {
@@ -256,7 +264,7 @@ const PostForm = ({ post, history, match }) => {
       </div>
       <div>
         <div className="bold-text">만남 장소</div>
-        {detailAddress ? detailAddress : '주소를 검색해주세요'}
+        {detailAddress ? `${detailAddress}` : '주소를 검색해주세요'}
         <input type="button" onClick={searchAddress} value="주소 검색" />
       </div>
       <div id="popup-search">

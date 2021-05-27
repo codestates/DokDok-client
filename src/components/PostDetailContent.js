@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
-import { setLoginModal, setMessageModal, setPost } from '../actions';
+import { setLoginModal, setMessageModal } from '../actions';
 
-const PostDetailContent = ({ post, isLogin, history }) => {
+const PostDetailContent = ({ post, isLogin, userId, history }) => {
   const dispatch = useDispatch();
   const [interestIconColor, setInterestIconColor] = useState('#cccccc');
 
@@ -63,7 +63,9 @@ const PostDetailContent = ({ post, isLogin, history }) => {
     } else {
       axios
         .delete(`${process.env.REACT_APP_API_URL}/interests`, {
-          data: { id: post.id },
+          data: {
+            id: post.id,
+          },
           headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${localStorage.accessToken}`,
@@ -77,17 +79,45 @@ const PostDetailContent = ({ post, isLogin, history }) => {
 
   const deletePost = () => {
     axios
-      .delete(`${process.env.REACT_APP_API_URL}/posts/${post.id}`, {
+      .delete(`${process.env.REACT_APP_API_URL}/posts`, {
+        data: {
+          id: post.id,
+        },
         headers: {
           Authorization: `Bearer ${localStorage.accessToken}`,
         },
       })
       .then(() => {
+        history.goBack();
         dispatch(setMessageModal(true, '게시글을 삭제했습니다.'));
       })
       .catch((err) => {
         if (err) throw err;
       });
+  };
+
+  const convertTime = (date) => {
+    const today = new Date();
+    const timeValue = new Date(date);
+
+    const betweenTime = Math.floor(
+      (today.getTime() - timeValue.getTime()) / 1000 / 60,
+    );
+    if (betweenTime < 5) {
+      return '방금 전';
+    }
+    if (betweenTime < 60) {
+      return `${betweenTime}분 전`;
+    }
+    const betweenTimeHour = Math.floor(betweenTime / 60);
+    if (betweenTimeHour < 24) {
+      return `${betweenTimeHour}시간 전`;
+    }
+    const betweenTimeDay = Math.floor(betweenTime / 60 / 24);
+    if (betweenTimeDay < 365) {
+      return `${betweenTimeDay}일 전`;
+    }
+    return `${Math.floor(betweenTimeDay / 365)}년 전`;
   };
 
   return (
@@ -115,26 +145,29 @@ const PostDetailContent = ({ post, isLogin, history }) => {
             style={{ color: `${interestIconColor}` }}
             onClick={() => checkLoginStatus(interestPost)}
           />
-          <i
-            className="fas fa-edit fa-lg"
-            onClick={() => {
-              checkLoginStatus(() => {
-                dispatch(setPost(post));
-                history.push('/post-edit');
-              });
-            }}
-          />
-          <i
-            className="fas fa-trash-alt fa-lg"
-            onClick={() => checkLoginStatus(deletePost)}
-          />
+          {post.UserId === userId ? (
+            <React.Fragment>
+              <i
+                className="fas fa-edit fa-lg"
+                onClick={() => {
+                  checkLoginStatus(() => {
+                    history.push('/post-edit');
+                  });
+                }}
+              />
+              <i
+                className="fas fa-trash-alt fa-lg"
+                onClick={() => checkLoginStatus(deletePost)}
+              />
+            </React.Fragment>
+          ) : null}
         </div>
       </div>
       <hr />
       <div className="content">
         <div>
           <p className="title">{post.title}</p>
-          <p>{post.createdAt}</p>
+          <p>{convertTime(post.createdAt)}</p>
         </div>
         <div>{post.content}</div>
       </div>

@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Switch, Route, withRouter } from 'react-router-dom';
-import axios from 'axios';
 
 import Foother from './components/Foother';
 import Nav from './components/Nav';
@@ -14,9 +13,9 @@ import Rooms from './pages/RoomListPage';
 import Chatting from './pages/ChattingPage';
 import PostForm from './pages/PostForm';
 
-import { setCategoryPosts, setPosts, setSearchPosts } from './actions/index';
+import { setCategoryPosts, setSearchPosts } from './actions/index';
 
-import { mockPosts } from './fakeData/mockPosts';
+// import { mockPosts } from './fakeData/mockPosts';
 import LoginModal from './components/LoginModal';
 import MessageModal from './components/MessageModal';
 
@@ -28,21 +27,6 @@ const App = () => {
   const { posts, categoryPosts, searchPosts, post } = postInfo;
 
   const dispatch = useDispatch();
-
-  useEffect(() => getPosts(), []);
-
-  async function getPosts() {
-    await axios
-      .get(`${process.env.REACT_APP_API_URL}/posts`)
-      .then((res) => {
-        dispatch(setPosts(res.data.result));
-      })
-      .catch((err) => {
-        if (err) throw err;
-      });
-
-    // dispatch(setPosts(mockPosts));
-  }
 
   const getDefaultPosts = () => {
     if (categoryPosts) {

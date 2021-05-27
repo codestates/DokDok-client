@@ -19,7 +19,7 @@ const PostList = ({ posts }) => {
 
   useEffect(() => {
     setVisiblePosts(posts.slice(0, visiblePostsCount));
-  }, [visiblePostsCount]);
+  }, [visiblePostsCount, posts]);
 
   useEffect(() => {
     setVisiblePostsCount(20);
@@ -38,8 +38,7 @@ const PostList = ({ posts }) => {
       document.documentElement.clientHeight,
     );
 
-    if (scrollHeight >= maxHeight) {
-      console.log('새 데이터 로딩');
+    if (scrollHeight >= maxHeight && posts.length > visiblePosts.length) {
       setVisiblePostsCount(visiblePostsCount + 20);
     }
   };
