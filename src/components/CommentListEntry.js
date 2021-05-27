@@ -30,49 +30,47 @@ const CommentListEntry = ({ comment, getCommentList }) => {
   };
 
   const editComment = () => {
-    // axios
-    //   .patch(
-    //     `${process.env.REACT_APP_API_URL}/comments/${comment.id}`,
-    //     {
-    //       comment: commentValue,
-    //     },
-    //     {
-    //       headers: {
-    //         'Content-Type': 'application/json',
-    //         Authorization: `Bearer ${localStorage.accessToken}`,
-    //       },
-    //     },
-    //   )
-    //   .then(() => {
-    //     setIsEdit(false);
-    //     getCommentList();
-    //   })
-    //   .catch((err) => {
-    //     if (err) throw err;
-    //   });
-    setIsEdit(false);
+    axios
+      .patch(
+        `${process.env.REACT_APP_API_URL}/comments/${comment.id}`,
+        {
+          comment: commentValue,
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${localStorage.accessToken}`,
+          },
+        },
+      )
+      .then(() => {
+        setIsEdit(false);
+        getCommentList();
+      })
+      .catch((err) => {
+        if (err) throw err;
+      });
   };
 
   const deleteComment = () => {
-    // 정말 삭제하시겠습니까? 메세지 모달
-    // axios
-    //   .delete(`${process.env.REACT_APP_API_URL}/comments/${comment.id}`, {
-    //     headers: {
-    //       Authorization: `Bearer ${localStorage.accessToken}`,
-    //     },
-    //   })
-    //   .then(() => {
-    //     getCommentList();
-    //   })
-    //   .catch((err) => {
-    //     if (err) throw err;
-    //   });
+    axios
+      .delete(`${process.env.REACT_APP_API_URL}/comments/${comment.id}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.accessToken}`,
+        },
+      })
+      .then(() => {
+        getCommentList();
+      })
+      .catch((err) => {
+        if (err) throw err;
+      });
   };
 
   return (
     <div className="comment-area">
       <div className="header">
-        <div className="nickname">{comment.nickname}</div>
+        <div className="nickname">{comment.User.nickname}</div>
         {/* 추후 userid 동일한 경우에만 버튼 보이도록 수정 */}
         <div className={isEdit ? null : 'hide'}>
           <i className="fas fa-check" onClick={editComment}></i>

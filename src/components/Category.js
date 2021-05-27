@@ -14,23 +14,18 @@ const Category = ({ match }) => {
   const setCategory = (e) => {
     setActiveCategory(e.target.value);
     let filterPosts = [];
-    if (match.path === '/main') {
-      if (e.target.value === 10) {
-        filterPosts = posts;
-      } else {
-        filterPosts = posts.filter((post) => e.target.value === post.type);
-      }
-    } else {
-      if (e.target.value === 10) {
-        filterPosts = searchPosts;
-      } else {
-        filterPosts = searchPosts.filter(
-          (post) => e.target.value === post.type,
-        );
-      }
+    if (e.target.value === 10) {
+      dispatch(setCategoryPosts(null));
+      return;
     }
 
-    dispatch(setCategoryPosts(filterPosts));
+    if (match.path === '/main') {
+      filterPosts = posts.filter((post) => e.target.value === post.type);
+      dispatch(setCategoryPosts(filterPosts));
+    } else {
+      filterPosts = searchPosts.filter((post) => e.target.value === post.type);
+      dispatch(setCategoryPosts(filterPosts));
+    }
   };
 
   return (

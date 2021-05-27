@@ -1,29 +1,78 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
-import { setMessageModal, setPost } from '../actions';
+import { setLoginModal, setMessageModal, setPost } from '../actions';
 
-const PostDetailContent = ({ post, history }) => {
+const PostDetailContent = ({ post, isLogin, history }) => {
   const dispatch = useDispatch();
+  const [interestIconColor, setInterestIconColor] = useState('#cccccc');
 
-  const interestPost = () => {
+  useEffect(() => {
+    if (isLogin) {
+      getInterestInfo();
+    }
+  }, []);
+
+  const getInterestInfo = () => {
     axios
-      .post(
-        `${process.env.REACT_APP_API_URL}/interests`,
-        {
-          id: post.id,
+      .get(`${process.env.REACT_APP_API_URL}/interests/${post.id}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.accessToken}`,
         },
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.accessToken}`,
-          },
-        },
-      )
-      .then()
+      })
+      .then((res) => {
+        if (res.data.interest) {
+          setInterestIconColor('#d62d20');
+        }
+      })
       .catch((err) => {
         if (err) throw err;
       });
+  };
+
+  const checkLoginStatus = (callback) => {
+    if (isLogin) {
+      callback();
+    } else {
+      dispatch(setLoginModal(true));
+    }
+    return;
+  };
+
+  const interestPost = () => {
+    if (interestIconColor === '#cccccc') {
+      axios
+        .post(
+          `${process.env.REACT_APP_API_URL}/interests`,
+          {
+            id: post.id,
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.accessToken}`,
+            },
+          },
+        )
+        .then(() => {
+          setInterestIconColor('#d62d20');
+        })
+        .catch((err) => {
+          if (err) throw err;
+        });
+    } else {
+      axios
+        .delete(`${process.env.REACT_APP_API_URL}/interests`, {
+          data: { id: post.id },
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${localStorage.accessToken}`,
+          },
+        })
+        .then(() => {
+          setInterestIconColor('#cccccc');
+        });
+    }
   };
 
   const deletePost = () => {
@@ -47,27 +96,38 @@ const PostDetailContent = ({ post, history }) => {
         <div className="userinfo">
           <div
             className="profile-image"
-            style={{ backgroundImage: `url(${post.user.profile_image})` }}
+            style={{ backgroundImage: `url(${post.User.profile_image})` }}
           />
           <div>
-            <div className="nickname">{post.user.nickname}</div>
+            <div className="nickname">{post.User.nickname}</div>
             <div className="address">{post.address}</div>
           </div>
         </div>
         <div className="icons">
           <i
             className="fas fa-comment-dots fa-lg"
-            onClick={() => history.push('/chat')}
+            onClick={() => {
+              checkLoginStatus(() => history.push('/chat'));
+            }}
           />
-          <i className="fas fa-heart fa-lg" onClick={interestPost} />
+          <i
+            className="fas fa-heart fa-lg"
+            style={{ color: `${interestIconColor}` }}
+            onClick={() => checkLoginStatus(interestPost)}
+          />
           <i
             className="fas fa-edit fa-lg"
             onClick={() => {
-              dispatch(setPost(post));
-              history.push('/post-edit');
+              checkLoginStatus(() => {
+                dispatch(setPost(post));
+                history.push('/post-edit');
+              });
             }}
           />
-          <i className="fas fa-trash-alt fa-lg" onClick={deletePost} />
+          <i
+            className="fas fa-trash-alt fa-lg"
+            onClick={() => checkLoginStatus(deletePost)}
+          />
         </div>
       </div>
       <hr />

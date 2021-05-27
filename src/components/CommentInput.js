@@ -1,10 +1,21 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { setLoginModal, setMessageModal } from '../actions';
 
-const CommentInput = ({ getCommentList, post }) => {
+const CommentInput = ({ getCommentList, post, isLogin }) => {
   const [comment, setComment] = useState('');
+  const dispatch = useDispatch();
 
   const sendCommentToServer = () => {
+    if (!isLogin) {
+      dispatch(setLoginModal(true));
+      return;
+    } else if (comment === '') {
+      dispatch(setMessageModal(true, '댓글을 입력해주세요.'));
+      return;
+    }
+
     axios
       .post(
         `${process.env.REACT_APP_API_URL}/comments/${post.id}`,
@@ -19,8 +30,9 @@ const CommentInput = ({ getCommentList, post }) => {
         },
       )
       .then(() => {
-        // 댓글을 등록하였습니다 모달
+        dispatch(setMessageModal(true, '댓글을 등록했습니다.'));
         getCommentList();
+        setComment('');
       })
       .catch((err) => {
         if (err) throw err;

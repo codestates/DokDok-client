@@ -32,16 +32,16 @@ const App = () => {
   useEffect(() => getPosts(), []);
 
   async function getPosts() {
-    // await axios
-    //   .get(`${process.env.REACT_APP_API_URL}/posts`)
-    //   .then((res) => {
-    //     dispatch(setPosts(res.data.posts));
-    //   })
-    //   .catch((err) => {
-    //     if (err) throw err;
-    //   });
+    await axios
+      .get(`${process.env.REACT_APP_API_URL}/posts`)
+      .then((res) => {
+        dispatch(setPosts(res.data.result));
+      })
+      .catch((err) => {
+        if (err) throw err;
+      });
 
-    dispatch(setPosts(mockPosts));
+    // dispatch(setPosts(mockPosts));
   }
 
   const getDefaultPosts = () => {
@@ -91,9 +91,15 @@ const App = () => {
             />
           )}
         />
-        <Route exact path="/post" render={() => <PostDetail post={post} />} />
-        <Route path="/rooms" component={Rooms} exact />
-        <Route path="/rooms/:id" component={Chatting} />
+        <Route
+          exact
+          path="/post"
+          render={() => (
+            <PostDetail post={post} isLogin={isLogin} userId={userinfo.id} />
+          )}
+        />
+        <Route path="/rooms" component={Rooms} />
+           <Route path="/rooms/:id" component={Chatting} />
         <Route
           exact
           path="/post-edit"
