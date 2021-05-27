@@ -1,13 +1,7 @@
 import React from 'react';
-import { Redirect, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import {
-  setIsLogin,
-  setLoginModal,
-  setMessageModal,
-  setPost,
-  setUserinfo,
-} from '../actions/index';
+import { setIsLogin, setLoginModal, setUserinfo } from '../actions/index';
 import axios from 'axios';
 
 const UserControl = ({ isLogin, profileImage, getDefaultPosts, history }) => {

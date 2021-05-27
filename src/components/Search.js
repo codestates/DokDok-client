@@ -1,28 +1,27 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { setSearchPosts, setMessageModal } from '../actions/index';
 
 const Search = ({ history }) => {
   const dispatch = useDispatch();
   const [queryString, setQueryString] = useState('');
   const [searchType, setSearchType] = useState('title');
-  const postInfo = useSelector((state) => state.postReducer);
-  const { posts } = postInfo;
+  // const postInfo = useSelector((state) => state.postReducer);
+  // const { posts } = postInfo;
 
   async function getSearchPosts(type, query) {
     await axios
       .get(`${process.env.REACT_APP_API_URL}/posts/search?${type}=${query}`)
       .then((res) => {
         console.log(res);
-        dispatch(setSearchPosts(res.data.data));
+        dispatch(setSearchPosts(res.data.data.reverse()));
+        history.push('/search');
       })
       .catch((err) => {
         if (err) throw err;
       });
-    // const searchResults = posts.filter((post) => post[type].includes(query));
-    // dispatch(setSearchPosts(searchResults));
   }
 
   const changeQueryString = (e) => {
@@ -46,7 +45,6 @@ const Search = ({ history }) => {
     }
     getSearchPosts(searchType, queryString);
     setQueryString('');
-    history.push('/search');
   };
 
   return (

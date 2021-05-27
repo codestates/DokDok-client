@@ -22,7 +22,7 @@ const Myapage = ({ isLogin, userinfo, history }) => {
         },
       })
       .then((res) => {
-        setPosts(res.data.result);
+        setPosts(res.data.result.reverse());
       })
       .catch((err) => {
         if (err) throw err;
@@ -37,7 +37,7 @@ const Myapage = ({ isLogin, userinfo, history }) => {
         },
       })
       .then((res) => {
-        setPosts(res.data);
+        setPosts(res.data.reverse());
       })
       .catch((err) => {
         if (err) throw err;
@@ -48,7 +48,7 @@ const Myapage = ({ isLogin, userinfo, history }) => {
     <div className="Mypage">
       <div className="user-info-area">
         <div className="user-profile-img">
-          <img src={profileImage} className="img"></img>
+          <img src={profileImage} className="img" alt=""></img>
         </div>
         <div className="user-info">
           <p className="nickname">{userinfo.nickname}</p>

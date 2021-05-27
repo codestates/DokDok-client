@@ -4,7 +4,7 @@ import React, { useEffect, useRef } from 'react';
 const { kakao } = window;
 
 const MarkerMap = ({ latitude, longitude, changeRoadAddress }) => {
-  const coord = [latitude, longitude];
+  const coord = [Number(latitude), Number(longitude)];
   const container = useRef(null);
   useEffect(() => {
     const options = {

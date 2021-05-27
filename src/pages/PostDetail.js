@@ -4,7 +4,7 @@ import { Redirect, withRouter } from 'react-router-dom';
 import axios from 'axios';
 import ImageSlider from '../components/ImageSlider';
 
-import { mockComments } from '../fakeData/mockComments';
+// import { mockComments } from '../fakeData/mockComments';
 import CommentList from '../components/CommentList';
 import CommentInput from '../components/CommentInput';
 import PostDetailContent from '../components/PostDetailContent';
@@ -20,7 +20,7 @@ const PostDetail = ({ post, isLogin, userId }) => {
   useEffect(() => {
     getPostDetail();
     getCommentList();
-  }, []);
+  }, [dispatch, post]);
 
   useEffect(() => {
     dispatch(setPost({ ...post, roadAddress: roadAddress }));
