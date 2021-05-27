@@ -12,14 +12,14 @@ const Search = ({ history }) => {
   const { posts } = postInfo;
 
   async function getSearchPosts(type, query) {
-    // await axios
-    //   .get(`${process.env.REACT_APP_API_URL}/posts/search?${type}=${query}`)
-    //   .then((res) => {
-    //     dispatch(setSearchPosts(res.data.posts));
-    //   })
-    //   .catch((err) => {
-    //     if (err) throw err;
-    //   });
+    await axios
+      .get(`${process.env.REACT_APP_API_URL}/posts/search?${type}=${query}`)
+      .then((res) => {
+        dispatch(setSearchPosts(res.data.posts));
+      })
+      .catch((err) => {
+        if (err) throw err;
+      });
     const searchResults = posts.filter((post) => post[type].includes(query));
     dispatch(setSearchPosts(searchResults));
   }

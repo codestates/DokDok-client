@@ -10,7 +10,8 @@ import UpdateUserInfo from './pages/UpdateUserInfo';
 import Mypage from './pages/Mypage';
 import SearchResult from './pages/SearchResult';
 import PostDetail from './pages/PostDetail';
-import Rooms from './components/room/Rooms';
+import Rooms from './pages/RoomListPage';
+import Chatting from './pages/ChattingPage';
 import PostForm from './pages/PostForm';
 
 import { setCategoryPosts, setPosts, setSearchPosts } from './actions/index';
@@ -91,7 +92,8 @@ const App = () => {
           )}
         />
         <Route exact path="/post" render={() => <PostDetail post={post} />} />
-        <Route path="/rooms" component={Rooms} />
+        <Route path="/rooms" component={Rooms} exact />
+        <Route path="/rooms/:id" component={Chatting} />
         <Route
           exact
           path="/post-edit"
