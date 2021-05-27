@@ -20,7 +20,7 @@ const PostDetail = ({ post, isLogin, userId }) => {
   useEffect(() => {
     getPostDetail();
     getCommentList();
-  }, [dispatch, post]);
+  }, []);
 
   useEffect(() => {
     dispatch(setPost({ ...post, roadAddress: roadAddress }));
