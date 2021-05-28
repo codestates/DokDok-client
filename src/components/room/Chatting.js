@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ChattingMe from './ChattingMe';
 import ChattingYou from './ChattingYou';
+
 const data = [
   {
     id: 1,
@@ -16,7 +17,7 @@ const data = [
     userId: 2,
     nickname: '주현',
     profileImage: 'https://ssl.pstatic.net/static/pwe/address/img_profile.png',
-    content: '책주세요',
+    content: '책',
     image: '',
     createdAt: '2021~~',
   },
@@ -31,9 +32,8 @@ const data = [
   },
 ];
 
-function Chatting({ id }) {
+function Chatting({ id, chat }) {
   const userId = 1;
-
   return (
     <>
       {data.map((chat) => {
@@ -43,6 +43,8 @@ function Chatting({ id }) {
           return <ChattingYou chat={chat} key={chat.id} />;
         }
       })}
+
+      {chat}
     </>
   );
 }

@@ -82,8 +82,8 @@ const App = () => {
             <PostDetail post={post} isLogin={isLogin} userId={userinfo.id} />
           )}
         />
-        <Route path="/rooms" component={Rooms} />
-           <Route path="/rooms/:id" component={Chatting} />
+        <Route path="/rooms" component={Rooms} exact />
+        <Route path="/rooms/:id" component={Chatting} />
         <Route
           exact
           path="/post-edit"
