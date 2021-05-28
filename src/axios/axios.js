@@ -1,6 +1,6 @@
 import reduxStore from '../store/store';
 import axios from 'axios';
-import { setIsLogin } from '../actions';
+import { setIsLogin, setUserinfo } from '../actions';
 const { dispatch } = reduxStore;
 
 export default function axiosSetUp() {
@@ -13,8 +13,12 @@ export default function axiosSetUp() {
       const {
         response: { status },
       } = error;
-      if (status === 401 && error.response.data.message === 'Auth error') {
+      if (
+        status === 401 &&
+        error.response.data.error.name === 'TokenExpiredError'
+      ) {
         dispatch(setIsLogin(false));
+        dispatch(setUserinfo({}));
         localStorage.removeItem('accessToken');
       }
       return Promise.reject(error);
