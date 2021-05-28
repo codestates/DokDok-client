@@ -51,7 +51,7 @@ const App = () => {
         getDefaultPosts={getDefaultPosts}
       />
       <Switch>
-        <Route exact path="/updateUserInfo" render={() => <UpdateUserInfo />} />
+        <Route exact path="/updateUserInfo" render={() => <UpdateUserInfo userinfo={userinfo} />} />
         <Route
           exact
           path="/mypage"
