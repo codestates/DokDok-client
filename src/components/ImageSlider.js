@@ -19,11 +19,11 @@ const ImageSlider = (props) => {
     if (imageSlider.current.clientWidth >= 1000) {
       setSliderWidth(1000);
     } else {
-      if (sliderWidth === null) {
-        setSliderWidth(imageSlider.current.clientWidth - 10);
-      } else {
-        setSliderWidth(imageSlider.current.clientWidth);
-      }
+      // if (sliderWidth === null) {
+      //   setSliderWidth(imageSlider.current.clientWidth - 10);
+      // } else {
+      setSliderWidth(imageSlider.current.clientWidth);
+      // }
     }
   };
 

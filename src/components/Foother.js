@@ -4,13 +4,18 @@ import '../scss/Foother.scss';
 const Foother = () => {
   return (
     <div className="foother">
-      <div className="logo">logo</div>
+      <div
+        className="logo-full"
+        style={{ backgroundImage: `url(${'dokdok-logo-full.png'})` }}
+      />
       <div className="contact">
-        CONTACT
+        <p className="bold-text">CONTACT</p>
+
         <div onClick={() => {}}>Send inquire</div>
       </div>
       <div className="about-us">
-        ABOUT US
+        <p className="bold-text">ABOUT US</p>
+
         <a
           href="https://github.com/codestates/DokDok-client"
           target="_blank"
@@ -27,21 +32,27 @@ const Foother = () => {
         </a>
       </div>
       <div className="team-members">
-        TEAM MEMBERS
+        <p className="bold-text">TEAM MEMBERS</p>
+
         <div>Front</div>
-        <a href="https://github.com/" target="_blank" rel="noreferrer">
-          이소임
-        </a>
-        <a href="https://github.com/" target="_blank" rel="noreferrer">
-          최시용
-        </a>
+        <div className="front">
+          <a href="https://github.com/" target="_blank" rel="noreferrer">
+            이소임
+          </a>
+          <a href="https://github.com/" target="_blank" rel="noreferrer">
+            최시용
+          </a>
+        </div>
+
         <div>Back</div>
-        <a href="https://github.com/" target="_blank" rel="noreferrer">
-          강주현
-        </a>
-        <a href="https://github.com/" target="_blank" rel="noreferrer">
-          조태규
-        </a>
+        <div className="back">
+          <a href="https://github.com/" target="_blank" rel="noreferrer">
+            강주현
+          </a>
+          <a href="https://github.com/" target="_blank" rel="noreferrer">
+            조태규
+          </a>
+        </div>
       </div>
     </div>
   );

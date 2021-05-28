@@ -1,22 +1,60 @@
+@import 'color';
+
 .post-list {
-  margin-bottom: 2rem;
+  margin: {
+    top: 2rem;
+    bottom: 2rem;
+  }
   display: grid;
   grid-gap: 20px;
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   grid-auto-rows: 350px;
   word-break: break-all;
-  .img-box {
-    max-width: 100%;
-    height: 300px;
-    background: {
-      size: cover;
-      position: center;
+
+  padding-bottom: 2rem;
+  border-bottom: 1px solid $color-grey-border;
+
+  .post-entry {
+    border: 1px solid $color-grey-border;
+    border-radius: 1rem;
+    &:hover {
+      box-shadow: 0px 0px 8px $color-grey-border;
+      img {
+        transform: scale(1.02, 1.02);
+      }
     }
   }
+
+  .img-box {
+    border-radius: 1rem 1rem 0 0;
+    transition: all 0.8s;
+    width: 100%;
+    height: 275px;
+    overflow: hidden;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: all 0.5s;
+    }
+  }
+
+  .info-box {
+    padding: {
+      top: 0.2rem;
+      left: 0.6rem;
+      right: 0.6rem;
+      bottom: 0.8rem;
+    }
+    div:nth-child(2) {
+      font-size: 0.8rem;
+    }
+  }
+
   .author {
     font: {
       size: 1.2rem;
-      weight: 800;
+      weight: 500;
     }
   }
 }

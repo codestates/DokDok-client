@@ -13,12 +13,13 @@ const PostListEntry = ({ post, history }) => {
 
   return (
     <div className="post-entry" onClick={redirectToPostDetail}>
-      <div
-        className="img-box"
-        style={{ backgroundImage: `url(${post.image1})` }}
-      ></div>
-      <div className="author">{post.title}</div>
-      <div>{post.address}</div>
+      <div className="img-box">
+        <img src={post.image1} alt="" />
+      </div>
+      <div className="info-box">
+        <div className="author">{post.title}</div>
+        <div>{post.address}</div>
+      </div>
     </div>
   );
 };

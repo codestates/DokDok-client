@@ -49,22 +49,23 @@ const Search = ({ history }) => {
 
   return (
     <React.Fragment>
-      <select name="types" onChange={changeSearchType}>
-        <option value="title">제목</option>
-        <option value="address">지역</option>
-        <option value="nickname">작성자</option>
-      </select>
-      <input
-        className="search-input"
-        type="text"
-        value={queryString}
-        onChange={changeQueryString}
-        onKeyDown={checkKeycode}
-        placeholder="검색어를 입력해주세요"
-      />
-      <button className="search-btn" onClick={getSearchResult}>
-        검색
-      </button>
+      <div>
+        <select name="types" onChange={changeSearchType}>
+          <option value="title">제목</option>
+          <option value="address">지역</option>
+          <option value="nickname">작성자</option>
+        </select>
+        <input
+          className="search-input"
+          type="text"
+          value={queryString}
+          onChange={changeQueryString}
+          onKeyDown={checkKeycode}
+          placeholder="검색어를 입력해주세요"
+        />
+      </div>
+
+      <i className="fas fa-search" onClick={getSearchResult}></i>
     </React.Fragment>
   );
 };
