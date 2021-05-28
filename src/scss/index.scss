@@ -2,7 +2,13 @@
   box-sizing: border-box;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;500&display=swap');
+
 body {
+  max-width: 1500px;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 300;
+
   margin: {
     top: 0;
     left: auto;
@@ -10,8 +16,8 @@ body {
     bottom: 0;
   }
   padding: {
-    left: 1rem;
-    right: 1rem;
+    left: 2rem;
+    right: 2rem;
   }
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -39,8 +45,20 @@ code {
 button,
 li {
   cursor: pointer;
+  &:hover {
+    font-weight: 500;
+  }
 }
 
 h2 {
   margin: 0;
+}
+
+@media screen and (max-width: 400px) {
+  body {
+    padding: {
+      left: 1rem;
+      right: 1rem;
+    }
+  }
 }

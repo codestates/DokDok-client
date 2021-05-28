@@ -1,3 +1,5 @@
+@import 'color';
+
 .map {
   width: 100%;
   height: 20rem;
@@ -9,13 +11,15 @@
     background-color: white;
     padding: 0.8rem;
     margin-bottom: 13rem;
+    border: 1px solid $color-grey-border;
     border-radius: 0.5rem;
+
     .overlay-header {
       display: flex;
       flex-flow: row nowrap;
       justify-content: space-between;
       .header {
-        font-weight: 700;
+        font-weight: 500;
         margin-bottom: 0.2rem;
       }
     }

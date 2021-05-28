@@ -20,6 +20,7 @@ const PostDetail = ({ post, isLogin, userId }) => {
   useEffect(() => {
     getPostDetail();
     getCommentList();
+    window.scrollTo(0, 0);
   }, []);
 
   useEffect(() => {

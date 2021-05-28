@@ -1,3 +1,4 @@
+import '../scss/SearchResult.scss';
 import React from 'react';
 import { Redirect, withRouter } from 'react-router-dom';
 import Category from '../components/Category';
@@ -10,16 +11,19 @@ const SearchResult = ({ searchPosts }) => {
 
   return (
     <div className="search-result-box">
+      <Category />
       <div className="search-result">
         {searchPosts.length === 0 ? (
-          <div className="no-serch-result">
-            <div>검색 결과가 없습니다.</div>
+          <div className="no-result">
+            <div>
+              <img src="https://i.imgur.com/bmUB2Sb.png" alt="" />
+              <div>검색 결과가 없습니다.</div>
+            </div>
           </div>
         ) : (
-          <div>검색 결과 {searchPosts.length}건</div>
+          <div className="result">검색 결과 {searchPosts.length}건</div>
         )}
       </div>
-      <Category />
       <PostList posts={searchPosts} />
     </div>
   );

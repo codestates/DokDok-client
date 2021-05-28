@@ -1,5 +1,7 @@
+@import 'color';
+
 nav {
-  height: 4rem;
+  height: 5rem;
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
@@ -19,6 +21,22 @@ nav {
   .nav-logo-and-search {
     display: flex;
     flex-flow: row nowrap;
+    align-items: center;
+    flex: 1 0 auto;
+  }
+
+  .nav-logo-full {
+    min-width: 8rem;
+    height: 3rem;
+    background: {
+      size: 105%;
+      position: center;
+    }
+    margin-right: 0.2rem;
+  }
+
+  .nav-logo-small {
+    display: none;
   }
 
   ul {
@@ -34,9 +52,58 @@ nav {
     margin-left: 1rem;
     display: inline-block;
   }
+
+  .nav-search {
+    height: 3rem;
+    width: 100%;
+    max-width: 700px;
+    border: 1px solid $color-grey-border;
+    padding: 1rem;
+    margin: {
+      left: 0.5rem;
+      right: 0.8rem;
+    }
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    select {
+      min-width: 4rem;
+      max-width: 6rem;
+      width: 20%;
+      font-family: inherit;
+      border: none;
+      outline: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      background-image: url('../images/arrow-down.png');
+      background: {
+        size: 1.2rem;
+        repeat: no-repeat;
+        position: right;
+      }
+      &::-ms-expand {
+        display: none;
+      }
+    }
+
+    div {
+      display: flex;
+      width: 100%;
+    }
+
+    .search-input {
+      border: none;
+      outline: none;
+      padding-left: 1rem;
+      width: 80%;
+    }
+  }
 }
 
-@media screen and (max-width: 680px) {
+@media screen and (max-width: 800px) {
   nav {
     ul {
       display: none;
@@ -50,6 +117,39 @@ nav {
         right: 1rem;
         bottom: 1rem;
       }
+    }
+  }
+}
+
+@media screen and (max-width: 880px) {
+  nav {
+    .nav-logo-full {
+      display: none;
+    }
+
+    .nav-logo-small {
+      display: inline-block;
+      min-width: 3rem;
+      height: 3rem;
+      background: {
+        position: center;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 450px) {
+  nav {
+    .nav-logo-small {
+      display: inline-block;
+      min-width: 2rem;
+      height: 2rem;
+      background: {
+        size: 135%;
+      }
+    }
+    .nav-logo-and-search {
+      flex: none;
     }
   }
 }

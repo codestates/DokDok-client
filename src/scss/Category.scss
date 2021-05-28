@@ -1,4 +1,5 @@
 @import 'animation';
+@import 'color';
 
 @include keyframe(move) {
   100% {
@@ -7,9 +8,11 @@
   80% {
     transform: translateX(-200px);
   }
+  10% {
+    opacity: 1;
+  }
   0% {
     transform: translateX(0px);
-    opacity: 1;
   }
 }
 
@@ -19,18 +22,24 @@
   flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
+  border-bottom: 1px solid $color-grey-border;
+  box-shadow: 0px -15px 10px -15px $color-grey-border inset;
 
   li {
     flex: 0 0 auto;
-    margin: 0.2rem;
-    padding: 0.8rem;
+    padding: {
+      top: 1.5rem;
+      right: 0.8rem;
+      left: 0.8rem;
+      bottom: 0.8rem;
+    }
     display: inline-block;
-    // 영역확인용
-    background-color: rgb(240, 240, 240);
   }
   .swipe-finger {
+    display: none;
     position: absolute;
     opacity: 0;
+    top: 1rem;
     left: 60vw;
     img {
       max-height: 50px;
@@ -39,7 +48,11 @@
   }
   .active {
     color: white;
-    background-color: black;
+    font-weight: 500;
+    background: {
+      image: url('../images/bookmark.png');
+      size: cover;
+    }
   }
 }
 
@@ -51,8 +64,9 @@
     &::-webkit-scrollbar {
       display: none;
     }
-  }
-  .swipe-finger {
-    @include animation(1s, 4s, move, 2);
+    .swipe-finger {
+      display: inline-block;
+      @include animation(1s, 4s, move, 2);
+    }
   }
 }
