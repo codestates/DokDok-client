@@ -3,29 +3,43 @@ import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
-import { setUserinfo } from '../actions';
-//import '../scss/UpdateUserInfo.scss';
-//이메일 받기  닉네임 유효성
-const UpdateUserInfo = ({ userinfo, history }) => {
-  let profileImage = userinfo.profileImage;
+import { setMessageModal, setUserinfo } from '../actions';
 
-const dispatch = useDispatch();
+const UpdateUserInfo = ({ userinfo, history }) => {
+  const [isNickNameVisible, setIsNickNameVisible] = useState(false);
+  const [isPassWordVisible, setisPassWordVisible] = useState(false);
+  const [previewImg, setPreviewImg] = useState(null);
+  const [file, setFile] = useState(null);
+
+  const dispatch = useDispatch();
+
+  const previousImg = userinfo.profileImage;
 
   const {
     register,
-    watch,
     reset,
     formState: { errors },
     handleSubmit,
   } = useForm({ mode: 'onChange' });
 
   const onSubmit = (data) => {
-    
-    //악시오스
-    const frm = new FormData()
-    frm.append('nickname', data.nickname);
-    frm.append('password', data.password);
-    frm.append('profileImage', file);
+    if (!data.nickname && !data.password && !file) {
+      dispatch(setMessageModal(true, '수정된 사항이 없습니다.'));
+      return;
+    }
+
+    const frm = new FormData();
+
+    if (data.nickname) {
+      frm.append('nickname', data.nickname);
+    }
+    if (file) {
+      frm.append('profileImage', file);
+    }
+    if (data.password) {
+      frm.append('password', data.password);
+    }
+
     axios
       .patch(process.env.REACT_APP_API_URL + '/users', frm, {
         headers: {
@@ -34,43 +48,27 @@ const dispatch = useDispatch();
         },
       })
       .then(function (res) {
-        console.log(res)
-        console.log('수정완료');
-        dispatch(setUserinfo(res.data.user))
-        history.push('/mypage')
+        dispatch(setUserinfo(res.data.user));
+        history.push('/mypage');
       })
       .catch(function (err) {
-        console.log(err);
+        if (err) throw err;
       });
+
     reset();
   };
 
   //버튼클릭시 인풋박스
-  const [nickName, setNickName] = useState(userinfo.nickname);
-  const [isNickNameVisible, setIsNickNameVisible] = useState(false);
-
-  const changeNickName = (e) => {
-    setNickName(e.target.value);
-  };
-
   const changeNickNameVisible = () => {
     setIsNickNameVisible(!isNickNameVisible);
   };
 
-  const [passWord, setPassWord] = useState();
-  const [isPassWordVisible, setisPassWordVisible] = useState(false);
-
-  const changePassWord = (e) => {
-    setPassWord(e.target.value);
-  };
   const changePassWordVisible = () => {
     setisPassWordVisible(!isPassWordVisible);
   };
 
   //이미지미리보기
 
-  const [previewImg, setPreviewImg] = useState(null);
-  const [file, setFile] = useState();
   const insertImg = (e) => {
     setFile(e.target.files[0]);
     let reader = new FileReader();
@@ -103,11 +101,7 @@ const dispatch = useDispatch();
             onChange={(e) => insertImg(e)}
           ></input>
           <img
-            src={
-              previewImg
-                ? previewImg
-                : 'https://3.bp.blogspot.com/-ZKBbW7TmQD4/U6P_DTbE2MI/AAAAAAAADjg/wdhBRyLv5e8/s1600/noimg.gif'
-            }
+            src={previewImg ? previewImg : previousImg}
             className="img"
           ></img>
         </label>
@@ -119,10 +113,8 @@ const dispatch = useDispatch();
           {isNickNameVisible ? (
             <label className="input-box-nickname">
               <input
-                // value={nickName}
-                placeholder={nickName}
+                defaultValue={userinfo.nickname}
                 type="text"
-                onChange={changeNickName}
                 {...register('nickname', {
                   required: '닉네임을 입력해주세요.',
                   maxLength: {
@@ -144,9 +136,7 @@ const dispatch = useDispatch();
           {isPassWordVisible ? (
             <label className="input-box-password">
               <input
-                value={passWord}
                 type="password"
-                onChange={changePassWord}
                 {...register('password', {
                   required: '비밀번호를 입력해주세요.',
                   minLength: {
@@ -167,6 +157,7 @@ const dispatch = useDispatch();
           <button className="UpdateUserInfo-btn" type="submit">
             수정
           </button>
+          <button onClick={() => history.push('/mypage')}>취소</button>
         </div>
       </div>
     </form>
