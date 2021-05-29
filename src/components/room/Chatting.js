@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import ChattingMe from './ChattingMe';
 import ChattingYou from './ChattingYou';
-
 const data = [
   {
     id: 1,
@@ -43,7 +42,6 @@ function Chatting({ id, chat }) {
           return <ChattingYou chat={chat} key={chat.id} />;
         }
       })}
-
       {chat}
     </>
   );

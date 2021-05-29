@@ -5,6 +5,8 @@ import io from 'socket.io-client';
 import styled from 'styled-components';
 const socket = io.connect(`${process.env.REACT_APP_API_URL}`);
 
+// 채팅페이지에 처음들어갈때에만 서버에서 뿌려주는걸로하고 그 이후 채팅페이지에서 대화하는건 클라단에서만 추가하기로 하는게 좋을듯?
+
 const ChattingMessage = styled.div`
   height: 680px;
   overflow-y: auto;

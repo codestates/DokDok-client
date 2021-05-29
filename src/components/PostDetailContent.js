@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 import axios from 'axios';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setLoginModal, setMessageModal } from '../actions';
 
 const PostDetailContent = ({ post, isLogin, userId, history }) => {
   const dispatch = useDispatch();
   const [interestIconColor, setInterestIconColor] = useState('#cccccc');
-
+  const { userinfo, postinfo } = useSelector((state) => ({
+    userinfo: state.userReducer.userinfo,
+    postinfo: state.postReducer.post,
+  }));
+  console.log(userinfo, postinfo);
   useEffect(() => {
     if (isLogin) {
       getInterestInfo();
@@ -133,13 +137,17 @@ const PostDetailContent = ({ post, isLogin, userId, history }) => {
             <div className="address">{post.address}</div>
           </div>
         </div>
+
         <div className="icons">
-          <i
-            className="fas fa-comment-dots fa-lg"
-            onClick={() => {
-              checkLoginStatus(() => history.push('/chat'));
-            }}
-          />
+          {userinfo.id === postinfo.UserId || (
+            <i
+              className="fas fa-comment-dots fa-lg"
+              onClick={() => {
+                checkLoginStatus(() => history.push('/rooms'));
+              }}
+            />
+          )}
+
           <i
             className="fas fa-heart fa-lg"
             style={{ color: `${interestIconColor}` }}
