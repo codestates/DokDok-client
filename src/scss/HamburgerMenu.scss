@@ -1,3 +1,5 @@
+@import 'color';
+
 .hamburger-menu {
   display: none;
 }
@@ -10,7 +12,7 @@
     width: 35px;
     height: 30px;
     span {
-      background-color: black;
+      background-color: $color-black;
       display: inline-block;
       transition: all 0.4s;
       position: absolute;
@@ -28,8 +30,29 @@
         bottom: 0;
       }
     }
+
     .nav-user-control {
-      display: none;
+      transition: all 0.3s linear;
+      opacity: 0;
+      visibility: hidden;
+      border-radius: 1rem;
+      background-color: $color-main-middle;
+      color: white;
+      width: 10rem;
+      top: 2.5rem;
+      right: 0;
+      position: absolute;
+      z-index: 20;
+      display: flex;
+      flex-flow: column nowrap;
+      li {
+        padding: 0.8rem;
+      }
+      .nav-mypage {
+        background-color: white;
+        margin-top: 0.8rem;
+        margin-bottom: 1.8rem;
+      }
     }
   }
 
@@ -46,18 +69,9 @@
       }
     }
     .nav-user-control {
-      background-color: rgb(0, 0, 0, 0.3);
-      color: white;
-      width: 8rem;
-      top: 2.5rem;
-      right: 0;
-      position: absolute;
-      z-index: 20;
-      display: flex;
-      flex-flow: column nowrap;
-      li {
-        padding: 1rem;
-      }
+      visibility: visible;
+      opacity: 1;
+      transform: translateY(10px);
     }
   }
 }

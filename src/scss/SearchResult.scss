@@ -1,26 +1,27 @@
+.no-result {
+  min-height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-weight: 500;
+  margin-bottom: 6rem;
+  img {
+    width: 15rem;
+  }
+  @media screen and (max-width: 800px) {
+    img {
+      width: 30vw;
+    }
+  }
+}
+
 .search-result {
   padding-top: 1rem;
   margin-bottom: -1rem;
 
   .result {
+    margin-top: 1.3rem;
     font-weight: 500;
-  }
-
-  .no-result {
-    min-height: 50vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    font-weight: 500;
-    margin-bottom: 4rem;
-    img {
-      width: 15rem;
-    }
-    @media screen and (max-width: 800px) {
-      img {
-        width: 30vw;
-      }
-    }
   }
 }

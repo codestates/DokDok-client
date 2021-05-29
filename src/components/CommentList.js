@@ -2,7 +2,7 @@ import '../scss/CommentList.scss';
 import React from 'react';
 import CommentListEntry from './CommentListEntry';
 
-const CommentList = ({ comments, getCommentList }) => {
+const CommentList = ({ comments, getCommentList, userId }) => {
   if (comments === null) {
     return <></>;
   }
@@ -14,6 +14,7 @@ const CommentList = ({ comments, getCommentList }) => {
           key={comment.id}
           comment={comment}
           getCommentList={getCommentList}
+          userId={userId}
         />
       ))}
     </div>

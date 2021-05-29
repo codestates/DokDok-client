@@ -16,26 +16,26 @@ const ImageSlider = (props) => {
   }
 
   const handleResize = () => {
-    if (imageSlider.current.clientWidth >= 1000) {
-      setSliderWidth(1000);
+    if (imageSlider.current.clientWidth >= 800) {
+      setSliderWidth(800);
     } else {
-      // if (sliderWidth === null) {
-      //   setSliderWidth(imageSlider.current.clientWidth - 10);
-      // } else {
-      setSliderWidth(imageSlider.current.clientWidth);
-      // }
+      if (sliderWidth === null && sliderWidth >= 500) {
+        setSliderWidth(imageSlider.current.clientWidth - 10);
+      } else {
+        setSliderWidth(imageSlider.current.clientWidth);
+      }
     }
   };
 
   const slideContent = (e) => {
-    if (e.target.className === 'fas fa-chevron-left fa-2x') {
+    if (e.target.className.includes('left')) {
       if (slideX === 0) {
         setSlideX((maxWidth - sliderWidth) * -1);
       } else {
         setSlideX(slideX + sliderWidth);
       }
     }
-    if (e.target.className === 'fas fa-chevron-right fa-2x') {
+    if (e.target.className.includes('right')) {
       if (Math.abs(slideX) === maxWidth - sliderWidth) {
         setSlideX(0);
       } else {
@@ -77,14 +77,12 @@ const ImageSlider = (props) => {
                 }}
               >
                 <div className="slider-arrow">
-                  <div
-                    className="fas fa-chevron-left fa-2x"
-                    onClick={slideContent}
-                  ></div>
-                  <div
-                    className="fas fa-chevron-right fa-2x"
-                    onClick={slideContent}
-                  ></div>
+                  <div className="left" onClick={slideContent}>
+                    <i className="fas fa-chevron-left fa-lg" />
+                  </div>
+                  <div className="right" onClick={slideContent}>
+                    <i className="fas fa-chevron-right fa-lg" />
+                  </div>
                 </div>
               </li>
             ))}

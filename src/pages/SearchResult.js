@@ -11,20 +11,13 @@ const SearchResult = ({ searchPosts }) => {
 
   return (
     <div className="search-result-box">
-      <Category />
       <div className="search-result">
-        {searchPosts.length === 0 ? (
-          <div className="no-result">
-            <div>
-              <img src="https://i.imgur.com/bmUB2Sb.png" alt="" />
-              <div>검색 결과가 없습니다.</div>
-            </div>
-          </div>
-        ) : (
+        <Category />
+        {searchPosts.length === 0 ? null : (
           <div className="result">검색 결과 {searchPosts.length}건</div>
         )}
+        <PostList posts={searchPosts} />
       </div>
-      <PostList posts={searchPosts} />
     </div>
   );
 };

@@ -16,16 +16,11 @@ const UserControl = ({ isLogin, profileImage, getDefaultPosts, history }) => {
       })
       .then(() => {
         dispatch(setIsLogin(false));
+        dispatch(setUserinfo({}));
         localStorage.removeItem('accessToken');
         history.push('/main');
       })
       .catch((err) => {
-        if (err.response.data === 'Refresh token expired') {
-          dispatch(setIsLogin(false));
-          dispatch(setUserinfo({}));
-          localStorage.removeItem('accessToken');
-          history.push('/login');
-        }
         if (err) throw err;
       });
   }
@@ -35,6 +30,10 @@ const UserControl = ({ isLogin, profileImage, getDefaultPosts, history }) => {
       <li
         className="nav-chatroom"
         onClick={() => {
+          if (!isLogin) {
+            dispatch(setLoginModal(true));
+            return;
+          }
           history.push('/rooms');
         }}
       >
