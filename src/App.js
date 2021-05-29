@@ -15,7 +15,6 @@ import PostForm from './pages/PostForm';
 
 import { setCategoryPosts, setSearchPosts } from './actions/index';
 
-// import { mockPosts } from './fakeData/mockPosts';
 import LoginModal from './components/LoginModal';
 import MessageModal from './components/MessageModal';
 
@@ -51,7 +50,11 @@ const App = () => {
         getDefaultPosts={getDefaultPosts}
       />
       <Switch>
-        <Route exact path="/updateUserInfo" render={() => <UpdateUserInfo userinfo={userinfo} />} />
+        <Route
+          exact
+          path="/updateUserInfo"
+          render={() => <UpdateUserInfo userinfo={userinfo} />}
+        />
         <Route
           exact
           path="/mypage"

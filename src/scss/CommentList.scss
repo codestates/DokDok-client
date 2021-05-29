@@ -1,9 +1,9 @@
 .comment-list {
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .comment-area {
-  padding: 1rem;
+  padding: 0.5rem;
   .header {
     display: flex;
     justify-content: space-between;
@@ -31,5 +31,17 @@
     height: 4rem;
     padding: 0.5rem;
     resize: none;
+  }
+
+  .content {
+    padding-bottom: 0.8rem;
+    margin-bottom: 0;
+  }
+
+  hr {
+    margin: {
+      top: 1rem;
+      bottom: 1rem;
+    }
   }
 }

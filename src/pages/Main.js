@@ -5,7 +5,7 @@ import queryString from 'query-string';
 import Category from '../components/Category';
 import PostList from '../components/PostList';
 import { useDispatch } from 'react-redux';
-import { setPosts, setIsLogin, setUserinfo } from '../actions';
+import { setPosts, setIsLogin, setUserinfo, setLoginModal } from '../actions';
 
 const Main = ({ posts, location, history }) => {
   const dispatch = useDispatch();
@@ -24,6 +24,7 @@ const Main = ({ posts, location, history }) => {
           })
           .then((res) => {
             localStorage.setItem('accessToken', accessToken);
+            dispatch(setLoginModal(false));
             dispatch(setIsLogin(true));
             dispatch(setUserinfo(res.data.user));
           });
@@ -44,8 +45,6 @@ const Main = ({ posts, location, history }) => {
       .catch((err) => {
         if (err) throw err;
       });
-
-    // dispatch(setPosts(mockPosts));
   }
 
   return (

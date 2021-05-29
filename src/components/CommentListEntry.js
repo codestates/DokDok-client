@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 
-const CommentListEntry = ({ comment, getCommentList }) => {
+const CommentListEntry = ({ comment, getCommentList, userId }) => {
   const [isEdit, setIsEdit] = useState(false);
   const [commentValue, setCommentValue] = useState(comment.comment);
 
@@ -72,20 +72,24 @@ const CommentListEntry = ({ comment, getCommentList }) => {
       <div className="header">
         <div className="nickname">{comment.User.nickname}</div>
         {/* 추후 userid 동일한 경우에만 버튼 보이도록 수정 */}
-        <div className={isEdit ? null : 'hide'}>
-          <i className="fas fa-check" onClick={editComment}></i>
-          <i
-            className="fas fa-times"
-            onClick={() => {
-              setIsEdit(false);
-              setCommentValue(comment.comment);
-            }}
-          ></i>
-        </div>
-        <div className={isEdit ? 'hide' : null}>
-          <i className="fas fa-edit" onClick={() => setIsEdit(true)}></i>
-          <i className="fas fa-trash-alt" onClick={deleteComment}></i>
-        </div>
+        {comment.UserId === userId ? (
+          <React.Fragment>
+            <div className={isEdit ? null : 'hide'}>
+              <i className="fas fa-check" onClick={editComment}></i>
+              <i
+                className="fas fa-times"
+                onClick={() => {
+                  setIsEdit(false);
+                  setCommentValue(comment.comment);
+                }}
+              ></i>
+            </div>
+            <div className={isEdit ? 'hide' : null}>
+              <i className="fas fa-edit" onClick={() => setIsEdit(true)}></i>
+              <i className="fas fa-trash-alt" onClick={deleteComment}></i>
+            </div>
+          </React.Fragment>
+        ) : null}
       </div>
 
       <div className="date">{convertTime(comment.createdAt)}</div>
@@ -97,6 +101,7 @@ const CommentListEntry = ({ comment, getCommentList }) => {
         maxLength="300"
       ></textarea>
       <div className={isEdit ? 'hide' : 'content'}>{comment.comment}</div>
+      <hr />
     </div>
   );
 };

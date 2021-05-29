@@ -1,8 +1,9 @@
 import '../scss/PostList.scss';
 import React, { useEffect, useState } from 'react';
 import PostListEntry from './PostListEntry';
+import { withRouter } from 'react-router';
 
-const PostList = ({ posts }) => {
+const PostList = ({ posts, match }) => {
   const [visiblePostsCount, setVisiblePostsCount] = useState(0);
   const [visiblePosts, setVisiblePosts] = useState([]);
 
@@ -44,12 +45,31 @@ const PostList = ({ posts }) => {
   };
 
   return (
-    <div className="post-list">
-      {visiblePosts.map((post) => (
-        <PostListEntry post={post} key={post.id} />
-      ))}
-    </div>
+    <React.Fragment>
+      {posts.length === 0 ? (
+        <React.Fragment>
+          {match.path === '/search' ? (
+            <div className="no-result">
+              <div>
+                <img src="https://i.imgur.com/K5RdjzR.png" alt="" />
+                <div>검색 결과가 없습니다</div>
+              </div>
+            </div>
+          ) : (
+            <div className="no-posts">
+              <img src="https://i.imgur.com/VDGfqHZ.png" alt="" />
+            </div>
+          )}
+        </React.Fragment>
+      ) : (
+        <div className="post-list">
+          {visiblePosts.map((post) => (
+            <PostListEntry post={post} key={post.id} />
+          ))}
+        </div>
+      )}
+    </React.Fragment>
   );
 };
 
-export default PostList;
+export default withRouter(PostList);
