@@ -56,6 +56,34 @@ h2 {
   margin: 0;
 }
 
+.btn {
+  cursor: pointer;
+  outline: none;
+  border: none;
+  border-radius: 1rem;
+  background-color: $color-main-middle;
+  color: white;
+  padding: 0.3rem;
+}
+
+select {
+  font-family: inherit;
+  border: none;
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url('../images/arrow-down.png');
+  background: {
+    size: 1.2rem;
+    repeat: no-repeat;
+    position: right;
+  }
+  &::-ms-expand {
+    display: none;
+  }
+}
+
 @media screen and (max-width: 400px) {
   body {
     padding: {

@@ -72,27 +72,12 @@ nav {
       min-width: 4rem;
       max-width: 6rem;
       width: 20%;
-      font-family: inherit;
-      border: none;
-      outline: none;
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      appearance: none;
-      background-color: white;
-      background-image: url('../images/arrow-down.png');
-      background: {
-        size: 1.2rem;
-        repeat: no-repeat;
-        position: right;
-      }
-      &::-ms-expand {
-        display: none;
-      }
     }
 
     div {
       display: flex;
       width: 100%;
+      background-color: white;
     }
 
     .search-input {

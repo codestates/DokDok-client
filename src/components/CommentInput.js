@@ -48,7 +48,9 @@ const CommentInput = ({ getCommentList, post, isLogin }) => {
         placeholder="댓글을 입력해주세요"
         maxLength="300"
       ></textarea>
-      <button onClick={sendCommentToServer}>등록</button>
+      <button className="btn" onClick={sendCommentToServer}>
+        등록
+      </button>
     </div>
   );
 };
