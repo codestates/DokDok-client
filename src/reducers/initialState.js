@@ -1,5 +1,6 @@
 export const initialState = {
   isLogin: false,
+  isLoading: false,
   userinfo: {
     id: '',
     email: '',

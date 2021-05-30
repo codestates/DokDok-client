@@ -7,6 +7,7 @@ export const SET_SEARCH_POSTS = 'SET_SEARCH_POSTS';
 export const SET_POST = 'SET_POST';
 export const SET_LOGIN_MODAL = 'SET_LOGIN_MODAL';
 export const SET_MESSAGE_MODAL = 'SET_MESSAGE_MODAL';
+export const SET_IS_LOADING = 'SET_IS_LOADING';
 
 // actions creator functions
 export const setIsLogin = (isLogin) => {
@@ -69,5 +70,12 @@ export const setPost = (post) => {
   return {
     type: SET_POST,
     payload: post,
+  };
+};
+
+export const setIsLoading = (boolean) => {
+  return {
+    type: SET_IS_LOADING,
+    payload: boolean,
   };
 };

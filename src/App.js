@@ -17,13 +17,14 @@ import { setCategoryPosts, setSearchPosts } from './actions/index';
 
 import LoginModal from './components/LoginModal';
 import MessageModal from './components/MessageModal';
+import LoadingIndicator from './components/LoadingIndicator';
 
 const App = () => {
   const loginInfo = useSelector((state) => state.userReducer);
   const { isLogin, userinfo, isLoginModalOpen, messageModal } = loginInfo;
 
   const postInfo = useSelector((state) => state.postReducer);
-  const { posts, categoryPosts, searchPosts, post } = postInfo;
+  const { posts, categoryPosts, searchPosts, post, isLoading } = postInfo;
 
   const dispatch = useDispatch();
 
@@ -39,6 +40,7 @@ const App = () => {
 
   return (
     <div className="App">
+      <LoadingIndicator isLoading={isLoading} />
       <MessageModal
         isOpen={messageModal.isModalOpen}
         content={messageModal.content}
