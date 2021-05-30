@@ -185,109 +185,136 @@ const PostForm = ({ post, history, match }) => {
   };
 
   return (
-    <form className="post-form">
-      <div>
-        <div className="bold-text">제목</div>
-        <input
-          type="text"
-          placeholder="책 제목을 입력해주세요"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
+    <React.Fragment>
+      <div
+        className={isPopupOpen ? 'popup-search' : 'popup-search hidden'}
+        onClick={closeSearchAddress}
+      >
+        <DaumPostCode
+          setSearchAddress={setSearchAddress}
+          closeSearchAddress={closeSearchAddress}
         />
       </div>
-      <div>
-        <div className="bold-text">책분류</div>
-        <select
-          name="type"
-          value={type}
-          onChange={(e) => setType(e.target.value)}
-        >
-          <option value="0">총류</option>
-          <option value="1">철학</option>
-          <option value="2">종교</option>
-          <option value="3">사회과학</option>
-          <option value="4">자연과학</option>
-          <option value="5">기술과학</option>
-          <option value="6">예술</option>
-          <option value="7">언어</option>
-          <option value="8">문학</option>
-          <option value="9">역사</option>
-        </select>
-      </div>
-      <div>
-        <div className="bold-text">거래 상태</div>
-        <select
-          name="trade-state"
-          value={state}
-          onChange={(e) => setState(e.target.value)}
-        >
-          <option value="exchange">거래 전</option>
-          {match.path === '/post-edit' ? (
-            <React.Fragment>
-              <option value="exchanging">거래 중</option>
-              <option value="exchanged">거래 완료</option>
-            </React.Fragment>
-          ) : null}
-        </select>
-      </div>
-      <div className="img-area">
-        <div className="bold-text">사진</div>
-        <div className="img-wrap">
-          {images
-            ? images.map((image, i) => <img src={image} alt="" key={i} />)
-            : null}
-          {fileURLs
-            ? fileURLs.map((fileURL, i) => <img src={fileURL} alt="" key={i} />)
-            : null}
-
-          {images.length + files.length === 5 ? null : (
-            <label className="file-input">
-              <input
-                type="file"
-                ref={fileInput}
-                accept="image/jpg,image/png,image/jpeg,image/gif"
-                multiple
-                onChange={fileHandle}
-              />
-              <i className="fas fa-plus fa-lg"></i>
-            </label>
-          )}
+      <form className="post-form">
+        <div className="header">
+          <i className="fas fa-pen fa-2x"></i>
+          <h2>게시글 {match.path === '/post-create' ? '작성' : '수정'}</h2>
         </div>
-      </div>
-      <div>
-        <div className="bold-text">내용</div>
-        <textarea
-          placeholder="책에 대해 설명해주세요. (ex. 내용, 책 상태, 구입 시기 등)"
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-        ></textarea>
-      </div>
-      <div>
-        <div className="bold-text">만남 장소</div>
-        {detailAddress ? `${detailAddress}` : '주소를 검색해주세요'}
-        <input type="button" onClick={searchAddress} value="주소 검색" />
-      </div>
-      <div id="popup-search">
-        {isPopupOpen && (
-          <DaumPostCode
-            setSearchAddress={setSearchAddress}
-            closeSearchAddress={closeSearchAddress}
+        <div className="form-entry">
+          <div className="bold-text">제목</div>
+          <input
+            type="text"
+            placeholder="책 제목을 입력해주세요"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
           />
-        )}
-      </div>
-      {longitude && latitude ? (
-        <MarkerMap latitude={latitude} longitude={longitude} />
-      ) : null}
-      <button onClick={submitForm}>완료</button>
-      <button
-        onClick={(e) => {
-          e.preventDefault();
-          history.goBack();
-        }}
-      >
-        취소
-      </button>
-    </form>
+        </div>
+        <div className="type-and-state form-entry">
+          <div className="type">
+            <div className="bold-text">책분류</div>
+            <select
+              name="type"
+              value={type}
+              onChange={(e) => setType(e.target.value)}
+            >
+              <option value="0">총류</option>
+              <option value="1">철학</option>
+              <option value="2">종교</option>
+              <option value="3">사회과학</option>
+              <option value="4">자연과학</option>
+              <option value="5">기술과학</option>
+              <option value="6">예술</option>
+              <option value="7">언어</option>
+              <option value="8">문학</option>
+              <option value="9">역사</option>
+            </select>
+          </div>
+          <div className="state">
+            <div className="bold-text">거래 상태</div>
+            <select
+              name="trade-state"
+              value={state}
+              onChange={(e) => setState(e.target.value)}
+            >
+              <option value="exchange">거래 전</option>
+              {match.path === '/post-edit' ? (
+                <React.Fragment>
+                  <option value="exchanging">거래 중</option>
+                  <option value="exchanged">거래 완료</option>
+                </React.Fragment>
+              ) : null}
+            </select>
+          </div>
+        </div>
+
+        <div className="img-area form-entry">
+          <div className="bold-text">사진</div>
+          <div className="img-wrap">
+            {images
+              ? images.map((image, i) => <img src={image} alt="" key={i} />)
+              : null}
+            {fileURLs
+              ? fileURLs.map((fileURL, i) => (
+                  <img src={fileURL} alt="" key={i} />
+                ))
+              : null}
+
+            {images.length + files.length === 5 ? null : (
+              <label className="file-input">
+                <input
+                  type="file"
+                  ref={fileInput}
+                  accept="image/jpg,image/png,image/jpeg,image/gif"
+                  multiple
+                  onChange={fileHandle}
+                />
+                <i className="fas fa-plus fa-lg"></i>
+              </label>
+            )}
+          </div>
+        </div>
+        <div className="form-entry">
+          <div className="bold-text">내용</div>
+          <textarea
+            placeholder="책에 대해 설명해주세요. (ex. 내용, 책 상태, 구입 시기 등)"
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+          ></textarea>
+        </div>
+        <div className="form-entry">
+          <div className="bold-text">만남 장소</div>
+          <div className="address">
+            {detailAddress ? `${detailAddress}` : '주소를 검색해주세요'}
+            <button
+              className="btn"
+              type="button"
+              onClick={searchAddress}
+              value="주소 검색"
+            >
+              주소 검색
+            </button>
+          </div>
+        </div>
+
+        {longitude && latitude ? (
+          <MarkerMap latitude={latitude} longitude={longitude} />
+        ) : null}
+        <div className="submit-and-cancel">
+          <button className="btn" onClick={submitForm}>
+            완료
+          </button>
+          <button
+            className="btn"
+            onClick={(e) => {
+              e.preventDefault();
+              history.goBack();
+            }}
+          >
+            취소
+          </button>
+        </div>
+      </form>
+    </React.Fragment>
   );
 };
 

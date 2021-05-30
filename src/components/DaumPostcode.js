@@ -22,7 +22,14 @@ const Postcode = ({ setSearchAddress, closeSearchAddress }) => {
 
   return (
     <div className="post-search">
-      <DaumPostcode onComplete={handleComplete} />
+      <i className="fas fa-times" onClick={closeSearchAddress} />
+      <DaumPostcode
+        onComplete={handleComplete}
+        animation={true}
+        width={'90vw'}
+        height={'60vh'}
+        style={{ maxWidth: '600px' }}
+      />
     </div>
   );
 };
