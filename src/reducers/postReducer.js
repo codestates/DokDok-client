@@ -3,6 +3,7 @@ import {
   SET_CATEGORY_POSTS,
   SET_SEARCH_POSTS,
   SET_POST,
+  SET_IS_LOADING,
 } from '../actions/index';
 import { initialState } from './initialState';
 
@@ -26,6 +27,11 @@ const itemReducer = (state = initialState, action) => {
     case SET_POST:
       return Object.assign({}, state, {
         post: action.payload,
+      });
+
+    case SET_IS_LOADING:
+      return Object.assign({}, state, {
+        isLoading: action.payload,
       });
 
     default:

@@ -1,12 +1,27 @@
 import reduxStore from '../store/store';
 import axios from 'axios';
-import { setIsLogin, setUserinfo } from '../actions';
+import { setIsLoading, setIsLogin, setUserinfo } from '../actions';
 const { dispatch } = reduxStore;
 
 export default function axiosSetUp() {
   axios.defaults.withCredentials = true;
+  axios.interceptors.request.use(
+    (config) => {
+      if (config.url.includes('login') || config.url.includes('logout')) {
+        return config;
+      }
+      dispatch(setIsLoading(true));
+      return config;
+    },
+    (error) => {
+      return Promise.reject(error);
+    },
+  );
   axios.interceptors.response.use(
     (response) => {
+      setTimeout(() => {
+        dispatch(setIsLoading(false));
+      }, 1000);
       return response;
     },
     async (error) => {
@@ -21,6 +36,7 @@ export default function axiosSetUp() {
         dispatch(setUserinfo({}));
         localStorage.removeItem('accessToken');
       }
+      dispatch(setIsLoading(false));
       return Promise.reject(error);
     },
   );
