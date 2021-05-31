@@ -13,6 +13,7 @@
   flex-flow: column nowrap;
   width: 100%;
   align-items: center;
+
   input {
     margin-top: 0rem;
     margin-bottom: 1.5rem;
@@ -28,31 +29,26 @@
 
 .input-box {
   position: relative;
+  width: 250px;
   p {
     width: 100%;
     z-index: 10;
     position: absolute;
-    top: 2rem;
-    left: 10px;
-    padding: 0rem;
+    top: 1rem;
+    font-size: 0.8rem;
+    padding: 0.2rem;
     color: red;
-    background-color: white;
   }
-}
-
-p {
-  font-size: 0.8em;
-  line-height: 2em;
-  margin: auto;
 }
 
 .login-select-area {
   margin-top: 1rem;
+  font-size: 0.9rem;
   span {
     cursor: pointer;
-    margin-left: 3px;
-    text-decoration: underline;
-    text-underline-position: under;
+    margin-left: 0.5rem;
+    font-weight: 500;
+    color: $color-main-middle;
   }
 }
 
@@ -69,18 +65,16 @@ p {
 
 //버튼
 .signup-btn {
-  background-color: #68d170;
-  border: none;
+  background-color: $color-main-middle;
   color: white;
   padding: 10px 30px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
   font-size: 17px;
-  margin: 10px 35%;
-  cursor: pointer;
+  margin: 0.5rem;
+  margin-top: 1.5rem;
 }
 
-.click-btn {
-  color: blue;
+.p-group {
+  font-size: 0.9rem;
+  font-weight: 500;
+  line-height: 1rem;
 }
