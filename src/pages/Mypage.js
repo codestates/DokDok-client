@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 import PostList from '../components/PostList';
+import '../scss/Mypage.scss';
 
 const Myapage = ({ isLogin, userinfo, history }) => {
   if (!isLogin) {
@@ -47,26 +48,34 @@ const Myapage = ({ isLogin, userinfo, history }) => {
   return (
     <div className="Mypage">
       <div className="user-info-area">
-        <div className="user-profile-img">
-          <img src={profileImage} className="img" alt=""></img>
-        </div>
         <div className="user-info">
-          <p className="nickname">{userinfo.nickname}</p>
-          <p>{userinfo.email}</p>
-          <button
-            className="btn userinfo-modify"
-            onClick={() => history.push('/updateUserinfo')}
-          >
-            회원정보 수정
-          </button>
+          <div className="user-profile-img">
+            <img src={profileImage} className="user-img"></img>
+          </div>
+          <div className="user-i">
+            <div className="nickname">{userinfo.nickname}</div>
+            <div>{userinfo.email}</div>
+            <div>
+              <button
+                className="btn-userinfo-modify"
+                onClick={() => history.push('/updateUserinfo')}
+              >
+                회원정보 수정
+              </button>
+            </div>
+          </div>
         </div>
         <div className="image-list-type">
-          <ul>
-            <li onClick={getUserPosts}>게시물</li>
-            <li onClick={getInterestPost}>관심글</li>
-          </ul>
+          <div className="slide-btn-1" onClick={getUserPosts}>
+            게시물
+          </div>
+          <div className="slide-btn-2" onClick={getInterestPost}>
+            관심글
+          </div>
         </div>
-        <PostList posts={posts} />
+        <div>
+          <PostList posts={posts} />
+        </div>
       </div>
     </div>
   );
