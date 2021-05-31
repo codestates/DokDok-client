@@ -6,6 +6,15 @@
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
+  .logo-full {
+    width: 10rem;
+    height: 3rem;
+    background: {
+      size: 100%;
+      position: center;
+    }
+    margin-bottom: 2rem;
+  }
 }
 
 .login-input-box {
@@ -36,17 +45,6 @@
     color: $color-main-middle;
   }
 }
-//로고
-.logo-full {
-  width: 10rem;
-  height: 3rem;
-  background: {
-    size: 100%;
-    position: center;
-  }
-  margin-bottom: 2rem;
-}
-
 //버튼
 .login-btn {
   background-color: $color-main-middle;
