@@ -81,14 +81,12 @@ const Login = ({ changeSelect }) => {
   return (
     <div className="login-box">
       <div
-        className="login-logo-full"
+        className="logo-full"
         style={{ backgroundImage: `url(${'dokdok-logo-full.png'})` }}
       />
 
-      <h1>Login</h1>
-
       <form className="login-input-box" onSubmit={handleSubmit(onSubmit)}>
-        <p id="p-group">Email</p>
+        <p className="p-group">Email</p>
         <label className="input-box">
           <input
             placeholder="email"
@@ -104,7 +102,7 @@ const Login = ({ changeSelect }) => {
           {errors.email && <p>{errors.email.message}</p>}
         </label>
 
-        <p id="p-group">Password</p>
+        <p className="p-group">Password</p>
         <label className="input-box">
           <input
             placeholder="password"
@@ -120,27 +118,31 @@ const Login = ({ changeSelect }) => {
           {errors.password && <p>{errors.password.message}</p>}
         </label>
 
-        <button className="login-btn" type="submit">
+        <button className="login-btn btn" type="submit">
           Login
         </button>
         <div className="signup-select-area">
           <label>Don't have an account?</label>
 
-          <span className="click-btn" onClick={changeSelect}>
-            Signup
-          </span>
+          <span onClick={changeSelect}>Signup</span>
         </div>
       </form>
-      <div>
-        <button className="btn-social-login" onClick={kakaoLogin}>
-          <img src="kakao-login-btn.png"></img>
-        </button>
-        <button className="btn-social-login" onClick={googleLogin}>
-          <img src="google-login-btn.png"></img>
-        </button>
-        <button className="btn-social-login" onClick={naverLogin}>
-          <img src="naver-login-btn.png"></img>
-        </button>
+      <div className="social-login">
+        <div
+          className="btn-social-login"
+          style={{ backgroundImage: `url(${'social-login-kakao.png'})` }}
+          onClick={kakaoLogin}
+        />
+        <div
+          className="btn-social-login"
+          style={{ backgroundImage: `url(${'social-login-google.png'})` }}
+          onClick={googleLogin}
+        />
+        <div
+          className="btn-social-login"
+          style={{ backgroundImage: `url(${'social-login-naver.png'})` }}
+          onClick={naverLogin}
+        />
       </div>
     </div>
   );
