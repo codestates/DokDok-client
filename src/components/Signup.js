@@ -41,15 +41,37 @@ const Signup = ({ changeSelect }) => {
       });
     reset();
   };
+  const kakaoLogin = () => {
+    window.location.assign(
+      `${process.env.REACT_APP_API_URL}/users/kakao/login`,
+    );
+  };
+
+  const naverLogin = () => {
+    window.location.assign(
+      `${process.env.REACT_APP_API_URL}/users/naver/login`,
+    );
+  };
+
+  const googleLogin = () => {
+    window.location.assign(
+      `${process.env.REACT_APP_API_URL}/users/google/login`,
+    );
+  };
   return (
     <div className="signup-box">
-      <h2>로고</h2>
+      <div
+        className="login-logo-full"
+        style={{ backgroundImage: `url(${'dokdok-logo-full.png'})` }}
+      />
+
       <h1>Signup</h1>
 
       <form className="signup-input-box" onSubmit={handleSubmit(onSubmit)}>
-        <div>Email</div>
+        <p id="p-group">Email</p>
         <label className="input-box">
           <input
+            className="input-box-fant"
             placeholder="email"
             {...register('email', {
               required: '이메일을 입력해주세요.',
@@ -63,7 +85,7 @@ const Signup = ({ changeSelect }) => {
           {errors.email && <p>{errors.email.message}</p>}
         </label>
 
-        <div>Nickname</div>
+        <p id="p-group">Nickname</p>
         <label className="input-box">
           <input
             placeholder="nickname"
@@ -78,7 +100,7 @@ const Signup = ({ changeSelect }) => {
           {errors.nickname && <p>{errors.nickname.message}</p>}
         </label>
 
-        <div>Password</div>
+        <p id="p-group">Password</p>
         <label className="input-box">
           <input
             placeholder="password"
@@ -94,7 +116,7 @@ const Signup = ({ changeSelect }) => {
           {errors.password && <p>{errors.password.message}</p>}
         </label>
 
-        <div>Confirm Password</div>
+        <p id="p-group">Confirm Password</p>
         <label className="input-box">
           <input
             placeholder="confirm password"
@@ -115,7 +137,9 @@ const Signup = ({ changeSelect }) => {
 
       <div className="login-select-area">
         <label>You have an account?</label>
-        <span onClick={changeSelect}>Login</span>
+        <span className="click-btn" onClick={changeSelect}>
+          Login
+        </span>
       </div>
     </div>
   );

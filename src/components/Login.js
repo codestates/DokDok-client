@@ -80,11 +80,15 @@ const Login = ({ changeSelect }) => {
 
   return (
     <div className="login-box">
-      <h2>로고</h2>
+      <div
+        className="login-logo-full"
+        style={{ backgroundImage: `url(${'dokdok-logo-full.png'})` }}
+      />
+
       <h1>Login</h1>
 
       <form className="login-input-box" onSubmit={handleSubmit(onSubmit)}>
-        <div>Email</div>
+        <p id="p-group">Email</p>
         <label className="input-box">
           <input
             placeholder="email"
@@ -100,7 +104,7 @@ const Login = ({ changeSelect }) => {
           {errors.email && <p>{errors.email.message}</p>}
         </label>
 
-        <div>Password</div>
+        <p id="p-group">Password</p>
         <label className="input-box">
           <input
             placeholder="password"
@@ -115,18 +119,28 @@ const Login = ({ changeSelect }) => {
           />
           {errors.password && <p>{errors.password.message}</p>}
         </label>
-        <p></p>
+
         <button className="login-btn" type="submit">
           Login
         </button>
-      </form>
-      <button onClick={kakaoLogin}>카카오</button>
-      <button onClick={googleLogin}>구글</button>
-      <button onClick={naverLogin}>네이버</button>
-      <div className="signup-select-area">
-        <label>Don't have an account?</label>
+        <div className="signup-select-area">
+          <label>Don't have an account?</label>
 
-        <span onClick={changeSelect}>Signup</span>
+          <span className="click-btn" onClick={changeSelect}>
+            Signup
+          </span>
+        </div>
+      </form>
+      <div>
+        <button className="btn-social-login" onClick={kakaoLogin}>
+          <img src="kakao-login-btn.png"></img>
+        </button>
+        <button className="btn-social-login" onClick={googleLogin}>
+          <img src="google-login-btn.png"></img>
+        </button>
+        <button className="btn-social-login" onClick={naverLogin}>
+          <img src="naver-login-btn.png"></img>
+        </button>
       </div>
     </div>
   );
