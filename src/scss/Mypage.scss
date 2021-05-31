@@ -1,0 +1,86 @@
+.Mypage {
+  display: flex;
+  flex-flow: row wrap;
+  margin: {
+    top: 2rem;
+    left: auto;
+    right: auto;
+    bottom: 4rem;
+  }
+  max-width: 1000px;
+  justify-content: center;
+}
+
+.user-info {
+  height: 140px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 100px;
+}
+
+.nickname {
+  position: relative;
+  top: 5px;
+  z-index: 1;
+}
+
+.user-img {
+  flex-flow: center;
+  top: 5px;
+  z-index: 1;
+}
+
+.nickname {
+  font-weight: bold;
+  font-style: italic;
+  font-size: 0.9em;
+  line-height: 2em;
+  margin: auto;
+}
+
+.user-img {
+  outline: 0;
+  border: 13px solid transparent;
+  padding: 0.5rem !important;
+  border-radius: 50%;
+  margin-top: 15px;
+  color: #fff;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}
+
+//수정페이지에서만 적용하기
+.user-img:hover {
+  width: 160px;
+  transform: scale(1.2, 1.2);
+}
+
+.user-img:focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.image-list-type {
+  height: 30px;
+  border-bottom: 2px solid #8fde9e;
+}
+.slide-btn-1 {
+  float: left;
+  margin: 0 0 0 20px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.slide-btn-2 {
+  float: left;
+  margin: 0 0 0 20px;
+  font-weight: bold;
+}
+
+.btn-userinfo-modify {
+  background-color: #8fde9e;
+  border: none;
+  color: white;
+  border-radius: 1rem;
+}
