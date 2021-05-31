@@ -36,20 +36,20 @@ const Foother = () => {
 
         <div>Front</div>
         <div className="front">
-          <a href="https://github.com/" target="_blank" rel="noreferrer">
+          <a href="https://github.com/hande-sof" target="_blank" rel="noreferrer">
             이소임
           </a>
-          <a href="https://github.com/" target="_blank" rel="noreferrer">
+          <a href="https://github.com/do0ogz" target="_blank" rel="noreferrer">
             최시용
           </a>
         </div>
 
         <div>Back</div>
         <div className="back">
-          <a href="https://github.com/" target="_blank" rel="noreferrer">
+          <a href="https://github.com/KangJuHyeon" target="_blank" rel="noreferrer">
             강주현
           </a>
-          <a href="https://github.com/" target="_blank" rel="noreferrer">
+          <a href="https://github.com/0r0loo" target="_blank" rel="noreferrer">
             조태규
           </a>
         </div>
