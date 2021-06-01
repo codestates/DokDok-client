@@ -5,7 +5,8 @@ import { Link } from 'react-router-dom';
 const Container = styled.div`
   display: flex;
   align-items: center;
-  border: 1px solid pink;
+  border: 0.8px solid #ced4da;
+  border-radius: 1rem;
   padding: 0.8rem;
   margin-bottom: 0.5rem;
 `;
@@ -40,10 +41,10 @@ function RoomItem({ room }) {
   return (
     <Container>
       <ImageContainer>
-        <img src={room.img} />
+        <img src={room.opponentProfileImg} />
       </ImageContainer>
       <NameDiv>
-        <Link to={`/rooms/${room.roomId}`}>{room.name}</Link>
+        <Link to={`/rooms/${room.roomId}`}>{room.opponentNicknam}</Link>
       </NameDiv>
       <TimeDiv>{room.time}</TimeDiv>
     </Container>
