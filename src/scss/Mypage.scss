@@ -25,7 +25,6 @@
   }
 
   .user-img {
-    flex-flow: center;
     top: 5px;
     z-index: 1;
   }
@@ -41,15 +40,15 @@
     }
   }
 
+  .user-profile-img {
+    width: 6rem;
+    height: 6rem;
+    margin-right: 2rem;
+  }
   .user-img {
-    outline: 0;
-    border: 13px solid transparent;
-    padding: 0.5rem !important;
     border-radius: 50%;
-    margin-top: 15px;
-    color: #fff;
-    width: 150px;
-    height: 150px;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
   }
 
@@ -58,6 +57,7 @@
     width: 800px;
     border-bottom: 2px solid $color-grey-border;
   }
+
   @media screen and (max-width: 800px) {
     .image-list-type {
       width: 100%;

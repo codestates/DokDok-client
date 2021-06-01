@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
-import { setMessageModal, setUserinfo } from '../actions';
+import { setIsLoading, setMessageModal, setUserinfo } from '../actions';
 import '../scss/UpdateUserInfo.scss';
 
 const UpdateUserInfo = ({ userinfo, history }) => {
@@ -28,6 +28,8 @@ const UpdateUserInfo = ({ userinfo, history }) => {
       dispatch(setMessageModal(true, '수정된 사항이 없습니다.'));
       return;
     }
+
+    dispatch(setIsLoading(true));
 
     const frm = new FormData();
 
@@ -89,121 +91,101 @@ const UpdateUserInfo = ({ userinfo, history }) => {
 
   return (
     <form className="update-user-info" onSubmit={handleSubmit(onSubmit)}>
+      <div className="header">
+        <i className="fas fa-pen fa-2x"></i>
+        <h2>회원 정보수정</h2>
+      </div>
       <div className="update-box">
-        <div className="user-profile">
-          <label className="user-profile-img">
-            <input
-              className="hidden"
-              type="file"
-              id="file"
-              accept="image/jpg, image/jpeg, image/png"
-              onChange={(e) => insertImg(e)}
-            ></input>
-            <div className="hover-img">
-              <img
-                src={previewImg ? previewImg : previousImg}
-                className="user-img"
-              ></img>
-              <p className="hover-text">클릭</p>
-              <div className="hover-div"></div>
+        <label>
+          <input
+            className="hidden"
+            type="file"
+            id="file"
+            accept="image/jpg, image/jpeg, image/png"
+            onChange={(e) => insertImg(e)}
+          ></input>
+          <div className="user-profile-img">
+            <img src={previewImg ? previewImg : previousImg} alt="" />
+            <div className="hover-overlay">
+              <p>이미지</p>
+              <p>업로드</p>
             </div>
-          </label>
-        </div>
+          </div>
+        </label>
 
         <div className="user-info-box">
-          <div className="user-info-email">
+          <div className="user-info-left">
             <span>이메일</span>
-            <div>{userinfo.email}</div>
+            <span>닉네임</span>
+            <span>비밀번호</span>
           </div>
 
-          <div className="user-info-nickname">
-            <span className="text-nickname">닉네임</span>
-            {isNickNameVisible ? (
-              <label className="input-box-nickname">
-                <input
-                  defaultValue={userinfo.nickname}
-                  type="text"
-                  {...register('nickname', {
-                    required: '닉네임을 입력해주세요.',
-                    maxLength: {
-                      value: 10,
-                      message: '10자 미만으로 설정해주세요.',
-                    },
-                  })}
-                />
-                {errors.nickname && (
-                  <p className="err-message-nickname">
-                    {errors.nickname.message}
-                  </p>
-                )}
-                <button
-                  className="btn-nickname-cancle"
-                  onClick={changeNickNameVisible}
-                >
-                  취소
-                </button>
-              </label>
-            ) : (
-              <div>
-                <div>{userinfo.nickname}</div>
-                <button
-                  className="btn-nickname-chacnge"
-                  onClick={changeNickNameVisible}
-                >
-                  변경
-                </button>
-              </div>
-            )}
+          <div className="user-info-right">
+            <span>{userinfo.email}</span>
+            <div className="input-wrapper">
+              {isNickNameVisible ? (
+                <label>
+                  <input
+                    defaultValue={userinfo.nickname}
+                    type="text"
+                    {...register('nickname', {
+                      required: '닉네임을 입력해주세요.',
+                      maxLength: {
+                        value: 10,
+                        message: '10자 미만으로 설정해주세요.',
+                      },
+                    })}
+                  />
+                  <button className="btn" onClick={changeNickNameVisible}>
+                    취소
+                  </button>
+                  {errors.nickname && <p>{errors.nickname.message}</p>}
+                </label>
+              ) : (
+                <div>
+                  <span>{userinfo.nickname}</span>
+                  <button className="btn" onClick={changeNickNameVisible}>
+                    변경
+                  </button>
+                </div>
+              )}
+            </div>
+            <div className="input-wrapper">
+              {isPassWordVisible ? (
+                <label>
+                  <input
+                    className="input-box-password"
+                    type="password"
+                    {...register('password', {
+                      required: '비밀번호를 입력해주세요.',
+                      minLength: {
+                        value: 6,
+                        message: '비밀번호는 최소 6자 이상입니다.',
+                      },
+                    })}
+                  />
+                  <button className="btn" onClick={changePassWordVisible}>
+                    취소
+                  </button>
+                  {errors.password && <p>{errors.password.message}</p>}
+                </label>
+              ) : (
+                <div>
+                  <button className="btn" onClick={changePassWordVisible}>
+                    변경
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
-          <div className="user-info-password">
-            <span>비밀번호</span>
-            {isPassWordVisible ? (
-              <label>
-                <input
-                  className="input-box-password"
-                  type="password"
-                  {...register('password', {
-                    required: '비밀번호를 입력해주세요.',
-                    minLength: {
-                      value: 6,
-                      message: '비밀번호는 최소 6자 이상입니다.',
-                    },
-                  })}
-                />
-                {errors.password && (
-                  <p className="err-message-password">
-                    {errors.password.message}
-                  </p>
-                )}
-                <button
-                  className="btn-password-cancle"
-                  onClick={changePassWordVisible}
-                >
-                  취소
-                </button>
-              </label>
-            ) : (
-              <div>
-                <button
-                  className="btn-password-chacnge"
-                  onClick={changePassWordVisible}
-                >
-                  변경
-                </button>
-              </div>
-            )}
-          </div>
-          <div className="btn-sub-update">
-            <button className="btn-sub" type="submit">
-              수정
-            </button>
-            <button
-              className="btn-cancle-update"
-              onClick={() => history.push('/mypage')}
-            >
-              취소
-            </button>
-          </div>
+        </div>
+        <div className="btn-sub-update">
+          <button className="btn" type="submit">
+            수정
+          </button>
+          <button className="btn" onClick={() => history.push('/mypage')}>
+            취소
+          </button>
         </div>
       </div>
     </form>

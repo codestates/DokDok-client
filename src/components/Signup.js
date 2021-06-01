@@ -62,7 +62,7 @@ const Signup = ({ changeSelect }) => {
     <div className="signup-box">
       <div
         className="logo-full"
-        style={{ backgroundImage: `url(${'dokdok-logo-full.png'})` }}
+        style={{ backgroundImage: `url(${'images/dokdok-logo-full.png'})` }}
       />
 
       <form className="signup-input-box" onSubmit={handleSubmit(onSubmit)}>

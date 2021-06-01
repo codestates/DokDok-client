@@ -12,12 +12,12 @@ const Nav = ({ isLogin, profileImage, getDefaultPosts, history }) => {
       <div className="nav-logo-and-search">
         <div
           className="nav-logo-full"
-          style={{ backgroundImage: `url(${'dokdok-logo-full.png'})` }}
+          style={{ backgroundImage: `url(${'images/dokdok-logo-full.png'})` }}
           onClick={() => history.push('/')}
         />
         <div
           className="nav-logo-small"
-          style={{ backgroundImage: `url(${'dokdok-logo-small.png'})` }}
+          style={{ backgroundImage: `url(${'images/dokdok-logo-small.png'})` }}
           onClick={() => history.push('/')}
         />
         <div className="nav-search">
