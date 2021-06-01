@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 
 import { useDispatch } from 'react-redux';
-import { setMessageModal, setPost } from '../actions';
+import { setMessageModal, setPost, setIsLoading } from '../actions';
 
 import DaumPostCode from '../components/DaumPostcode';
 import MarkerMap from '../components/MarkerMap';
