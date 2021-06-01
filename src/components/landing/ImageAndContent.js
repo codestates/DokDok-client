@@ -16,13 +16,13 @@ function ImageAndContent({
         {className === 'landing-map' ? <h3>01</h3> : null}
         {className === 'chat-women' ? <h3>02</h3> : null}
         <div className="headers">
-          {headers.map((header) => (
-            <h1>{header}</h1>
+          {headers.map((header, i) => (
+            <h1 key={i}>{header}</h1>
           ))}
         </div>
         <div className="sentences">
-          {sentences.map((sentence) => (
-            <p>{sentence}</p>
+          {sentences.map((sentence, i) => (
+            <p key={i}>{sentence}</p>
           ))}
         </div>
         {className === 'last-content' ? <img src={imageLink} alt="" /> : null}
