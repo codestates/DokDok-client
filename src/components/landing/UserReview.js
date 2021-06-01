@@ -26,8 +26,9 @@ function UserReview({}) {
     <div className="user-review">
       <h1>독독 사용자들은 어떻게 생각할까요?</h1>
       <div className="reviews">
-        {reviews.map((review) => (
+        {reviews.map((review, i) => (
           <UserReviewEntry
+            key={i}
             username={review.username}
             profilePic={review.profilePic}
             content={review.content}
