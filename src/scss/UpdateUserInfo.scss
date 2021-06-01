@@ -13,6 +13,7 @@
     div {
       display: inline-block;
       font-size: 15px;
+      margin-left: 30px;
     }
     p {
       display: inline-block;
@@ -25,6 +26,7 @@
     position: relative;
   }
   input {
+    margin-left: 60px;
     margin-top: 0rem;
     margin-bottom: 1.5rem;
     padding: 1rem;
@@ -41,6 +43,7 @@
     position: relative;
   }
   input {
+    margin-left: 15px;
     margin-top: 0rem;
     margin-bottom: 1.5rem;
     padding: 1rem;
@@ -53,17 +56,67 @@
 }
 
 //img
+
 .user-img {
+  outline: 0;
+  border: 13px solid transparent;
+  padding: 0.5rem !important;
+  border-radius: 50%;
+  margin-top: 15px;
+  color: #fff;
   width: 150px;
   height: 150px;
   object-fit: cover;
   display: block;
   margin: 0px auto;
   margin-bottom: 50px;
+  z-index: 1;
 }
 
-.user-img:focus {
-  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+.hover-img {
+  position: relative;
+  .hover {
+    .hover-text,
+    .hover-div {
+      visibility: visible;
+    }
+  }
+}
+
+// .user-img::after {
+//   width: 100%;
+//   height: 100%;
+//   background-size: 100% 100%;
+//   background: #000000;
+//   opacity: 0.9;
+// }
+
+.hover-div {
+  background-color: $color-transparent-black;
+  position: absolute;
+  visibility: hidden;
+  margin-left: 75px;
+  top: 20px;
+  outline: 0;
+  border: 13px solid transparent;
+  padding: 0.5rem !important;
+  border-radius: 50%;
+  color: #fff;
+  width: 110px;
+  height: 110px;
+  object-fit: cover;
+  display: block;
+  z-index: 1;
+}
+
+.hover-text {
+  position: absolute;
+  visibility: hidden;
+  margin-left: 117px;
+  bottom: 15px;
+  color: #1a4663;
+  font-weight: bold;
+  font-size: 12px;
 }
 
 .user-info-box {
@@ -78,7 +131,7 @@
 
 .user-info-email {
   font-weight: bold;
-  margin-bottom: 25px;
+  margin-bottom: 30px;
   p {
     margin-right: 20px;
     font-weight: bold;
@@ -90,7 +143,6 @@
   margin-bottom: 25px;
   p {
     margin-right: 20px;
-    font-weight: bold;
   }
 }
 
@@ -98,37 +150,36 @@
   font-weight: bold;
   p {
     margin-right: 60px;
-    font-weight: bold;
   }
 }
 
 .btn-nickname-chacnge {
   margin-left: 98px;
-  background-color: #8fde9e;
+  background-color: $color-main-middle;
   border: none;
   color: white;
   border-radius: 1rem;
 }
 
 .btn-nickname-cancle {
-  margin-left: 36px;
-  background-color: #8fde9e;
+  margin-left: 40px;
+  background-color: $color-main-middle;
   border: none;
   color: white;
   border-radius: 1rem;
 }
 
 .btn-password-chacnge {
-  margin-left: 110px;
-  background-color: #8fde9e;
+  margin-left: 127px;
+  background-color: $color-main-middle;
   border: none;
   color: white;
   border-radius: 1rem;
 }
 
 .btn-password-cancle {
-  margin-left: 5px;
-  background-color: #8fde9e;
+  margin-left: 10px;
+  background-color: $color-main-middle;
   border: none;
   color: white;
   border-radius: 1rem;
@@ -136,7 +187,7 @@
 
 .input-box-password {
   margin-right: 30px;
-  margin-left: -50px;
+  margin-left: 50px;
 }
 
 .btn-sub-update {
@@ -146,7 +197,7 @@
 
 .btn-sub {
   margin-left: 85px;
-  background-color: #8fde9e;
+  background-color: $color-main-middle;
   border: none;
   color: white;
   border-radius: 1rem;
@@ -155,7 +206,7 @@
 
 .btn-cancle-update {
   margin-left: 15px;
-  background-color: #8fde9e;
+  background-color: $color-main-middle;
   border: none;
   color: white;
   border-radius: 1rem;
@@ -171,6 +222,7 @@
   padding: 0rem;
   color: red;
   font-weight: normal;
+  margin-left: 70px;
 }
 
 .err-message-password {
@@ -183,4 +235,9 @@
   padding: 0rem;
   color: red;
   font-weight: normal;
+  margin-left: 24px;
+}
+
+.text-nickname {
+  margin-right: -30px;
 }

@@ -99,10 +99,14 @@ const UpdateUserInfo = ({ userinfo, history }) => {
               accept="image/jpg, image/jpeg, image/png"
               onChange={(e) => insertImg(e)}
             ></input>
-            <img
-              src={previewImg ? previewImg : previousImg}
-              className="user-img"
-            ></img>
+            <div className="hover-img">
+              <img
+                src={previewImg ? previewImg : previousImg}
+                className="user-img"
+              ></img>
+              <p className="hover-text">클릭</p>
+              <div className="hover-div"></div>
+            </div>
           </label>
         </div>
 
@@ -113,7 +117,7 @@ const UpdateUserInfo = ({ userinfo, history }) => {
           </div>
 
           <div className="user-info-nickname">
-            <span>닉네임</span>
+            <span className="text-nickname">닉네임</span>
             {isNickNameVisible ? (
               <label className="input-box-nickname">
                 <input
