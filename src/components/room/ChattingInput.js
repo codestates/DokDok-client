@@ -47,7 +47,12 @@ function ChattingInput({ onSubmit, onMessageChange, message }) {
     <>
       <ChattingForm onSubmit={onSubmit}>
         <Div>
-          <InputArea onChange={onMessageChange} value={message}></InputArea>
+          <InputArea
+            onChange={onMessageChange}
+            value={message}
+            autoFocus
+            required
+          ></InputArea>
           <Button>전송</Button>
         </Div>
       </ChattingForm>
