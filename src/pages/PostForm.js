@@ -114,6 +114,8 @@ const PostForm = ({ post, history, match }) => {
       dispatch(setMessageModal(true, '빈 항목이 있습니다.'));
       return;
     }
+    
+    dispatch(setIsLoading(true));
 
     const formData = new FormData();
     formData.append('title', title);
