@@ -4,240 +4,133 @@
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
-  max-height: 100%;
-  width: 100%;
-}
+  justify-content: center;
+  min-height: 700px;
+  margin-bottom: 3rem;
 
-.user-info-box {
-  div {
-    div {
-      display: inline-block;
-      font-size: 15px;
-      margin-left: 30px;
+  .header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 4rem;
+
+    i {
+      color: $color-main-middle;
+      margin-right: 0.5rem;
     }
+  }
+
+  .user-info-box {
+    display: flex;
+    margin: {
+      top: 3rem;
+      bottom: 2.8rem;
+    }
+  }
+
+  .user-profile-img {
+    position: relative;
+    width: 8rem;
+    height: 8rem;
+    margin: {
+      left: auto;
+      right: auto;
+    }
+    border-radius: 50%;
+    overflow: hidden;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hover-overlay {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: $color-transparent-black;
+      transition: all 0.4s;
+      top: 0;
+      visibility: hidden;
+      opacity: 0;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      p {
+        margin: 0;
+        color: white;
+      }
+    }
+
+    &:hover {
+      .hover-overlay {
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+  }
+
+  .user-info-left,
+  .user-info-right {
+    display: flex;
+    flex-direction: column;
+
+    span {
+      margin-bottom: 2.5rem;
+    }
+  }
+
+  .user-info-left {
+    font-weight: 500;
+    margin-right: 2rem;
+  }
+
+  .user-info-right {
+    min-width: 250px;
+
+    .input-wrapper {
+      height: 1.8rem;
+      position: relative;
+      margin-bottom: 2.5rem;
+    }
+
+    input {
+      padding: 0.5rem;
+      position: absolute;
+      margin-top: -0.3rem;
+      border-radius: 0.5rem;
+      outline: none;
+      border: none;
+      background-color: $color-grey-border;
+    }
+
+    button {
+      position: absolute;
+      right: 0;
+      width: 3rem;
+    }
+
     p {
-      display: inline-block;
+      position: absolute;
+      font-size: 0.8rem;
+      margin: 0.2rem 0;
+      top: 1.8rem;
+      color: red;
     }
   }
-}
 
-.user-info-nickname {
-  label {
-    position: relative;
-  }
-  input {
-    margin-left: 60px;
-    margin-top: 0rem;
-    margin-bottom: 1.5rem;
-    padding: 1rem;
-    height: 5px;
-    outline: none;
-    border: none;
-    border-radius: 0.5rem;
-    background-color: #f0f0f0;
-  }
-}
-
-.user-info-password {
-  label {
-    position: relative;
-  }
-  input {
-    margin-left: 15px;
-    margin-top: 0rem;
-    margin-bottom: 1.5rem;
-    padding: 1rem;
-    height: 5px;
-    outline: none;
-    border: none;
-    border-radius: 0.5rem;
-    background-color: #f0f0f0;
-  }
-}
-
-//img
-
-.user-img {
-  outline: 0;
-  border: 13px solid transparent;
-  padding: 0.5rem !important;
-  border-radius: 50%;
-  margin-top: 15px;
-  color: #fff;
-  width: 150px;
-  height: 150px;
-  object-fit: cover;
-  display: block;
-  margin: 0px auto;
-  margin-bottom: 50px;
-  z-index: 1;
-}
-
-.hover-img {
-  position: relative;
-  .hover {
-    .hover-text,
-    .hover-div {
-      visibility: visible;
-    }
-  }
-}
-
-// .user-img::after {
-//   width: 100%;
-//   height: 100%;
-//   background-size: 100% 100%;
-//   background: #000000;
-//   opacity: 0.9;
-// }
-
-.hover-div {
-  background-color: $color-transparent-black;
-  position: absolute;
-  visibility: hidden;
-  margin-left: 75px;
-  top: 20px;
-  outline: 0;
-  border: 13px solid transparent;
-  padding: 0.5rem !important;
-  border-radius: 50%;
-  color: #fff;
-  width: 110px;
-  height: 110px;
-  object-fit: cover;
-  display: block;
-  z-index: 1;
-}
-
-.hover-text {
-  position: absolute;
-  visibility: hidden;
-  margin-left: 117px;
-  bottom: 15px;
-  color: #1a4663;
-  font-weight: bold;
-  font-size: 12px;
-}
-
-.user-info-box {
-  justify-content: space-between;
-  flex-flow: column nowrap;
-  width: 100%;
-  align-items: center;
-  div {
+  .btn-sub-update {
+    display: flex;
     justify-content: center;
+    .btn {
+      padding: 0.8rem;
+      margin: 0.2rem;
+      width: 6rem;
+    }
   }
-}
-
-.user-info-email {
-  font-weight: bold;
-  margin-bottom: 30px;
-  p {
-    margin-right: 20px;
-    font-weight: bold;
+  .hidden {
+    display: none;
   }
-}
-
-.user-info-nickname {
-  font-weight: bold;
-  margin-bottom: 25px;
-  p {
-    margin-right: 20px;
-  }
-}
-
-.user-info-password {
-  font-weight: bold;
-  p {
-    margin-right: 60px;
-  }
-}
-
-.btn-nickname-chacnge {
-  margin-left: 98px;
-  background-color: $color-main-middle;
-  border: none;
-  color: white;
-  border-radius: 1rem;
-}
-
-.btn-nickname-cancle {
-  margin-left: 40px;
-  background-color: $color-main-middle;
-  border: none;
-  color: white;
-  border-radius: 1rem;
-}
-
-.btn-password-chacnge {
-  margin-left: 127px;
-  background-color: $color-main-middle;
-  border: none;
-  color: white;
-  border-radius: 1rem;
-}
-
-.btn-password-cancle {
-  margin-left: 10px;
-  background-color: $color-main-middle;
-  border: none;
-  color: white;
-  border-radius: 1rem;
-}
-
-.input-box-password {
-  margin-right: 30px;
-  margin-left: 50px;
-}
-
-.btn-sub-update {
-  margin-top: 40px;
-  margin-bottom: 60px;
-}
-
-.btn-sub {
-  margin-left: 85px;
-  background-color: $color-main-middle;
-  border: none;
-  color: white;
-  border-radius: 1rem;
-  padding: 10px 20px;
-}
-
-.btn-cancle-update {
-  margin-left: 15px;
-  background-color: $color-main-middle;
-  border: none;
-  color: white;
-  border-radius: 1rem;
-  padding: 10px 20px;
-}
-
-.err-message-nickname {
-  position: absolute;
-  left: 0;
-  top: 32px;
-  font-size: 0.7em;
-  line-height: 2em;
-  padding: 0rem;
-  color: red;
-  font-weight: normal;
-  margin-left: 70px;
-}
-
-.err-message-password {
-  position: absolute;
-  left: 0;
-  top: 32px;
-  margin-left: -50px;
-  font-size: 0.7em;
-  line-height: 2em;
-  padding: 0rem;
-  color: red;
-  font-weight: normal;
-  margin-left: 24px;
-}
-
-.text-nickname {
-  margin-right: -30px;
 }

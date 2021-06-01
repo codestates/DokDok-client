@@ -1,0 +1,71 @@
+@import '../color';
+
+.feature-detail {
+  margin: {
+    top: 20vh;
+    bottom: 20vh;
+  }
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  .feature {
+    margin-top: 5vh;
+    padding: 1rem;
+    width: 18rem;
+    height: 20rem;
+    border-radius: 1rem;
+    box-shadow: 0px 5px 20px $color-grey-border;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+
+    i {
+      position: relative;
+    }
+
+    h2 {
+      margin: 1rem;
+    }
+
+    .fa-book-open {
+      color: $color-main-blue;
+      .background {
+        background-color: $color-main-light-blue;
+      }
+    }
+    .fa-map-marker-alt {
+      color: $color-main-middle;
+      .background {
+        background-color: $color-main-light-middle;
+      }
+    }
+    .fa-comment-dots {
+      color: $color-main-green;
+      .background {
+        background-color: $color-main-light-green;
+      }
+    }
+
+    .background {
+      z-index: -10;
+      position: absolute;
+      width: 2.5rem;
+      height: 2.5rem;
+      top: -20px;
+      right: -20px;
+      border-radius: 50%;
+      background-color: $color-main-light-blue;
+    }
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .feature-detail {
+    margin: {
+      top: 10vh;
+      bottom: 15vh;
+    }
+  }
+}

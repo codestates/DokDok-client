@@ -19,7 +19,7 @@ const MarkerMap = ({ latitude, longitude, changeRoadAddress }) => {
     // 지도의 우측에 확대 축소 컨트롤을 추가한다
     map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
 
-    const imageSrc = 'book-marker.png'; // 마커이미지의 주소
+    const imageSrc = 'images/book-marker.png'; // 마커이미지의 주소
     const imageSize = new kakao.maps.Size(80, 80); // 마커이미지의 크기
     const imageOption = { offset: new kakao.maps.Point(39, 69) }; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
 

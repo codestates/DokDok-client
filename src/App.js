@@ -18,6 +18,7 @@ import { setCategoryPosts, setSearchPosts } from './actions/index';
 import LoginModal from './components/LoginModal';
 import MessageModal from './components/MessageModal';
 import LoadingIndicator from './components/LoadingIndicator';
+import Landing from './pages/Landing';
 
 const App = () => {
   const loginInfo = useSelector((state) => state.userReducer);
@@ -52,16 +53,7 @@ const App = () => {
         getDefaultPosts={getDefaultPosts}
       />
       <Switch>
-        <Route
-          exact
-          path="/updateUserInfo"
-          render={() => <UpdateUserInfo userinfo={userinfo} />}
-        />
-        <Route
-          exact
-          path="/mypage"
-          render={() => <Mypage isLogin={isLogin} userinfo={userinfo} />}
-        />
+        <Route exact path="/" render={() => <Landing />} />
         <Route
           path="/main"
           render={() => (
@@ -98,6 +90,16 @@ const App = () => {
           exact
           path="/post-create"
           render={() => <PostForm post={post} />}
+        />
+        <Route
+          exact
+          path="/mypage"
+          render={() => <Mypage isLogin={isLogin} userinfo={userinfo} />}
+        />
+        <Route
+          exact
+          path="/updateUserInfo"
+          render={() => <UpdateUserInfo userinfo={userinfo} />}
         />
       </Switch>
       <Foother />

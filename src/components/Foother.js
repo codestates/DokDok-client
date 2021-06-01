@@ -6,7 +6,7 @@ const Foother = () => {
     <div className="foother">
       <div
         className="logo-full"
-        style={{ backgroundImage: `url(${'dokdok-logo-full.png'})` }}
+        style={{ backgroundImage: `url(${'images/dokdok-logo-full.png'})` }}
       />
       <div className="contact">
         <p className="bold-text">CONTACT</p>
@@ -36,7 +36,11 @@ const Foother = () => {
 
         <div>Front</div>
         <div className="front">
-          <a href="https://github.com/hande-sof" target="_blank" rel="noreferrer">
+          <a
+            href="https://github.com/hande-sof"
+            target="_blank"
+            rel="noreferrer"
+          >
             이소임
           </a>
           <a href="https://github.com/do0ogz" target="_blank" rel="noreferrer">
@@ -46,7 +50,11 @@ const Foother = () => {
 
         <div>Back</div>
         <div className="back">
-          <a href="https://github.com/KangJuHyeon" target="_blank" rel="noreferrer">
+          <a
+            href="https://github.com/KangJuHyeon"
+            target="_blank"
+            rel="noreferrer"
+          >
             강주현
           </a>
           <a href="https://github.com/0r0loo" target="_blank" rel="noreferrer">
