@@ -61,7 +61,9 @@ function ChattingContainer({ socket, roomId }) {
     messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
   };
 
-  useEffect(scrollToBottom, [msgList]);
+  useEffect(() => {
+    return scrollToBottom;
+  }, [msgList]);
 
   if (loading) return <div>로딩중</div>;
   if (error) return <div>에러</div>;
