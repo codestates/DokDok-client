@@ -60,7 +60,7 @@ const Inquire = ({ history }) => {
             <p className="p-font">이메일</p>
 
             <input
-              placeholder="email"
+              placeholder="이메일"
               {...register('email', {
                 required: '이메일을 입력해주세요.',
                 pattern: {
@@ -75,7 +75,7 @@ const Inquire = ({ history }) => {
             <p className="p-font">제목</p>
 
             <input
-              placeholder="title"
+              placeholder="제목"
               {...register('title', {
                 required: '제목을 입력해주세요.',
                 maxLength: {
