@@ -76,4 +76,13 @@
   p {
     margin-top: 1rem;
   }
+
+  @media screen and (max-width: 500px) {
+    .reviews {
+      margin: {
+        left: 0;
+        right: 0;
+      }
+    }
+  }
 }

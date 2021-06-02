@@ -42,7 +42,6 @@
   .chat-women,
   .last-content {
     min-height: 1000px;
-    // border: 1px solid red;
     display: flex;
     position: relative;
 
@@ -88,7 +87,7 @@
           -2px -2px white;
       }
       p {
-        width: 22rem;
+        max-width: 22rem;
         background-color: rgba(250, 250, 250, 0.3);
       }
       top: 10%;
@@ -152,12 +151,21 @@
     h1 {
       font-size: 2rem;
     }
+    .landing {
+      margin-bottom: 1rem;
+    }
 
     .first-content,
     .landing-map,
     .chat-women,
     .last-content {
       min-height: 800px;
+    }
+  }
+
+  @media screen and (max-width: 300px) {
+    .btn {
+      width: 50%;
     }
   }
 }
