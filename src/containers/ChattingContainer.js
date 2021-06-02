@@ -20,7 +20,6 @@ function ChattingContainer({ socket, roomId }) {
 
   useEffect(() => {
     dispatch(getChatData(roomId));
-
     // 여기에다가 채팅목록 뿌려줘야됨 쿼리파라미터로 roomid다 가져와서
     //console.log(roomId);
     socket.on('onReceive', (msg) => {
@@ -57,6 +56,13 @@ function ChattingContainer({ socket, roomId }) {
     [message],
   );
 
+  const messagesEndRef = useRef(null);
+  const scrollToBottom = () => {
+    messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  useEffect(scrollToBottom, [msgList]);
+
   if (loading) return <div>로딩중</div>;
   if (error) return <div>에러</div>;
   if (!data) return <div>비었음</div>;
@@ -65,6 +71,7 @@ function ChattingContainer({ socket, roomId }) {
     <>
       <ChattingMessage>
         <Chatting roomId={roomId} chatContent={msgList} data={data} />
+        <div ref={messagesEndRef} />
       </ChattingMessage>
       <ChattingInput
         onSubmit={onSubmit}
