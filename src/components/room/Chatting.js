@@ -35,13 +35,13 @@ import ChattingYou from './ChattingYou';
 function Chatting({ roomId, chatContent, data }) {
   const loginInfo = useSelector((state) => state.userReducer);
   const { userinfo } = loginInfo;
-  console.log(data);
+  // console.log(data);
   return (
     <>
       {data &&
-        data.map((chat, idx) => {
-          if (chat.id === -1) {
-            return <div>{chat.msg}</div>;
+        data.map((chat) => {
+          if (chat.hello === 'hello') {
+            return;
           } else if (userinfo.id === chat.UserId) {
             return <ChattingMe chat={chat} key={chat.id} />;
           } else {
@@ -49,8 +49,8 @@ function Chatting({ roomId, chatContent, data }) {
           }
         })}
       {chatContent.map((chat, idx) => {
-        if (chat.id === -1) {
-          return <div>{chat.msg}</div>;
+        if (chat.hello === 'hello') {
+          return <div key={idx}>{chat.content}</div>;
         } else if (userinfo.id === chat.id) {
           return <ChattingMe chat={chat} key={idx} />;
         } else {

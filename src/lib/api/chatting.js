@@ -42,6 +42,7 @@ export const chatData = async (roomId) => {
   const response = await axios.get(`${URI}/chattings/${roomId}`, {
     withCredentials: true,
   });
-  console.log(response.data.data);
+  // console.log('====api====');
+  // console.log(response.data.data);
   return response.data.data;
 };

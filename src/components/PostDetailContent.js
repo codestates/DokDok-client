@@ -143,7 +143,7 @@ const PostDetailContent = ({ post, isLogin, userId, history }) => {
               onClick={() => {
                 checkLoginStatus(() => {
                   dispatch(createRoom(post.UserId));
-                  history.push(`/rooms/${roomInfo.roomId}`);
+                  history.push(`/rooms`);
                 });
               }}
             />
