@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 const Container = styled.div`
   display: flex;
+  margin-top: 10px;
 `;
 
 const ImgDiv = styled.div`
@@ -45,7 +46,7 @@ const ChatDiv = styled.div`
 `;
 
 function ChattingYou({ chat }) {
-  //console.log(chat);
+  // console.log(chat);
   return (
     <Container>
       <ImgDiv>

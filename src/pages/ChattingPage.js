@@ -19,7 +19,6 @@ function ChattingPage({ match }) {
   useEffect(() => {
     setCurrentSocket(socketIOClient(`${process.env.REACT_APP_API_URL}`));
   }, []);
-
   if (currentSocket) {
     currentSocket.on('connect', () => {
       currentSocket.emit('join', { roomId: params.id, userinfo });

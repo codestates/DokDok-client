@@ -5,18 +5,18 @@ const { dispatch } = reduxStore;
 
 export default function axiosSetUp() {
   axios.defaults.withCredentials = true;
-  axios.interceptors.request.use(
-    (config) => {
-      if (config.url.includes('login') || config.url.includes('logout')) {
-        return config;
-      }
-      dispatch(setIsLoading(true));
-      return config;
-    },
-    (error) => {
-      return Promise.reject(error);
-    },
-  );
+  // axios.interceptors.request.use(
+  //   (config) => {
+  //     if (config.url.includes('login') || config.url.includes('logout')) {
+  //       return config;
+  //     }
+  //     dispatch(setIsLoading(true));
+  //     return config;
+  //   },
+  //   (error) => {
+  //     return Promise.reject(error);
+  //   },
+  // );
   axios.interceptors.response.use(
     (response) => {
       setTimeout(() => {
