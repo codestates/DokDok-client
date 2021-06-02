@@ -56,15 +56,6 @@ function ChattingContainer({ socket, roomId }) {
     [message],
   );
 
-  const messagesEndRef = useRef(null);
-  const scrollToBottom = () => {
-    messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
-  };
-
-  useEffect(() => {
-    return scrollToBottom;
-  }, [msgList]);
-
   if (loading) return <div>로딩중</div>;
   if (error) return <div>에러</div>;
   if (!data) return <div>비었음</div>;
@@ -72,8 +63,12 @@ function ChattingContainer({ socket, roomId }) {
   return (
     <>
       <ChattingMessage>
-        <Chatting roomId={roomId} chatContent={msgList} data={data} />
-        <div ref={messagesEndRef} />
+        <Chatting
+          roomId={roomId}
+          chatContent={msgList}
+          data={data}
+          msgList={msgList}
+        />
       </ChattingMessage>
       <ChattingInput
         onSubmit={onSubmit}

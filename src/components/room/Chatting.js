@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import ChattingMe from './ChattingMe';
 import ChattingYou from './ChattingYou';
@@ -32,10 +32,19 @@ import ChattingYou from './ChattingYou';
 //   },
 // ];
 
-function Chatting({ roomId, chatContent, data }) {
+function Chatting({ roomId, chatContent, data, msgList }) {
   const loginInfo = useSelector((state) => state.userReducer);
   const { userinfo } = loginInfo;
   // console.log(data);
+
+  const messagesEndRef = useRef(null);
+  const scrollToBottom = () => {
+    if (messagesEndRef) {
+      messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  useEffect(scrollToBottom, [msgList]);
   return (
     <>
       {data &&
@@ -57,6 +66,7 @@ function Chatting({ roomId, chatContent, data }) {
           return <ChattingYou chat={chat} key={idx} />;
         }
       })}
+      <div ref={messagesEndRef} />
     </>
   );
 }
