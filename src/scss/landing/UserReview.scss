@@ -1,0 +1,51 @@
+@import '../color';
+
+.user-review {
+  min-height: 800px;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+  h1 {
+    margin-bottom: 4rem;
+  }
+  .reviews {
+    display: flex;
+  }
+
+  .review-entry {
+    width: 15rem;
+    height: 20rem;
+    border-radius: 1rem;
+    box-shadow: 0px 5px 20px $color-grey-border;
+    margin: 1.5rem;
+    padding: 1.5rem;
+  }
+
+  .userinfo {
+    display: flex;
+  }
+
+  .profile-pic {
+    width: 3rem;
+    height: 3rem;
+    background: {
+      size: cover;
+      position: center;
+    }
+    border-radius: 50%;
+    margin-right: 0.8rem;
+  }
+
+  .username {
+    font-weight: 500;
+  }
+
+  .fa-star {
+    color: rgb(255, 203, 49);
+  }
+
+  p {
+    margin-top: 1rem;
+  }
+}

@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 
 import { useDispatch } from 'react-redux';
-import { setMessageModal, setPost } from '../actions';
+import { setMessageModal, setPost, setIsLoading } from '../actions';
 
 import DaumPostCode from '../components/DaumPostcode';
 import MarkerMap from '../components/MarkerMap';
@@ -114,6 +114,8 @@ const PostForm = ({ post, history, match }) => {
       dispatch(setMessageModal(true, '빈 항목이 있습니다.'));
       return;
     }
+    
+    dispatch(setIsLoading(true));
 
     const formData = new FormData();
     formData.append('title', title);

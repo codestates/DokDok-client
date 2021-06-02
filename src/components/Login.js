@@ -40,7 +40,7 @@ const Login = ({ changeSelect }) => {
           dispatch(
             setUserinfo({
               ...response.data.user,
-              profileImage: 'default-profile-picture_150.jpg',
+              profileImage: 'images/default-profile-picture_150.jpg',
             }),
           );
         } else {
@@ -82,7 +82,7 @@ const Login = ({ changeSelect }) => {
     <div className="login-box">
       <div
         className="logo-full"
-        style={{ backgroundImage: `url(${'dokdok-logo-full.png'})` }}
+        style={{ backgroundImage: `url(${'images/dokdok-logo-full.png'})` }}
       />
 
       <form className="login-input-box" onSubmit={handleSubmit(onSubmit)}>
@@ -130,17 +130,19 @@ const Login = ({ changeSelect }) => {
       <div className="social-login">
         <div
           className="btn-social-login"
-          style={{ backgroundImage: `url(${'social-login-kakao.png'})` }}
+          style={{ backgroundImage: `url(${'images/social-login-kakao.png'})` }}
           onClick={kakaoLogin}
         />
         <div
           className="btn-social-login"
-          style={{ backgroundImage: `url(${'social-login-google.png'})` }}
+          style={{
+            backgroundImage: `url(${'images/social-login-google.png'})`,
+          }}
           onClick={googleLogin}
         />
         <div
           className="btn-social-login"
-          style={{ backgroundImage: `url(${'social-login-naver.png'})` }}
+          style={{ backgroundImage: `url(${'images/social-login-naver.png'})` }}
           onClick={naverLogin}
         />
       </div>

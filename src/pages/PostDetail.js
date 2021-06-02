@@ -35,7 +35,7 @@ const PostDetail = ({ post, isLogin, userId }) => {
       .get(`${process.env.REACT_APP_API_URL}/posts/${post.id}`)
       .then((res) => {
         if (!res.data.data.User.profile_image) {
-          const profileImage = 'default-profile-picture_150.jpg';
+          const profileImage = 'images/default-profile-picture_150.jpg';
           dispatch(
             setPost({
               ...res.data.data,
