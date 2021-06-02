@@ -20,7 +20,6 @@ function ChattingContainer({ socket, roomId }) {
 
   useEffect(() => {
     dispatch(getChatData(roomId));
-
     // 여기에다가 채팅목록 뿌려줘야됨 쿼리파라미터로 roomid다 가져와서
     //console.log(roomId);
     socket.on('onReceive', (msg) => {
@@ -64,7 +63,12 @@ function ChattingContainer({ socket, roomId }) {
   return (
     <>
       <ChattingMessage>
-        <Chatting roomId={roomId} chatContent={msgList} data={data} />
+        <Chatting
+          roomId={roomId}
+          chatContent={msgList}
+          data={data}
+          msgList={msgList}
+        />
       </ChattingMessage>
       <ChattingInput
         onSubmit={onSubmit}

@@ -34,12 +34,12 @@ const Button = styled.button`
   align-items: center;
   margin-left: 0.5rem;
   flex-basis: 5rem;
-  background: #b197fc;
+  background: #56d0a0;
   &:hover {
-    background: ${lighten(0.08, '#b197fc')};
+    background: ${lighten(0.08, '#56d0a0')};
   }
   &:active {
-    background: ${darken(0.1, '#b197fc')};
+    background: ${darken(0.1, '#56d0a0')};
   }
 `;
 function ChattingInput({ onSubmit, onMessageChange, message }) {

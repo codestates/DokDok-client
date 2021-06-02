@@ -15,7 +15,12 @@ function RoomContainer() {
 
   if (loading) return <div>로딩중</div>;
   if (error) return <div>에러</div>;
-  if (!data) return <div>비었음</div>;
+  if (!data)
+    return (
+      <div>
+        <img src="https://i.imgur.com/K5RdjzR.png" alt="" />
+      </div>
+    );
   return (
     <div>
       <Rooms data={data} />
