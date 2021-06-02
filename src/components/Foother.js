@@ -1,7 +1,8 @@
 import React from 'react';
 import '../scss/Foother.scss';
+import { withRouter } from 'react-router-dom';
 
-const Foother = () => {
+const Foother = ({ history }) => {
   return (
     <div className="foother">
       <div
@@ -11,7 +12,7 @@ const Foother = () => {
       <div className="contact">
         <p className="bold-text">CONTACT</p>
 
-        <div onClick={() => {}}>Send inquire</div>
+        <div onClick={() => history.push('/inquire')}>Send inquire</div>
       </div>
       <div className="about-us">
         <p className="bold-text">ABOUT US</p>
@@ -36,7 +37,11 @@ const Foother = () => {
 
         <div>Front</div>
         <div className="front">
-          <a href="https://github.com/hande-sof" target="_blank" rel="noreferrer">
+          <a
+            href="https://github.com/hande-sof"
+            target="_blank"
+            rel="noreferrer"
+          >
             이소임
           </a>
           <a href="https://github.com/do0ogz" target="_blank" rel="noreferrer">
@@ -46,7 +51,11 @@ const Foother = () => {
 
         <div>Back</div>
         <div className="back">
-          <a href="https://github.com/KangJuHyeon" target="_blank" rel="noreferrer">
+          <a
+            href="https://github.com/KangJuHyeon"
+            target="_blank"
+            rel="noreferrer"
+          >
             강주현
           </a>
           <a href="https://github.com/0r0loo" target="_blank" rel="noreferrer">
@@ -58,4 +67,4 @@ const Foother = () => {
   );
 };
 
-export default Foother;
+export default withRouter(Foother);

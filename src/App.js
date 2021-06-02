@@ -12,6 +12,7 @@ import PostDetail from './pages/PostDetail';
 import Rooms from './pages/RoomListPage';
 import Chatting from './pages/ChattingPage';
 import PostForm from './pages/PostForm';
+import Inquire from './pages/Inquire';
 
 import { setCategoryPosts, setSearchPosts } from './actions/index';
 
@@ -71,6 +72,7 @@ const App = () => {
             />
           )}
         />
+        <Route exact path="/inquire" render={() => <Inquire />} />
         <Route
           exact
           path="/search"
