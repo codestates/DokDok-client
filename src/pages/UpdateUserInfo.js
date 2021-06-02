@@ -3,7 +3,12 @@ import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
-import { setIsLoading, setMessageModal, setUserinfo } from '../actions';
+import {
+  setIsLoading,
+  setIsLogin,
+  setMessageModal,
+  setUserinfo,
+} from '../actions';
 import '../scss/UpdateUserInfo.scss';
 
 const UpdateUserInfo = ({ userinfo, history }) => {
@@ -87,6 +92,24 @@ const UpdateUserInfo = ({ userinfo, history }) => {
         setPreviewImg(previewImgUrl);
       }
     };
+  };
+
+  const withdrawal = () => {
+    axios
+      .patch(`${process.env.REACT_APP_API_URL}/users/withdrawal`, null, {
+        headers: {
+          Authorization: `Bearer ${localStorage.accessToken}`,
+        },
+      })
+      .then(() => {
+        dispatch(setIsLogin(false));
+        dispatch(setUserinfo({}));
+        dispatch(setMessageModal(true, '회원 탈퇴가 완료되었습니다.'));
+        history.push('/main');
+      })
+      .catch((err) => {
+        if (err) throw err;
+      });
   };
 
   return (
@@ -187,6 +210,10 @@ const UpdateUserInfo = ({ userinfo, history }) => {
             취소
           </button>
         </div>
+      </div>
+      <div className="withdrawal">
+        <span>독독을 더이상 이용하지 않는다면</span>
+        <span onClick={withdrawal}>회원 탈퇴</span>
       </div>
     </form>
   );

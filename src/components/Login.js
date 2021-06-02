@@ -40,7 +40,7 @@ const Login = ({ changeSelect }) => {
           dispatch(
             setUserinfo({
               ...response.data.user,
-              profileImage: 'images/default-profile-picture_150.jpg',
+              profileImage: 'https://i.imgur.com/FjZ0UO5.jpg',
             }),
           );
         } else {
