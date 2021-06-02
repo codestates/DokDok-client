@@ -19,6 +19,7 @@ import LoginModal from './components/LoginModal';
 import MessageModal from './components/MessageModal';
 import LoadingIndicator from './components/LoadingIndicator';
 import Landing from './pages/Landing';
+import Inquire from './pages/Inquire';
 
 const App = () => {
   const loginInfo = useSelector((state) => state.userReducer);
@@ -101,6 +102,7 @@ const App = () => {
           path="/updateUserInfo"
           render={() => <UpdateUserInfo userinfo={userinfo} />}
         />
+        <Route exact path="/inquire" render={() => <Inquire />} />
       </Switch>
       <Foother />
     </div>

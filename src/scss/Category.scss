@@ -25,6 +25,7 @@
   align-items: center;
   border-bottom: 1px solid $color-grey-border;
   box-shadow: 0px -15px 10px -15px $color-grey-border inset;
+  overflow-y: hidden;
 
   li {
     flex: 0 0 auto;

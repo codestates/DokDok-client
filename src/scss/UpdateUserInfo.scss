@@ -1,6 +1,7 @@
 @import 'color';
 
 .update-user-info {
+  position: relative;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
@@ -132,5 +133,16 @@
   }
   .hidden {
     display: none;
+  }
+
+  .withdrawal {
+    position: absolute;
+    font-size: 0.8rem;
+    bottom: -5%;
+    span:last-child {
+      cursor: pointer;
+      margin-left: 0.4rem;
+      color: $color-main-middle;
+    }
   }
 }

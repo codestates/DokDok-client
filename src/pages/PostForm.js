@@ -27,6 +27,7 @@ const PostForm = ({ post, history, match }) => {
   const [detailAddress, setDetailAddress] = useState('');
   const [latitude, setLatitude] = useState(null);
   const [longitude, setLongitude] = useState(null);
+  const [isAddressBtnClick, setIsAddressBtnClick] = useState(0);
 
   useEffect(() => {
     if (match.path === '/post-edit') {
@@ -102,9 +103,7 @@ const PostForm = ({ post, history, match }) => {
     }
   }, [files, dispatch, images.length]);
 
-  async function submitForm(e) {
-    e.preventDefault();
-
+  async function submitForm() {
     if (
       title === '' ||
       content === '' ||
@@ -114,7 +113,7 @@ const PostForm = ({ post, history, match }) => {
       dispatch(setMessageModal(true, '빈 항목이 있습니다.'));
       return;
     }
-    
+
     dispatch(setIsLoading(true));
 
     const formData = new FormData();
@@ -141,7 +140,6 @@ const PostForm = ({ post, history, match }) => {
           },
         })
         .then((res) => {
-          console.log(res);
           dispatch(setPost({ ...res.data.post, User: { ...post.User } }));
           history.goBack();
           dispatch(setMessageModal(true, '게시글 수정이 완료되었습니다.'));
@@ -183,6 +181,7 @@ const PostForm = ({ post, history, match }) => {
   };
 
   const setSearchAddress = (query) => {
+    setIsAddressBtnClick(isAddressBtnClick + 1);
     setDetailAddress(query);
   };
 
@@ -197,7 +196,7 @@ const PostForm = ({ post, history, match }) => {
           closeSearchAddress={closeSearchAddress}
         />
       </div>
-      <form className="post-form">
+      <div className="post-form">
         <div className="header">
           <i className="fas fa-pen fa-2x"></i>
           <h2>게시글 {match.path === '/post-create' ? '작성' : '수정'}</h2>
@@ -307,15 +306,19 @@ const PostForm = ({ post, history, match }) => {
           </button>
           <button
             className="btn"
-            onClick={(e) => {
-              e.preventDefault();
+            onClick={() => {
+              if (isAddressBtnClick) {
+                for (let i = 0; i < isAddressBtnClick; i++) {
+                  history.goBack();
+                }
+              }
               history.goBack();
             }}
           >
             취소
           </button>
         </div>
-      </form>
+      </div>
     </React.Fragment>
   );
 };

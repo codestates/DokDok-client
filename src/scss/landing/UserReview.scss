@@ -3,18 +3,46 @@
 .user-review {
   min-height: 800px;
   display: flex;
-  flex-flow: column nowrap;
-  align-items: center;
+  flex-flow: column;
   justify-content: center;
-  h1 {
-    margin-bottom: 4rem;
-  }
-  .reviews {
+
+  .header {
     display: flex;
+    flex-flow: column;
+    align-items: center;
+
+    h1 {
+      margin-bottom: 4rem;
+    }
+  }
+
+  .content {
+    position: relative;
+  }
+
+  .reviews {
+    transition: all 1s;
+    display: flex;
+    overflow: visible;
+    margin: {
+      left: 2rem;
+      right: 2rem;
+      bottom: 4rem;
+    }
+  }
+
+  .arrows {
+    z-index: 5;
+    width: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    top: 40%;
+    padding: 0.5rem;
   }
 
   .review-entry {
-    width: 15rem;
+    min-width: 15rem;
     height: 20rem;
     border-radius: 1rem;
     box-shadow: 0px 5px 20px $color-grey-border;
