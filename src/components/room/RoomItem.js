@@ -41,7 +41,7 @@ function RoomItem({ room }) {
   return (
     <Container>
       <ImageContainer>
-        <img src={room.opponentProfileImg} />
+        <img src={room.opponentProfileImg} alt={room.opponentNicknam} />
       </ImageContainer>
       <NameDiv>
         <Link to={`/rooms/${room.roomId}`}>{room.opponentNicknam}</Link>

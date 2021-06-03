@@ -16,9 +16,10 @@ export default function axiosSetUp() {
       const {
         response: { status },
       } = error;
+
       if (
         status === 401 &&
-        error.response.data.error.name === 'TokenExpiredError'
+        error.response.data.message === 'TokenExpiredError'
       ) {
         dispatch(setIsLogin(false));
         dispatch(setUserinfo({}));
