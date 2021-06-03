@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { setLoginModal, setMessageModal } from '../actions';
-import { createRoom } from '../reducers/chattingReducer';
+import { createRoom, getRooms } from '../reducers/chattingReducer';
 
 const PostDetailContent = ({ post, isLogin, userId, history }) => {
   const dispatch = useDispatch();
@@ -141,8 +141,10 @@ const PostDetailContent = ({ post, isLogin, userId, history }) => {
               onClick={() => {
                 checkLoginStatus(() => {
                   dispatch(createRoom(post.UserId));
-                  // 여기수정해야함~~
-                  history.push(`/rooms`);
+                  setTimeout(() => {
+                    dispatch(getRooms());
+                    history.push(`/rooms`);
+                  }, 500);
                 });
               }}
             />

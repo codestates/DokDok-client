@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useEffect, useRef } from 'react';
+import React, { useCallback, useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Chatting from '../components/room/Chatting';
 import ChattingInput from '../components/room/ChattingInput';
@@ -38,7 +38,7 @@ function ChattingContainer({ socket, roomId }) {
     return () => {
       socket.disconnect();
     };
-  }, [socket, dispatch]);
+  }, [socket, dispatch, roomId]);
 
   const onSubmit = useCallback(
     (e) => {
@@ -49,12 +49,9 @@ function ChattingContainer({ socket, roomId }) {
     [message, socket],
   );
 
-  const onMessageChange = useCallback(
-    (e) => {
-      setMessage(e.target.value);
-    },
-    [message],
-  );
+  const onMessageChange = useCallback((e) => {
+    setMessage(e.target.value);
+  }, []);
 
   if (loading) return <div>로딩중</div>;
   if (error) return <div>에러</div>;
