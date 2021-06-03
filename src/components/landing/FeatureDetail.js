@@ -1,7 +1,7 @@
 import '../../scss/landing/FeatureDetail.scss';
 import React from 'react';
 
-function FeatureDetail({}) {
+function FeatureDetail() {
   return (
     <div className="feature-detail">
       <div className="feature">

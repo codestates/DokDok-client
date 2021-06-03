@@ -53,7 +53,7 @@ const Myapage = ({ isLogin, userinfo, history }) => {
       <div className="user-info-area">
         <div className="user-info">
           <div className="user-profile-img">
-            <img src={profileImage} className="user-img"></img>
+            <img src={profileImage} className="user-img" alt=""></img>
           </div>
           <div className="user-i">
             <div className="nickname">{userinfo.nickname}</div>

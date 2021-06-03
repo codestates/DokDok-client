@@ -66,7 +66,6 @@ function UserReview({}) {
   };
 
   const changeScroll = (e) => {
-    console.log(e.target.className);
     if (e.target.className === 'fas fa-chevron-left fa-lg') {
       if (scrollX + 288 > 0) {
         setScrollX(0);

@@ -41,23 +41,7 @@ const Signup = ({ changeSelect }) => {
       });
     reset();
   };
-  const kakaoLogin = () => {
-    window.location.assign(
-      `${process.env.REACT_APP_API_URL}/users/kakao/login`,
-    );
-  };
 
-  const naverLogin = () => {
-    window.location.assign(
-      `${process.env.REACT_APP_API_URL}/users/naver/login`,
-    );
-  };
-
-  const googleLogin = () => {
-    window.location.assign(
-      `${process.env.REACT_APP_API_URL}/users/google/login`,
-    );
-  };
   return (
     <div className="signup-box">
       <div
