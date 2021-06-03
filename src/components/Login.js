@@ -36,16 +36,7 @@ const Login = ({ changeSelect }) => {
       .then(function (response) {
         localStorage.setItem('accessToken', response.data.accessToken);
         dispatch(setIsLogin(true));
-        if (response.data.user.profileImage === null) {
-          dispatch(
-            setUserinfo({
-              ...response.data.user,
-              profileImage: 'https://i.imgur.com/FjZ0UO5.jpg',
-            }),
-          );
-        } else {
-          dispatch(setUserinfo(response.data.user));
-        }
+        dispatch(setUserinfo(response.data.user));
         dispatch(setLoginModal(false));
       })
       .catch(function (err) {

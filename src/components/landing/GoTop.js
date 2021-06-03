@@ -1,6 +1,6 @@
 import React from 'react';
 
-function GoTop({}) {
+function GoTop() {
   return (
     <i
       className="fas fa-arrow-circle-up fa-3x"
