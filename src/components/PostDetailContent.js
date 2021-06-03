@@ -1,17 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 import axios from 'axios';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { setLoginModal, setMessageModal } from '../actions';
+import { createRoom } from '../reducers/chattingReducer';
 
 const PostDetailContent = ({ post, isLogin, userId, history }) => {
   const dispatch = useDispatch();
   const [interestIconColor, setInterestIconColor] = useState('#cccccc');
-  const { userinfo, postinfo } = useSelector((state) => ({
-    userinfo: state.userReducer.userinfo,
-    postinfo: state.postReducer.post,
-  }));
-  console.log(userinfo, postinfo);
   useEffect(() => {
     if (isLogin) {
       getInterestInfo();
@@ -139,11 +135,15 @@ const PostDetailContent = ({ post, isLogin, userId, history }) => {
         </div>
 
         <div className="icons">
-          {userinfo.id === postinfo.UserId || (
+          {userId === post.UserId || (
             <i
               className="fas fa-comment-dots fa-lg"
               onClick={() => {
-                checkLoginStatus(() => history.push('/rooms'));
+                checkLoginStatus(() => {
+                  dispatch(createRoom(post.UserId));
+                  // 여기수정해야함~~
+                  history.push(`/rooms`);
+                });
               }}
             />
           )}

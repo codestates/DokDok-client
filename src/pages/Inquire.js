@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import React, { useState } from 'react';
+=======
+import React from 'react';
+>>>>>>> 9acc4bcbea8db75021abde37e8153d4eb28c7204
 import { withRouter } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
@@ -6,11 +10,15 @@ import { useDispatch } from 'react-redux';
 import { setMessageModal } from '../actions';
 import '../scss/Inquire.scss';
 
+<<<<<<< HEAD
 const Inquire = ({ history }) => {
   const [email, setemail] = useState(false);
   const [title, settitle] = useState(false);
   const [content, setcontent] = useState(false);
 
+=======
+const Inquire = () => {
+>>>>>>> 9acc4bcbea8db75021abde37e8153d4eb28c7204
   const dispatch = useDispatch();
 
   const {
@@ -21,7 +29,10 @@ const Inquire = ({ history }) => {
   } = useForm({ mode: 'onChange' });
 
   const onSubmit = (data) => {
+<<<<<<< HEAD
     console.log(data);
+=======
+>>>>>>> 9acc4bcbea8db75021abde37e8153d4eb28c7204
     if (!data.email && !data.title && !data.content) {
       dispatch(setMessageModal(true, '빈 항목을 작성해 주세요.'));
       return;
@@ -29,7 +40,11 @@ const Inquire = ({ history }) => {
 
     axios
       .post(
+<<<<<<< HEAD
         `${process.env.REACT_APP_API_URL}/inquire`,
+=======
+        `${process.env.REACT_APP_API_URL}/inquires`,
+>>>>>>> 9acc4bcbea8db75021abde37e8153d4eb28c7204
         {
           email: data.email,
           title: data.title,
@@ -40,7 +55,11 @@ const Inquire = ({ history }) => {
         },
       )
       .then(function () {
+<<<<<<< HEAD
         dispatch(setMessageModal(true, '전송이 완료 되었습니다.'));
+=======
+        dispatch(setMessageModal(true, '전송이 완료되었습니다.'));
+>>>>>>> 9acc4bcbea8db75021abde37e8153d4eb28c7204
       })
       .catch(function (err) {
         if (err) throw err;
@@ -95,7 +114,11 @@ const Inquire = ({ history }) => {
                 required: '문의사항을 입력해주세요.',
                 maxLength: {
                   value: 500,
+<<<<<<< HEAD
                   message: '문의내용이 초과하셨습니다.',
+=======
+                  message: '500자까지 작성 가능합니다.',
+>>>>>>> 9acc4bcbea8db75021abde37e8153d4eb28c7204
                 },
               })}
             />
@@ -113,4 +136,7 @@ const Inquire = ({ history }) => {
 };
 
 export default withRouter(Inquire);
+<<<<<<< HEAD
 //
+=======
+>>>>>>> 9acc4bcbea8db75021abde37e8153d4eb28c7204

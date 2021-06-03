@@ -9,7 +9,7 @@
     display: inline-block;
     transition: all 0.4s;
     position: relative;
-    width: 35px;
+    min-width: 35px;
     height: 30px;
     span {
       background-color: $color-black;

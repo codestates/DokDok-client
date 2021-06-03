@@ -36,7 +36,6 @@ const CommentInput = ({ getCommentList, post, isLogin }) => {
       })
       .catch((err) => {
         if (err) throw err;
-        console.log(err);
       });
   };
 

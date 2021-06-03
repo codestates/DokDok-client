@@ -6,6 +6,7 @@ const ChatDiv = styled.div`
   display: flex;
   justify-content: space-between;
   .message {
+    margin-top: 10px;
     display: inline-block;
     position: relative;
     padding: 1rem;

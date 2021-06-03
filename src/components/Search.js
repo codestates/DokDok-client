@@ -6,20 +6,19 @@ import {
   setSearchPosts,
   setMessageModal,
   setCategoryPosts,
+  setIsLoading,
 } from '../actions/index';
 
 const Search = ({ history }) => {
   const dispatch = useDispatch();
   const [queryString, setQueryString] = useState('');
   const [searchType, setSearchType] = useState('title');
-  // const postInfo = useSelector((state) => state.postReducer);
-  // const { posts } = postInfo;
 
   async function getSearchPosts(type, query) {
+    dispatch(setIsLoading(true));
     await axios
       .get(`${process.env.REACT_APP_API_URL}/posts/search?${type}=${query}`)
       .then((res) => {
-        console.log(res);
         dispatch(setSearchPosts(res.data.data.reverse()));
         history.push('/search');
       })

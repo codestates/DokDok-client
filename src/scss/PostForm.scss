@@ -159,7 +159,7 @@
   visibility: visible;
   opacity: 1;
   transition: all 0.2s linear;
-
+  z-index: 10;
   i {
     float: right;
     padding: {

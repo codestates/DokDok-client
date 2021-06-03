@@ -1,0 +1,88 @@
+@import '../color';
+
+.user-review {
+  min-height: 800px;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+
+  .header {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+
+    h1 {
+      margin-bottom: 4rem;
+    }
+  }
+
+  .content {
+    position: relative;
+  }
+
+  .reviews {
+    transition: all 1s;
+    display: flex;
+    overflow: visible;
+    margin: {
+      left: 2rem;
+      right: 2rem;
+      bottom: 4rem;
+    }
+  }
+
+  .arrows {
+    z-index: 5;
+    width: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    top: 40%;
+    padding: 0.5rem;
+  }
+
+  .review-entry {
+    min-width: 15rem;
+    height: 20rem;
+    border-radius: 1rem;
+    box-shadow: 0px 5px 20px $color-grey-border;
+    margin: 1.5rem;
+    padding: 1.5rem;
+  }
+
+  .userinfo {
+    display: flex;
+  }
+
+  .profile-pic {
+    width: 3rem;
+    height: 3rem;
+    background: {
+      size: cover;
+      position: center;
+    }
+    border-radius: 50%;
+    margin-right: 0.8rem;
+  }
+
+  .username {
+    font-weight: 500;
+  }
+
+  .fa-star {
+    color: rgb(255, 203, 49);
+  }
+
+  p {
+    margin-top: 1rem;
+  }
+
+  @media screen and (max-width: 500px) {
+    .reviews {
+      margin: {
+        left: 0;
+        right: 0;
+      }
+    }
+  }
+}

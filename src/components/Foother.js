@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import '../scss/Foother.scss';
 import { withRouter } from 'react-router-dom';
 
@@ -7,7 +8,7 @@ const Foother = ({ history }) => {
     <div className="foother">
       <div
         className="logo-full"
-        style={{ backgroundImage: `url(${'dokdok-logo-full.png'})` }}
+        style={{ backgroundImage: `url(${'images/dokdok-logo-full.png'})` }}
       />
       <div className="contact">
         <p className="bold-text">CONTACT</p>
@@ -68,4 +69,7 @@ const Foother = ({ history }) => {
 };
 
 export default withRouter(Foother);
+<<<<<<< HEAD
 //
+=======
+>>>>>>> 9acc4bcbea8db75021abde37e8153d4eb28c7204

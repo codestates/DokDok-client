@@ -41,34 +41,16 @@ const Signup = ({ changeSelect }) => {
       });
     reset();
   };
-  const kakaoLogin = () => {
-    window.location.assign(
-      `${process.env.REACT_APP_API_URL}/users/kakao/login`,
-    );
-  };
 
-  const naverLogin = () => {
-    window.location.assign(
-      `${process.env.REACT_APP_API_URL}/users/naver/login`,
-    );
-  };
-
-  const googleLogin = () => {
-    window.location.assign(
-      `${process.env.REACT_APP_API_URL}/users/google/login`,
-    );
-  };
   return (
     <div className="signup-box">
       <div
-        className="login-logo-full"
-        style={{ backgroundImage: `url(${'dokdok-logo-full.png'})` }}
+        className="logo-full"
+        style={{ backgroundImage: `url(${'images/dokdok-logo-full.png'})` }}
       />
 
-      <h1>Signup</h1>
-
       <form className="signup-input-box" onSubmit={handleSubmit(onSubmit)}>
-        <p id="p-group">Email</p>
+        <p className="p-group">Email</p>
         <label className="input-box">
           <input
             className="input-box-fant"
@@ -85,7 +67,7 @@ const Signup = ({ changeSelect }) => {
           {errors.email && <p>{errors.email.message}</p>}
         </label>
 
-        <p id="p-group">Nickname</p>
+        <p className="p-group">Nickname</p>
         <label className="input-box">
           <input
             placeholder="nickname"
@@ -100,7 +82,7 @@ const Signup = ({ changeSelect }) => {
           {errors.nickname && <p>{errors.nickname.message}</p>}
         </label>
 
-        <p id="p-group">Password</p>
+        <p className="p-group">Password</p>
         <label className="input-box">
           <input
             placeholder="password"
@@ -116,7 +98,7 @@ const Signup = ({ changeSelect }) => {
           {errors.password && <p>{errors.password.message}</p>}
         </label>
 
-        <p id="p-group">Confirm Password</p>
+        <p className="p-group">Confirm Password</p>
         <label className="input-box">
           <input
             placeholder="confirm password"
@@ -130,7 +112,7 @@ const Signup = ({ changeSelect }) => {
           {errors.confirm_password && <p>{errors.confirm_password.message}</p>}
         </label>
 
-        <button className="signup-btn" type="submit">
+        <button className="signup-btn btn" type="submit">
           Signup
         </button>
       </form>

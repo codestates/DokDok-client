@@ -71,7 +71,6 @@ const CommentListEntry = ({ comment, getCommentList, userId }) => {
     <div className="comment-area">
       <div className="header">
         <div className="nickname">{comment.User.nickname}</div>
-        {/* 추후 userid 동일한 경우에만 버튼 보이도록 수정 */}
         {comment.UserId === userId ? (
           <React.Fragment>
             <div className={isEdit ? null : 'hide'}>

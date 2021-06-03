@@ -5,14 +5,19 @@ import queryString from 'query-string';
 import Category from '../components/Category';
 import PostList from '../components/PostList';
 import { useDispatch } from 'react-redux';
-import { setPosts, setIsLogin, setUserinfo, setLoginModal } from '../actions';
+import {
+  setPosts,
+  setIsLogin,
+  setUserinfo,
+  setLoginModal,
+  setIsLoading,
+} from '../actions';
 
 const Main = ({ posts, location, history }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
     async function socialLogin() {
-      '';
       const parsed = queryString.parse(location.search);
       const accessToken = parsed.access_token;
       if (accessToken) {
@@ -37,6 +42,7 @@ const Main = ({ posts, location, history }) => {
   useEffect(() => getPosts(), []);
 
   async function getPosts() {
+    dispatch(setIsLoading(true));
     await axios
       .get(`${process.env.REACT_APP_API_URL}/posts`)
       .then((res) => {

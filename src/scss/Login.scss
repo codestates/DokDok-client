@@ -6,6 +6,15 @@
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
+  .logo-full {
+    width: 10rem;
+    height: 3rem;
+    background: {
+      size: 100%;
+      position: center;
+    }
+    margin-bottom: 2rem;
+  }
 }
 
 .login-input-box {
@@ -28,68 +37,47 @@
 
 .signup-select-area {
   margin-top: 1rem;
+  font-size: 0.9rem;
   span {
     cursor: pointer;
-    margin-left: 3px;
-    text-decoration: underline;
-    text-underline-position: under;
+    margin-left: 0.5rem;
+    font-weight: 500;
+    color: $color-main-middle;
   }
 }
-//로고
-.login-logo-full {
-  min-width: 10rem;
-  height: 5rem;
-  background: {
-    size: 93%;
-    position: center;
-  }
-  margin-right: 0.2rem;
-}
-
 //버튼
 .login-btn {
-  background-color: #68d170;
-  border: none;
+  background-color: $color-main-middle;
   color: white;
   padding: 10px 30px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
   font-size: 17px;
-  margin: 10px 35%;
-  cursor: pointer;
+  margin: 0.5rem;
+  margin-top: 1.5rem;
 }
 
-.click-btn {
-  color: blue;
+.social-login {
+  display: flex;
+  flex-flow: row nowrap;
+  margin-top: 2rem;
+
+  div {
+    margin: 0.5rem;
+    transition: all 0.2s;
+    outline: none;
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+  }
 }
 
 .btn-social-login {
-  transition: all 0.2s;
-  outline: 0;
-  border: 13px solid transparent;
-  padding: 0.5rem !important;
+  border: 1px solid $color-grey-border;
   border-radius: 50%;
-  margin-top: 15px;
-  color: #fff;
+  overflow: hidden;
   width: 3rem;
   height: 3rem;
-
-  img {
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
+  background: {
+    position: center;
+    size: cover;
   }
-}
-
-.btn-social-login:focus {
-  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-}
-
-#p-group {
-  font-weight: bold;
-
-  font-size: 0.9em;
-  line-height: 2em;
-  margin: auto;
 }
