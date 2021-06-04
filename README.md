@@ -47,7 +47,7 @@
    
 |팀원|역할|이메일|
 |-----|-----|-----|
-|👨‍💻 최시용|Front-end|이메일 주소|
+|👨‍💻 최시용|Front-end|choi2411554@gamil.com|
 |👩‍💻 이소임|Front-end|hande.sof@gmail.com|
 |😎 조태규|Back-end|chotg5592@gmail.com|
 |👨‍💻 강주현|Back-end|rkdwngus21@gmail.com|
