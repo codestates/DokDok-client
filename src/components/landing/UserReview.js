@@ -40,12 +40,16 @@ function UserReview({}) {
     {
       username: 'some**',
       profilePic: 'images/default-profile-picture_150.jpg',
-      content: `5`,
+      content: `최근에 다 읽고 쌓여만 가는 책들 때문에 걱정이었는데, 
+      나눔 앱 독독을 통해 집 안에 있는 책들을 많이 정리했습니다~ 
+      그리고 게시물에서 올라온 책 중에 제가 꼭 읽고 싶었던 책을 돈 한 푼 안 쓰고 받으니까 정말 기분이 좋아요!!`,
     },
     {
       username: 'user**',
       profilePic: 'images/default-profile-picture_150.jpg',
-      content: `6`,
+      content: `마음에 드는 게시물에 댓글이나 채팅을 통해 빠르게 거래를 할 수 있다는 게 좋았고, 
+      돈 한 푼 안 내고 좋아하는 책, 읽고 싶었던 책을 받을 수 있어서 너무 행복해요!! 
+      회원 가입을 하지 않아도 게시물을 확인할 수도 있어서 눈이 너무 즐거웠어요!`,
     },
   ];
   const maxWidth = 288 * reviews.length;
