@@ -1,0 +1,95 @@
+* {
+  box-sizing: border-box;
+}
+
+@import 'color';
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;500&display=swap');
+
+body {
+  max-width: 1500px;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 300;
+  color: $color-black;
+
+  margin: {
+    top: 0;
+    left: auto;
+    right: auto;
+    bottom: 0;
+  }
+  padding: {
+    left: 2rem;
+    right: 2rem;
+  }
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 1rem;
+    background-color: #aaa;
+  }
+  &::-webkit-scrollbar-button {
+    width: 0;
+    height: 0;
+  }
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+button,
+li {
+  cursor: pointer;
+  &:hover {
+    font-weight: 500;
+  }
+}
+
+h2 {
+  margin: 0;
+}
+
+.btn {
+  cursor: pointer;
+  outline: none;
+  border: none;
+  border-radius: 1rem;
+  background-color: $color-main-middle;
+  color: white;
+  padding: 0.3rem;
+  font-weight: 500;
+}
+
+select {
+  font-family: inherit;
+  border: none;
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url('../images/arrow-down.png');
+  background: {
+    size: 1.2rem;
+    repeat: no-repeat;
+    position: right;
+  }
+  &::-ms-expand {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  body {
+    padding: {
+      left: 1rem;
+      right: 1rem;
+    }
+  }
+}

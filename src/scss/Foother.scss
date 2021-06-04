@@ -1,0 +1,50 @@
+.foother {
+  margin: {
+    top: 1rem;
+    left: auto;
+    right: auto;
+    bottom: 2rem;
+  }
+  max-width: 800px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+
+  div {
+    .bold-text {
+      font-weight: 500;
+    }
+    display: flex;
+    flex-flow: column nowrap;
+  }
+  .logo-full {
+    width: 12rem;
+    background: {
+      repeat: no-repeat;
+      size: 90%;
+    }
+  }
+
+  .front,
+  .back {
+    display: flex;
+    flex-flow: row;
+    margin-bottom: 0.5rem;
+    a {
+      margin-right: 0.5rem;
+    }
+  }
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+@media screen and (max-width: 750px) {
+  .foother {
+    .logo-full {
+      display: none;
+    }
+  }
+}

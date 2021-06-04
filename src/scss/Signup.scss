@@ -1,0 +1,90 @@
+@import 'color';
+
+.signup-box {
+  padding: 3rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  
+  .logo-full {
+    width: 10rem;
+    height: 3rem;
+    background: {
+      size: 100%;
+      position: center;
+    }
+    margin-bottom: 2rem;
+  }
+}
+
+.signup-input-box {
+  display: flex;
+  flex-flow: column nowrap;
+  width: 100%;
+  align-items: center;
+
+  input {
+    margin-top: 0rem;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    width: 100%;
+    height: 5px;
+    outline: none;
+    border: none;
+    border-radius: 0.5rem;
+    background-color: #f0f0f0;
+  }
+}
+
+.input-box {
+  position: relative;
+  width: 250px;
+  p {
+    width: 100%;
+    z-index: 10;
+    position: absolute;
+    top: 1rem;
+    font-size: 0.8rem;
+    padding: 0.2rem;
+    color: red;
+  }
+}
+
+.login-select-area {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  span {
+    cursor: pointer;
+    margin-left: 0.5rem;
+    font-weight: 500;
+    color: $color-main-middle;
+  }
+}
+
+//로고
+.login-logo-full {
+  min-width: 10rem;
+  height: 5rem;
+  background: {
+    size: 93%;
+    position: center;
+  }
+  margin-right: 0.2rem;
+}
+
+//버튼
+.signup-btn {
+  background-color: $color-main-middle;
+  color: white;
+  padding: 10px 30px;
+  font-size: 17px;
+  margin: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.p-group {
+  font-size: 0.9rem;
+  font-weight: 500;
+  line-height: 1rem;
+}
