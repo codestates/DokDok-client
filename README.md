@@ -39,7 +39,29 @@
 </br></br>
 
 # :computer: Preview
-화면 프리뷰 GIF 핵심 몇가지만
+
+<details>
+<summary>랜딩 페이지</summary>
+
+![랜딩 페이지](https://user-images.githubusercontent.com/57238458/120754273-6606be80-c547-11eb-8845-bbc0198618fd.gif)
+
+</details>
+
+
+<details>
+<summary>메인 페이지</summary>
+
+![메인 페이지](https://user-images.githubusercontent.com/57238458/120758216-838a5700-c54c-11eb-89c2-fffc82071096.gif)
+
+</details>
+
+
+<details>
+<summary>1:1 채팅</summary>
+
+![1-1채팅](https://user-images.githubusercontent.com/57238458/120758255-913fdc80-c54c-11eb-885f-6ee6b1893eec.gif)
+
+</details>
 
 </br></br>
 
