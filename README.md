@@ -2,7 +2,15 @@
 
 ![](https://i.imgur.com/qmkYDGt.png)
 
-독독 서비스 설명
+```
+다 읽고 먼지만 쌓여가는 책이 있지 않으신가요? 아니면, 한두 장 읽고 나니 흥미를 잃은 책은 없으신가요?
+새로 읽을 책이 필요한데, 새로 사기는 부담되시나요?
+
+DokDok은 게시글 내에 거래 위치를 지정할 수 있어, 
+위치를 검색하면 주변에 어떤 책들이 당신을 기다리고 있는지 손쉽게 확인할 수 있는 서비스입니다.
+
+버리기엔 아쉽고, 그냥 두기엔 자리만 차지하는 책들을 DokDok을 통해 다른 흥미로운 책으로 교환해 보세요.
+```
 
 </br></br>
 # 🔍️  Stack
@@ -27,7 +35,7 @@
 ![](https://img.shields.io/badge/BACK-socket.io-010101?style=for-the-badge&logo=socket-dot-io)
 </br></br>
 
-없는 게 있으면 추가해주세요
+
 
 # 🔨 Architecture
 ### Client-Side flow chart
