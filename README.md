@@ -33,11 +33,15 @@ DokDok은 게시글 내에 거래 위치를 지정할 수 있어,
 ![](https://img.shields.io/badge/BACK-MySQL-4479A1?style=for-the-badge&logo=mysql)   
 ![](https://img.shields.io/badge/BACK-JWT-000000?style=for-the-badge&logo=json-web-tokens)  
 ![](https://img.shields.io/badge/BACK-socket.io-010101?style=for-the-badge&logo=socket-dot-io)
+
 </br></br>
 
 
 
 # 🔨 Architecture
+### System
+![](https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F34424269-92f1-4316-beea-86769a898fca%2F2021-06-05_10.28.09.png?table=block&id=5444d44f-43a7-479d-99f6-7dda59177143&spaceId=82d63a72-8254-4cde-bf1e-b2597b7c099c&width=2860&userId=3ee2703d-2fb3-436d-94ac-73440a316921&cache=v2)
+
 ### Client-Side flow chart
 ![dokdok-client-flow](https://user-images.githubusercontent.com/49504411/120735340-6726f400-c525-11eb-9203-e6ab45996eea.png)
 
