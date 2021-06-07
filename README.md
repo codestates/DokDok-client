@@ -31,10 +31,11 @@
 
 # 🔨 Architecture
 ### Client-Side flow chart
-![]()
+![dokdok-client-flow](https://user-images.githubusercontent.com/49504411/120735340-6726f400-c525-11eb-9203-e6ab45996eea.png)
 
 ### Server-Side flow chart
-![]()
+![dokdok-server-flow](https://user-images.githubusercontent.com/49504411/120735349-6aba7b00-c525-11eb-8b1b-36422ba289d0.png)
+
 
 </br></br>
 
